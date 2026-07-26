@@ -5,6 +5,8 @@ import QuickStats from "@/components/home/QuickStats";
 import CampusProfile from "@/components/home/CampusProfile";
 import CurriculumPreview from "@/components/home/CurriculumPreview";
 import AdmissionProcess from "@/components/home/AdmissionProcess";
+import AlumniShowcase from "@/components/careers/AlumniShowcase";
+import CTASection from "@/components/home/CTASection";
 
 export default function HomePage() {
   return (
@@ -16,6 +18,8 @@ export default function HomePage() {
       <CampusProfile />
       <CurriculumPreview />
       <AdmissionProcess />
+      <AlumniShowcase />
+      <CTASection />
     </>
   );
 }
