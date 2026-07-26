@@ -41,9 +41,9 @@ export default function CampusProfile() {
 
           {/* Right — image collage */}
           <FadeUp delay={0.15}>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 grid-rows-2 gap-4">
               {/* Tall image, spans both rows */}
-              <div className="relative row-span-2 aspect-[3/4] overflow-hidden rounded-sm sm:aspect-auto">
+              <div className="relative row-span-2 h-full overflow-hidden rounded-sm">
                 <div
                   className="absolute inset-0"
                   style={{

@@ -64,14 +64,14 @@ export default function Navbar() {
       </div>
 
       {/* Main nav */}
-      <div className="border-b border-gray-100 bg-white">
+      <div className="border-b border-gray-100 bg-[#0f2b2e] lg:bg-white">
         <Container className="flex items-center justify-between py-3">
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#0f2b2e] text-sm font-extrabold text-[#0f2b2e]">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-white text-sm font-extrabold text-white lg:border-[#0f2b2e] lg:text-[#0f2b2e]">
               GS
             </div>
             <div className="leading-tight">
-              <p className="text-[15px] font-bold text-[#0f2b2e] sm:text-base">
+              <p className="text-[15px] font-bold text-white sm:text-base lg:text-[#0f2b2e]">
                 Gujranwala Grammar School
               </p>
             </div>
@@ -103,9 +103,9 @@ export default function Navbar() {
               aria-label="Open menu"
               className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
             >
-              <span className="h-0.5 w-6 bg-[#0f2b2e]" />
-              <span className="h-0.5 w-6 bg-[#0f2b2e]" />
-              <span className="h-0.5 w-6 bg-[#0f2b2e]" />
+              <span className="h-0.5 w-6 bg-white lg:bg-[#0f2b2e]" />
+              <span className="h-0.5 w-6 bg-white lg:bg-[#0f2b2e]" />
+              <span className="h-0.5 w-6 bg-white lg:bg-[#0f2b2e]" />
             </button>
           </div>
         </Container>

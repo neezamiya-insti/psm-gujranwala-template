@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import MarqueeTicker from "@/components/common/MarqueeTicker";
-import { heroStats } from "@/data/stats";
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
@@ -45,17 +43,17 @@ useEffect(() => {
 
             <FadeUp delay={0.1}>
               <h1 className="text-4xl font-extrabold leading-[1.12] tracking-tight text-[#0f2b2e] sm:text-5xl lg:text-[3.4rem]">
-                Educating Gujranwala&apos;s next generation to{" "}
+                Educating Gujranwala&apos;s next generation with{" "}
                 <span className="font-serif italic text-[#e15a2e]">
-                  export-grade
+                  excellence
                 </span>{" "}
-                standards.
+                .
               </h1>
             </FadeUp>
 
             <FadeUp delay={0.2}>
               <p className="mt-6 max-w-lg text-base leading-relaxed text-gray-600 sm:text-[15px]">
-                A school built on a legacy of commitment and excellence — providing students with a disciplined learning environment, dedicated mentorship, and the academic foundation needed to achieve outstanding board results and future success.
+                 A trusted institution focused on academic excellence, character building, and preparing students for a successful future.
               </p>
             </FadeUp>
 
@@ -77,24 +75,6 @@ useEffect(() => {
                 </a>
               </div>
             </FadeUp>
-
-            <FadeUp delay={0.5}>
-              <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
-                {heroStats.map((stat) => (
-                  <div
-                    key={stat.id}
-                    className="border-l-2 border-[#e15a2e] pl-4"
-                  >
-                    <p className="text-2xl font-extrabold text-[#0f2b2e] sm:text-[26px]">
-                      {stat.value}
-                    </p>
-                    <p className="font-mono text-[11px] uppercase tracking-wide text-gray-500">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </FadeUp>
           </div>
 
           {/* Right column — campus life card */}
@@ -105,11 +85,11 @@ useEffect(() => {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="relative mx-auto w-full max-w-md lg:-mt-25 lg:max-w-none"
           >
-            <div className="relative rounded-2xl bg-[#f3cdbe] p-4 shadow-xl sm:p-5">
+            <div className="relative rounded-2xl bg-[#f3cdbe] p-3 shadow-xl sm:p-5">
               {/* Accreditation badge */}
-              <div className="absolute -top-6 right-4 z-10 flex h-20 w-20 flex-col items-center justify-center rounded-full border-4 border-[#f1efe9] bg-[#e15a2e] text-white shadow-lg">
-                <span className="text-lg font-extrabold leading-none">A+</span>
-                <span className="mt-1 text-[7px] font-semibold uppercase tracking-wide">
+              <div className="absolute -top-4 right-3 z-10 flex h-14 w-14 flex-col items-center justify-center rounded-full border-2 border-[#f1efe9] bg-[#e15a2e] text-white shadow-lg sm:-top-6 sm:right-4 sm:h-20 sm:w-20 sm:border-4">
+                <span className="text-sm font-extrabold leading-none sm:text-lg">A+</span>
+                <span className="mt-0.5 text-[5px] font-semibold uppercase tracking-wide sm:mt-1 sm:text-[7px]">
                   Accredited
                 </span>
               </div>
@@ -135,24 +115,24 @@ useEffect(() => {
 
 
                   {/* Text */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="text-xl font-bold text-white">
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5">
+                    <p className="text-base font-bold text-white sm:text-xl">
                       Campus Life
                     </p>
 
-                    <p className="mt-0.5 text-sm text-white/70">
+                    <p className="mt-0.5 text-xs text-white/70 sm:text-sm">
                       Model Town Main Block — Est. 1998
                     </p>
                   </div>
 
 
                   {/* Slider dots */}
-                  <div className="absolute bottom-4 right-5 flex gap-1.5">
+                  <div className="absolute bottom-3 right-3 flex gap-1 sm:bottom-4 sm:right-5">
                     {campusImages.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setActiveImage(index)}
-                        className={`h-1.5 rounded-full transition-all ${
+                        className={`h-1 rounded-full transition-all sm:h-1.5 ${
                           activeImage === index
                             ? "w-6 bg-white"
                             : "w-1.5 bg-white/50"
@@ -160,12 +140,6 @@ useEffect(() => {
                       />
                     ))}
                   </div>
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="text-xl font-bold text-white">Campus Life</p>
-                  <p className="mt-0.5 text-sm text-white/70">
-                    Model Town Main Block — Est. 1998
-                  </p>
-                </div>
               </div>
 
               {/* Footer meta */}
