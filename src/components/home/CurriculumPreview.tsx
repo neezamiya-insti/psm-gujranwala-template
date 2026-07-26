@@ -7,6 +7,9 @@ export default function CurriculumPreview() {
     <section className="border-t border-[#0f2b2e]/8 bg-[#f1efe9] py-16 sm:py-20">
       <Container>
         <FadeUp>
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#0f2b2e]/70">
+            Academics
+          </p>
           <h2 className="max-w-3xl text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
             Every stage, one board, one standard.
           </h2>

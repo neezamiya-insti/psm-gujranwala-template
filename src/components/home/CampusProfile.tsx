@@ -16,6 +16,9 @@ export default function CampusProfile() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left — copy */}
           <FadeUp>
+            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#0f2b2e]/70">
+            Institutional Profile
+          </p>
             <h2 className="mt-3 text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
               A campus, not a compound.
             </h2>
