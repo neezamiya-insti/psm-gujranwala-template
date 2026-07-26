@@ -14,36 +14,36 @@ export default function Navbar() {
   return (
     <header className="top-0 z-50 w-full">
       {/* Top utility bar */}
-      <div className="hidden bg-[#0f2b2e] py-2 text-white lg:block">
+      <div className="hidden bg-white py-2 text-[#0f2b2e] lg:block">
         <Container className="flex items-center justify-between text-xs">
           <div className="flex items-center gap-6">
             <a
               href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-              className="flex items-center gap-1.5 text-white/85 transition-colors hover:text-white"
+              className="flex items-center gap-1.5 text-[#0f2b2e] transition-colors hover:text-orange-500"
             >
               <Phone className="h-3 w-3" />
               {contactInfo.phone}
             </a>
             <a
               href={`mailto:${contactInfo.email}`}
-              className="flex items-center gap-1.5 text-white/85 transition-colors hover:text-white"
+              className="flex items-center gap-1.5 text-[#0f2b2e] transition-colors hover:text-orange-500"
             >
               <Mail className="h-3 w-3" />
               {contactInfo.email}
             </a>
-            <span className="flex items-center gap-1.5 text-white/85">
+            <span className="flex items-center gap-1.5 text-[#0f2b2e] *:transition-colors hover:text-orange-500">
               <MapPin className="h-3 w-3" />
               {contactInfo.location}
             </span>
           </div>
 
-          <div className="flex items-center overflow-hidden rounded-full border border-white/25">
+          <div className="flex items-center overflow-hidden rounded-full border border-[#0f2b2e]">
             <button
               onClick={() => setLang("EN")}
               className={`px-3 py-1 font-semibold transition-colors ${
                 lang === "EN"
-                  ? "bg-[#e15a2e] text-white"
-                  : "text-white/70 hover:text-white"
+                  ? "bg-[#0f2b2e] text-white"
+                  : "text-[#0f2b2e] hover:text-orange-500"
               }`}
             >
               EN
@@ -52,8 +52,8 @@ export default function Navbar() {
               onClick={() => setLang("UR")}
               className={`px-3 py-1 font-semibold transition-colors ${
                 lang === "UR"
-                  ? "bg-[#e15a2e] text-white"
-                  : "text-white/70 hover:text-white"
+                  ? "bg-[#0f2b2e] text-white"
+                  : "text-[#0f2b2e] hover:text-orange-500"
               }`}
               style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}
             >
@@ -64,14 +64,14 @@ export default function Navbar() {
       </div>
 
       {/* Main nav */}
-      <div className="border-b border-gray-100 bg-[#0f2b2e] lg:bg-white">
+      <div className="border-b border-gray-100 bg-[#0f2b2e]">
         <Container className="flex items-center justify-between py-3">
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-white text-sm font-extrabold text-white lg:border-[#0f2b2e] lg:text-[#0f2b2e]">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-white text-sm font-extrabold text-white">
               GS
             </div>
             <div className="leading-tight">
-              <p className="text-[15px] font-bold text-white sm:text-base lg:text-[#0f2b2e]">
+              <p className="text-[15px] font-bold text-white sm:text-base">
                 Gujranwala Grammar School
               </p>
             </div>
@@ -82,7 +82,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-[#0f2b2e]/80 transition-colors hover:text-[#0f2b2e]"
+                className="text-sm font-medium text-white/85 transition-colors hover:text-orange-500"
               >
                 {link.label}
               </Link>

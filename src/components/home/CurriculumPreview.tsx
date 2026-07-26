@@ -1,6 +1,9 @@
+"use client";
+
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import { curriculumStages } from "@/data/academics";
+import { motion } from "framer-motion";
 
 export default function CurriculumPreview() {
   return (
@@ -20,25 +23,47 @@ export default function CurriculumPreview() {
         </FadeUp>
 
         <FadeUp delay={0.1}>
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {curriculumStages.map((stage) => (
-              <div
-                key={stage.id}
-                className="rounded-sm bg-[#f3cdbe] p-6 sm:p-7"
-              >
-                <p className="font-mono text-[11px] font-semibold uppercase tracking-wide text-[#e15a2e]">
-                  {stage.ageRange}
-                </p>
-                <p className="mt-2 text-xl font-bold text-[#0f2b2e]">
-                  {stage.name}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-[#0f2b2e]/65">
-                  {stage.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </FadeUp>
+  <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+    {curriculumStages.map((stage, index) => (
+      <motion.div
+        key={stage.id}
+        initial={{ opacity: 0, y: 40, scale: 0.96 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{
+          duration: 0.6,
+          delay: index * 0.12,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        whileHover={{
+          y: -8,
+          scale: 1.02,
+        }}
+        className="group relative overflow-hidden rounded-xl bg-[#f3cdbe] p-6 transition-shadow duration-300 hover:shadow-xl sm:p-7"
+      >
+        {/* Animated shine layer */}
+        <div
+          className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-[100%]"
+        />
+
+        {/* Content */}
+        <div className="relative z-10">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-wide text-[#e15a2e]">
+            {stage.ageRange}
+          </p>
+
+          <p className="mt-2 text-xl font-bold text-[#0f2b2e]">
+            {stage.name}
+          </p>
+
+          <p className="mt-3 text-sm leading-relaxed text-[#0f2b2e]/65">
+            {stage.description}
+          </p>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</FadeUp>
       </Container>
     </section>
   );

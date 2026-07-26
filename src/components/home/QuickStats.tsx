@@ -1,6 +1,7 @@
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import { quickStats } from "@/data/stats";
+import Counter from "@/components/common/Counter";
 
 export default function QuickStats() {
   return (
@@ -20,7 +21,7 @@ export default function QuickStats() {
                 className="border-b border-r border-[#0f2b2e]/12 px-6 py-8 sm:px-7"
               >
                 <p className="text-3xl font-extrabold text-[#0f2b2e] sm:text-[2.15rem]">
-                  {stat.value}
+                  <Counter value={stat.value} />
                 </p>
                 <p className="mt-2 text-sm text-gray-500">{stat.label}</p>
               </div>
