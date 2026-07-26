@@ -40,24 +40,57 @@ export const principalMessage = {
 export interface FacilityItem {
   id: string;
   label: string;
+  image: string;
 }
 
 export const campusFacilities: FacilityItem[] = [
-  { id: "labs", label: "Science Laboratories" },
-  { id: "sports", label: "Sports Ground" },
-  { id: "fleet", label: "Transport Fleet" },
-  { id: "security", label: "Campus Security" },
-  { id: "computer-lab", label: "Computer Lab" },
-  { id: "library", label: "Library" },
-  { id: "auditorium", label: "Auditorium" },
-  { id: "cafeteria", label: "Cafeteria" },
+  {
+    id: "labs",
+    label: "Science Laboratories",
+    image: "/images/facilities/science-lab.jpg",
+  },
+  {
+    id: "sports",
+    label: "Sports Ground",
+    image: "/images/facilities/sports-ground.jpg",
+  },
+  {
+    id: "fleet",
+    label: "Transport Fleet",
+    image: "/images/facilities/transport.jpg",
+  },
+  {
+    id: "security",
+    label: "Campus Security",
+    image: "/images/facilities/security.jpg",
+  },
+  {
+    id: "computer-lab",
+    label: "Computer Lab",
+    image: "/images/facilities/computer-lab.jpg",
+  },
+  {
+    id: "library",
+    label: "Library",
+    image: "/images/facilities/library.jpg",
+  },
+  {
+    id: "auditorium",
+    label: "Auditorium",
+    image: "/images/facilities/auditorium.jpg",
+  },
+  {
+    id: "cafeteria",
+    label: "Cafeteria",
+    image: "/images/facilities/cafeteria.jpg",
+  },
 ];
-
 export interface FacultyMember {
   id: string;
   name: string;
   title: string;
   bio: string;
+  image: string;
 }
 
 export const facultyMembers: FacultyMember[] = [
@@ -66,23 +99,27 @@ export const facultyMembers: FacultyMember[] = [
     name: "Saira Bashir",
     title: "Head of Science &middot; M.Phil",
     bio: "14 years teaching O/A-Level Biology & Chemistry.",
+    image: "/images/faculty/saira-bashir.jpg",
   },
   {
     id: "imran-butt",
     name: "Imran Butt",
     title: "Head of Maths &middot; MSc",
     bio: "Leads Matric board-exam preparation cohort.",
+    image: "/images/faculty/imran-butt.jpg",
   },
   {
     id: "farah-yousaf",
     name: "Farah Yousaf",
-    title: "English Dept. &middot; MA TESOL",
+    title: "English Department &middot; MA TESOL",
     bio: "Runs the bilingual English-Urdu writing program.",
+    image: "/images/faculty/farah-yousaf.jpg",
   },
   {
     id: "ali-raza",
     name: "Ali Raza",
     title: "Vocational Lead",
     bio: "Manages industry tie-ups with local trade partners.",
+    image: "/images/faculty/ali-raza.jpg",
   },
 ];
