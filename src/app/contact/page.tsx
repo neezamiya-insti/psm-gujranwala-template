@@ -1,5 +1,7 @@
 import PageBanner from "@/components/layouts/PageBanner";
 import CampusMap from "@/components/contact/CampusMap";
+import ContactSection from "@/components/contact/ContactSection";
+import TransportRoutes from "@/components/contact/TransportRoutes";
 
 export default function ContactPage() {
   return (
@@ -9,7 +11,9 @@ export default function ContactPage() {
         title="Three campuses, one admissions office."
         description="Get directions, message us on WhatsApp Business, or check your area's van route — no need to visit in person first."
       />
+      <ContactSection/>
       <CampusMap />
+      <TransportRoutes />
     </>
   );
 }

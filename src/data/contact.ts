@@ -74,3 +74,85 @@ export const campusLocations: CampusLocation[] = [
       "https://maps.google.com/maps?q=Rahwali+Cantt+Gujranwala&z=15&output=embed",
   },
 ];
+
+export interface ContactChannel {
+  id: string;
+  icon: "chat" | "clock" | "mail";
+  title: string;
+  detail: string;
+  linkLabel: string;
+  linkUrl: string;
+  variant: "green" | "peach";
+}
+
+export const contactChannels: ContactChannel[] = [
+  {
+    id: "whatsapp",
+    icon: "chat",
+    title: "WhatsApp Business",
+    detail:
+      "+92 55 123 456",
+    linkLabel: "Start Chat",
+    linkUrl: "https://wa.me/9255123456",
+    variant: "green",
+  
+  },
+  {
+    id: "phone",
+    icon: "clock",
+    title: "Call the Office",
+    detail: "Mon to Sat, 8 AM to 3 PM",
+    linkLabel: "Call Now",
+    linkUrl: "tel:+925512345667",
+    variant: "peach",
+  },
+  {
+    id: "email",
+    icon: "mail",
+    title: "Email Admissions",
+    detail:
+      "admissions@gujranwalagsa.edu.pk",
+    linkLabel: "Send Email",
+    linkUrl: "mailto:admissions@gujranwalagsa.edu.pk",
+    variant: "peach",
+  },
+];
+
+export interface VanRoute {
+  id: string;
+  route: string;
+  covers: string;
+  pickupTime: string;
+  campus: string;
+}
+
+export const vanRoutes: VanRoute[] = [
+  {
+    id: "route-1",
+    route: "Route 1 · GT Road Corridor",
+    covers: "Model Town, Satellite Town, Peoples Colony",
+    pickupTime: "6:45 AM",
+    campus: "Model Town",
+  },
+  {
+    id: "route-2",
+    route: "Route 2 · Wazirabad Road",
+    covers: "Wazirabad Road industrial belt",
+    pickupTime: "6:50 AM",
+    campus: "Wazirabad Road",
+  },
+  {
+    id: "route-3",
+    route: "Route 3 · Rahwali Cantt",
+    covers: "Rahwali Cantt, Peoples Colony (Girls only)",
+    pickupTime: "7:00 AM",
+    campus: "Rahwali Cantt",
+  },
+  {
+    id: "route-4",
+    route: "Route 4 · Ghakkhar / Kamoke",
+    covers: "Ghakkhar, Kamoke, Nowshera Virkan",
+    pickupTime: "6:15 AM",
+    campus: "Model Town",
+  },
+];

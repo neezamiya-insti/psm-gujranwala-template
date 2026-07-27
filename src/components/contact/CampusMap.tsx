@@ -31,7 +31,7 @@ export default function CampusMap() {
                   key={campus.id}
                   type="button"
                   onClick={() => setActiveCampusId(campus.id)}
-                  className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
+                  className={`flex h-11 w-52 items-center justify-center rounded-2xl text-sm font-semibold transition-colors ${
                     isActive
                       ? "bg-[#0f2b2e] text-white"
                       : "border border-[#0f2b2e]/15 bg-white text-[#0f2b2e]/70 hover:border-[#0f2b2e]/30"
