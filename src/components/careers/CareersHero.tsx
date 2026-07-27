@@ -8,7 +8,7 @@ export default function CareersHero() {
       <div className="border-b border-[#0f2b2e]/10 bg-[#f3cdbe] py-3">
         <Container>
           <p className="flex items-center gap-2 text-sm font-semibold text-[#0f2b2e]">
-            <span className="h-2 w-2 shrink-0 rounded-full bg-[#e15a2e]" />
+            <span className="hidden h-2 w-2 shrink-0 rounded-full bg-[#e15a2e] sm:block" />
             This section applies to our Intermediate/O-A-Level College &amp;
             Vocational Wing only — not the Primary or Middle school.
           </p>
