@@ -49,3 +49,48 @@ export const admissionSteps: AdmissionStep[] = [
       "Attendance & progress alerts move to WhatsApp/SMS from day one.",
   },
 ];
+
+export interface TrackerStep {
+  id: string;
+  stepNumber: string;
+  status: "done" | "in-review" | "pending";
+  title: string;
+  detail: string;
+}
+
+export const applicationTracker = {
+  applicantName: "Eishah Iqbal",
+  grade: "Grade 6",
+  refNumber: "GSA-ADM-2026-00847",
+  percentComplete: 68,
+  steps: [
+    {
+      id: "submitted",
+      stepNumber: "Step 01",
+      status: "done" as const,
+      title: "Form Submitted",
+      detail: "Received 12 July 2026",
+    },
+    {
+      id: "uploaded",
+      stepNumber: "Step 02",
+      status: "done" as const,
+      title: "Documents Uploaded",
+      detail: "B-form & certificate verified",
+    },
+    {
+      id: "review",
+      stepNumber: "Step 03",
+      status: "in-review" as const,
+      title: "Admissions Review",
+      detail: "Assigned to Admissions In-Charge",
+    },
+    {
+      id: "confirmation",
+      stepNumber: "Step 04",
+      status: "pending" as const,
+      title: "Fee & Confirmation",
+      detail: "Unlocks after approval",
+    },
+  ],
+};
