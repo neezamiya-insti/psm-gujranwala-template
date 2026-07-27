@@ -9,7 +9,7 @@ export const navLinks: NavLink[] = [
   { label: "Academics", href: "/academics" },
   { label: "Admissions", href: "/admissions" },
   { label: "Gallery", href: "/gallery-events" },
-  { label: "Careers", href: "/career" },
+  { label: "Careers", href: "/careers" },
   { label: "Portal", href: "/parent-portal" },
   { label: "Contact", href: "/contact" },
 ];
