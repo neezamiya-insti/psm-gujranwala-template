@@ -94,3 +94,133 @@ export const applicationTracker = {
     },
   ],
 };
+
+export interface FormFieldConfig {
+  id: string;
+  label: string;
+  type: "text" | "date" | "select" | "tel";
+  placeholder?: string;
+  options?: string[];
+}
+
+export const applicationFormFields: FormFieldConfig[] = [
+  {
+    id: "studentName",
+    label: "Student Full Name",
+    type: "text",
+    placeholder: "e.g. Eishah Iqbal",
+  },
+  {
+    id: "dob",
+    label: "Date of Birth",
+    type: "date",
+    placeholder: "DD / MM / YYYY",
+  },
+  {
+    id: "grade",
+    label: "Grade",
+    type: "select",
+    options: [
+        "Montessori",
+        "Pre-Primary",
+        "Grade 1",
+        "Grade 2",
+        "Grade 3",
+        "Grade 4",
+        "Grade 5",
+        "Grade 6",
+        "Grade 7",
+        "Grade 8",
+        "Grade 9",
+        "Grade 10",
+      ],
+  },
+  {
+    id: "campus",
+    label: "Preferred Campus",
+    type: "select",
+    options: ["Model Town (Main)", "Wazirabad Road", "Rahwali Cantt"],
+  },
+  {
+    id: "guardianName",
+    label: "Parent / Guardian Name",
+    type: "text",
+    placeholder: "e.g. Muhammad Fahad",
+  },
+  {
+    id: "whatsapp",
+    label: "WhatsApp Number",
+    type: "tel",
+    placeholder: "+92 3XX XXXXXXX",
+  },
+  {
+    id: "previousSchool",
+    label: "Previous School (if any)",
+    type: "text",
+    placeholder: "School name, city",
+  },
+  {
+    id: "language",
+    label: "Preferred Language",
+    type: "select",
+    options: ["English", "Urdu"],
+  },
+];
+
+export interface DocumentUploadItem {
+  id: string;
+  label: string;
+}
+
+export const requiredDocuments: DocumentUploadItem[] = [
+  { id: "birth-cert", label: "Birth Certificate / B-Form" },
+  { id: "leaving-cert", label: "School Leaving Certificate" },
+  { id: "photo", label: "Passport-size Photograph" },
+];
+
+export interface FeeLineItem {
+  id: string;
+  label: string;
+  amount: string;
+}
+
+export const admissionFees: FeeLineItem[] = [
+  { id: "processing", label: "Application Processing", amount: "Rs. 2,500" },
+  { id: "assessment", label: "Assessment Test Fee", amount: "Rs. 1,000" },
+];
+
+export const totalFee = "Rs. 3,500";
+
+export interface CalendarEvent {
+  id: string;
+  date: string;
+  title: string;
+  description: string;
+}
+
+export const admissionCalendar: CalendarEvent[] = [
+  {
+    id: "open",
+    date: "01 Aug 2026",
+    title: "Applications Open",
+    description: "All grades, all three campuses.",
+  },
+  {
+    id: "assessment",
+    date: "20 Aug 2026",
+    title: "Assessment Tests",
+    description: "Grades 6 and above, on-campus.",
+  },
+  {
+    id: "results",
+    date: "05 Sep 2026",
+    title: "Results & Offers",
+    description: "Sent via WhatsApp & tracker update.",
+  },
+  {
+    id: "deadline",
+    date: "15 Sep 2026",
+    title: "Fee Deadline",
+    description: "Confirms the enrolled seat.",
+  },
+];
