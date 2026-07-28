@@ -6,6 +6,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import Container from "@/components/common/Container";
 import MobileMenu from "@/components/layouts/MobileMenu";
 import { navLinks, contactInfo } from "@/data/navigation";
+import Image from "next/image";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -65,16 +66,27 @@ export default function Navbar() {
 
       {/* Main nav */}
       <div className="border-b border-gray-100 bg-[#0f2b2e]">
-        <Container className="flex items-center justify-between py-3">
+        <Container className="flex h-[72px] items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-white text-sm font-extrabold text-white">
-              GS
-            </div>
-            <div className="leading-tight">
-              <p className="text-[15px] font-bold text-white sm:text-base">
-                Gujranwala Grammar School
-              </p>
-            </div>
+            {/* Desktop */}
+          <div className="hidden items-center gap-3 lg:flex">
+            <Image
+              src="/images/logo-desktop.png"
+              alt="Gujranwala Grammar School"
+              width={160}
+              height={45}
+              className="h-10 w-auto"
+            />
+          </div>
+
+          {/* Mobile */}
+          <Image
+            src="/images/logo-mobile.png"
+            alt="Gujranwala Grammar School"
+            width={40}
+            height={40}
+            className="h-9 w-9 lg:hidden"
+          />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">
