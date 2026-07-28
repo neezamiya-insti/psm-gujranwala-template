@@ -42,7 +42,7 @@ export default function TeamCard({
       </div>
 
       {/* Info panel */}
-      <div className="bg-[#f3cdbe] p-5">
+      <div className="bg-[#f3cdbe] p-2 sm:p-5">
         <p className="text-[15px] font-bold text-[#0f2b2e]">
           {name}
         </p>
