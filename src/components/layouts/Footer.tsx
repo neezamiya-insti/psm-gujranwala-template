@@ -3,6 +3,7 @@ import { Mail, Phone, MessageCircle } from "lucide-react";
 import Container from "@/components/common/Container";
 import { footerCampuses } from "@/data/contact";
 import { navLinks, contactInfo } from "@/data/navigation";
+import Image from "next/image";
 
 export default function Footer() {
   const footerNavLinks = navLinks.filter((l) =>
@@ -15,16 +16,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <div className="flex items-start gap-3">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#e15a2e] text-sm font-extrabold text-white">
-                GS
-              </div>
-              <p className="pt-3.5 text-[15px] font-bold leading-snug">
-                Gujranwala Grammar School
-              </p>
-            </div>
+            <div className="flex items-center gap-3">
+            <Image
+              src="/images/logo-desktop.png"
+              alt="Gujranwala Grammar School"
+              width={45}
+              height={45}
+              className="h-11 w-11 shrink-0 rounded-full object-contain"
+            />
+          </div>
             <p className="mt-4 text-sm leading-relaxed text-white/60">
-              BISE Gujranwala affiliated &middot; Punjab Curriculum aligned.
+              &middot; BISE Gujranwala affiliated <br></br> &middot; Punjab Curriculum aligned
             </p>
           </div>
 
