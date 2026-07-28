@@ -24,7 +24,7 @@ export default function CareersHero() {
             <h1 className="mt-3 max-w-2xl text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
               Where our graduates go next.
             </h1>
-            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-gray-600">
+            <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-gray-600">
               Industry tie-ups across Gujranwala&apos;s fan, utensil and
               sporting-goods trade, and a placement record we publish rather
               than just claim.

@@ -10,6 +10,7 @@ export default function AcademicsPage() {
       <PageBanner
         eyebrow="Academics"
         title="Curriculum, boards & published results."
+        description="Every grade level mapped to a recognised board, and every year's board result kept on record — downloadable, not just claimed."
       />
       <CurriculumLevels />
       <BoardAffiliations />
