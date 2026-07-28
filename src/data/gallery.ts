@@ -6,9 +6,9 @@ export interface GalleryCategory {
 export const galleryCategories: GalleryCategory[] = [
   { id: "all", label: "All" },
   { id: "sports-day", label: "Sports Day" },
+  { id: "field-trips", label: "Field Trips" },
   { id: "annual-function", label: "Annual Function" },
   { id: "science-fair", label: "Science Fair" },
-  { id: "field-trips", label: "Field Trips" },
 ];
 
 
@@ -36,20 +36,20 @@ export interface GalleryItem {
 
 export const galleryItems: GalleryItem[] = [
   {
-    id: "sports-gala",
-    title: "Sports Gala 2026",
-    subtitle: "Model Town Ground",
-    category: "sports-day",
+    id: "prize-distribution",
+    title: "Prize Distribution",
+    subtitle: "Matric Toppers 2026",
+    category: "annual-function",
 
-    image: "/images/gallery/sports-gala.jpg",
+    image: "/images/gallery/prize-distribution.jpeg",
 
-    video: "/videos/gallery/sports-gala.mp4",
+    video: "/images/gallery/prize-distribution.mp4",
     mediaType: "video",
 
     size: "featured",
-    variant: "peach",
+    variant: "navy",
 
-    alt: "Students participating in Sports Gala 2026",
+    alt: "Students receiving academic awards",
   },
 
   {
@@ -58,7 +58,7 @@ export const galleryItems: GalleryItem[] = [
     subtitle: "Auditorium Night",
     category: "annual-function",
 
-    image: "/images/gallery/annual-function.jpg",
+    image: "/images/gallery/annual-function.jpeg",
 
     mediaType: "image",
 
@@ -74,31 +74,29 @@ export const galleryItems: GalleryItem[] = [
     subtitle: "Grade 8–10 Projects",
     category: "science-fair",
 
-    image: "/images/gallery/science-fair.jpg",
+    image: "/images/gallery/science-fair.jpeg",
 
     mediaType: "image",
 
     size: "normal",
-    variant: "peach",
+    variant: "navy",
 
     alt: "Students presenting science fair projects",
   },
 
   {
-    id: "prize-distribution",
-    title: "Prize Distribution",
-    subtitle: "Matric Toppers 2026",
-    category: "annual-function",
+    id: "sports-gala",
+    title: "Sports Gala 2026",
+    subtitle: "Model Town Ground",
+    category: "sports-day",
 
-    image: "/images/gallery/prize-distribution.jpg",
-
-    video: "/videos/gallery/prize-distribution.mp4",
-    mediaType: "video",
+    image: "/images/gallery/sports-gala.jpeg",
+    mediaType: "image",
 
     size: "normal",
-    variant: "peach",
+    variant: "navy",
 
-    alt: "Students receiving academic awards",
+    alt: "Students participating in Sports Gala 2026",
   },
 
   {
@@ -107,12 +105,12 @@ export const galleryItems: GalleryItem[] = [
     subtitle: "Morning Address",
     category: "campus-life",
 
-    image: "/images/gallery/assembly.jpg",
+    image: "/images/gallery/assembly.jpeg",
 
     mediaType: "image",
 
     size: "normal",
-    variant: "peach",
+    variant: "navy",
 
     alt: "Morning school assembly",
   },
@@ -123,7 +121,7 @@ export const galleryItems: GalleryItem[] = [
     subtitle: "Textile Expo Visit",
     category: "field-trips",
 
-    image: "/images/gallery/field-trip.jpg",
+    image: "/images/gallery/field-trip.jpeg",
 
     mediaType: "image",
 

@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Play } from "lucide-react";
+import { Play, Pause } from "lucide-react";
+import { useRef, useState } from "react";
 import { GalleryItem } from "@/data/gallery";
 
 interface GalleryCardProps {
@@ -20,6 +21,20 @@ const sizeClasses: Record<GalleryItem["size"], string> = {
 };
 
 export default function GalleryCard({ item }: GalleryCardProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+const [playing, setPlaying] = useState(false);
+
+const toggleVideo = () => {
+  if (!videoRef.current) return;
+
+  if (playing) {
+    videoRef.current.pause();
+  } else {
+    videoRef.current.play();
+  }
+
+  setPlaying(!playing);
+};
   return (
    <div
       className={`
@@ -35,9 +50,9 @@ export default function GalleryCard({ item }: GalleryCardProps) {
       {/* Media */}
       {item.mediaType === "video" && item.video ? (
         <video
+          ref={videoRef}
           src={item.video}
           muted
-          loop
           playsInline
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
@@ -63,27 +78,33 @@ export default function GalleryCard({ item }: GalleryCardProps) {
 
       {/* Video indicator */}
       {item.mediaType === "video" && (
-        <span
-          className="
-            absolute
-            right-4
-            top-4
-            flex
-            h-10
-            w-10
-            items-center
-            justify-center
-            rounded-full
-            bg-[#e15a2e]
-            text-white
-            shadow-lg
-            transition-transform
-            duration-300
-            group-hover:scale-110
-          "
-        >
-          <Play className="h-4 w-4 fill-white" />
-        </span>
+        <button
+  type="button"
+  onClick={toggleVideo}
+  className="
+    absolute
+    right-4
+    top-4
+    flex
+    h-10
+    w-10
+    items-center
+    justify-center
+    rounded-full
+    bg-[#e15a2e]
+    text-white
+    shadow-lg
+    transition-transform
+    duration-300
+    hover:scale-110
+  "
+>
+  {playing ? (
+    <Pause className="h-4 w-4 fill-white" />
+  ) : (
+    <Play className="h-4 w-4 fill-white" />
+  )}
+</button>
       )}
 
 

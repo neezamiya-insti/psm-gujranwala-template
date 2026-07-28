@@ -29,7 +29,7 @@ export const eventTimeline: TimelineEvent[] = [
       "Grade 8–10 projects; three of our exhibits placed in the district top ten.",
     tag: "See Pictures",
     tagType: "photos",
-    link: "/gallery/science-fair",
+    link: "/images/gallery/science-fair.jpeg",
   },
   {
     id: "sports-gala",
@@ -37,9 +37,9 @@ export const eventTimeline: TimelineEvent[] = [
     title: "Sports Gala 2026",
     description:
       "Annual inter-house athletics day, Model Town Ground — full family attendance.",
-    tag: "See Video",
-    tagType: "video-photos",
-    link: "/gallery/sports-gala-video",
+    tag: "See Pictures",
+    tagType: "photos",
+    link: "/images/gallery/sports-gala.jpeg",
   },
   {
     id: "annual-function",
@@ -47,9 +47,9 @@ export const eventTimeline: TimelineEvent[] = [
     title: "Annual Function & Prize Distribution",
     description:
       "Matric & O-Level toppers recognised on stage, followed by student performances.",
-    tag: "See Pictures",
-    tagType: "recap",
-    link: "/gallery/annual-function",
+    tag: "See Video",
+    tagType: "video-photos",
+    link: "/images/gallery/prize-distribution.mp4",
   },
 ];
 
