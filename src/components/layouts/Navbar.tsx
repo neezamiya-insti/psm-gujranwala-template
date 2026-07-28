@@ -111,7 +111,12 @@ export default function Navbar() {
         </Container>
       </div>
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        lang={lang}
+        setLang={setLang}
+      />
     </header>
   );
 }

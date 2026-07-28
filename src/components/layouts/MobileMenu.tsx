@@ -8,9 +8,16 @@ import { navLinks, contactInfo } from "@/data/navigation";
 interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
+  lang: "EN" | "UR";
+  setLang: (lang: "EN" | "UR") => void;
 }
 
-export default function MobileMenu({ open, onClose }: MobileMenuProps) {
+export default function MobileMenu({
+  open,
+  onClose,
+  lang,
+  setLang,
+}: MobileMenuProps) {
   return (
     <AnimatePresence>
       {open && (
@@ -36,6 +43,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
               <span className="text-sm font-bold uppercase tracking-wide">
                 Menu
               </span>
+
               <button onClick={onClose} aria-label="Close menu">
                 <X className="h-6 w-6" />
               </button>
@@ -54,14 +62,48 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
               ))}
             </nav>
 
-            <div className="space-y-3 border-t border-white/10 px-6 py-6">
-             <a 
+            <div className="space-y-4 border-t border-white/10 px-6 py-6">
+
+              {/* Language Switcher */}
+              <div>
+                <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-white/60">
+                  Language
+                </p>
+
+                <div className="flex w-fit overflow-hidden rounded-full border border-white/30">
+                  <button
+                    onClick={() => setLang("EN")}
+                    className={`px-4 py-1.5 text-sm font-semibold transition-colors ${
+                      lang === "EN"
+                        ? "bg-white text-[#0f2b2e]"
+                        : "text-white hover:bg-white/10"
+                    }`}
+                  >
+                    EN
+                  </button>
+
+                  <button
+                    onClick={() => setLang("UR")}
+                    className={`px-4 py-1.5 text-sm font-semibold transition-colors ${
+                      lang === "UR"
+                        ? "bg-white text-[#0f2b2e]"
+                        : "text-white hover:bg-white/10"
+                    }`}
+                    style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}
+                  >
+                    اردو
+                  </button>
+                </div>
+              </div>
+
+              <a
                 href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
                 className="flex items-center gap-2 text-sm text-white/80"
               >
                 <Phone className="h-4 w-4" />
                 {contactInfo.phone}
               </a>
+
               <a
                 href={`mailto:${contactInfo.email}`}
                 className="flex items-center gap-2 text-sm text-white/80"
@@ -69,6 +111,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                 <Mail className="h-4 w-4" />
                 {contactInfo.email}
               </a>
+
               <a
                 href="/admissions"
                 onClick={onClose}
