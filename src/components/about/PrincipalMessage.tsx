@@ -1,6 +1,7 @@
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import { principalMessage } from "@/data/about";
+import Image from "next/image";
 
 export default function PrincipalMessage() {
   return (
@@ -9,31 +10,28 @@ export default function PrincipalMessage() {
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Photo card */}
           <FadeUp>
-            <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-sm sm:aspect-square lg:aspect-[4/5]">
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(160deg, #12332f 0%, #0a201d 100%)",
-                }}
-              />
-              <div
-                className="absolute inset-0 opacity-20"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 2px, transparent 2px, transparent 14px)",
-                }}
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-lg font-bold text-white">
-                  {principalMessage.name}
-                </p>
-                <p className="mt-0.5 text-sm text-white/70">
-                  {principalMessage.role.split(",")[0]}
-                </p>
-              </div>
-            </div>
-          </FadeUp>
+  <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-sm">
+    <Image
+      src="/images/faculty/nasreen-iqbal.jpeg"
+      alt={principalMessage.name}
+      fill
+      className="object-cover"
+      priority
+    />
+
+    {/* Optional dark overlay for text readability */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+
+    <div className="absolute bottom-0 left-0 right-0 p-6">
+      <p className="text-lg font-bold text-white">
+        {principalMessage.name}
+      </p>
+      <p className="mt-0.5 text-sm text-white/80">
+        {principalMessage.role.split(",")[0]}
+      </p>
+    </div>
+  </div>
+</FadeUp>
 
           {/* Quote + bio */}
           <FadeUp delay={0.1}>

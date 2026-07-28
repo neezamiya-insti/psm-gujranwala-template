@@ -2,11 +2,27 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
+import Image from "next/image";
 
 const collageImages = [
-  { id: "labs", label: "Science Laboratories", span: "tall" as const },
-  { id: "sports", label: "Sports Ground", span: "short" as const },
-  { id: "fleet", label: "Transport Fleet", span: "short" as const },
+  {
+    id: "labs",
+    label: "Science Laboratories",
+    src: "/images/facilities/computer-lab.jpeg",
+    span: "tall" as const,
+  },
+  {
+    id: "sports",
+    label: "Sports Ground",
+    src: "/images/facilities/sports-ground.jpeg",
+    span: "short" as const,
+  },
+  {
+    id: "fleet",
+    label: "Transport Fleet",
+    src: "/images/campus-fleet.jpeg",
+    span: "short" as const,
+  },
 ];
 
 export default function CampusProfile() {
@@ -40,42 +56,47 @@ export default function CampusProfile() {
           </FadeUp>
 
           {/* Right — image collage */}
-          <FadeUp delay={0.15}>
-            <div className="grid grid-cols-2 grid-rows-2 gap-4">
-              {/* Tall image, spans both rows */}
-              <div className="relative row-span-2 h-full overflow-hidden rounded-sm">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(160deg, #f0c3ae 0%, #e9a68b 100%)",
-                  }}
-                />
-                <span className="absolute bottom-4 left-4 font-mono text-[11px] uppercase tracking-wide text-[#0f2b2e]/60">
-                  {collageImages[0].label}
-                </span>
-              </div>
+{/* Right — image collage */}
+<FadeUp delay={0.15}>
+  <div className="grid grid-cols-2 grid-rows-2 gap-4">
+    {/* Tall image, spans both rows */}
+    <div className="relative row-span-2 h-full overflow-hidden rounded-sm">
+      <Image
+        src={collageImages[0].src}
+        alt={collageImages[0].label}
+        fill
+        className="object-cover transition-transform duration-700 hover:scale-105"
+      />
 
-              {/* Two stacked images */}
-              {collageImages.slice(1).map((img) => (
-                <div
-                  key={img.id}
-                  className="relative aspect-[4/3] overflow-hidden rounded-sm"
-                >
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(160deg, #f0c3ae 0%, #e9a68b 100%)",
-                    }}
-                  />
-                  <span className="absolute bottom-3 left-3 font-mono text-[10px] uppercase tracking-wide text-[#0f2b2e]/60">
-                    {img.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </FadeUp>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+
+      <span className="absolute bottom-4 left-4 font-mono text-[11px] uppercase tracking-wide text-white">
+        {collageImages[0].label}
+      </span>
+    </div>
+
+    {/* Two stacked images */}
+    {collageImages.slice(1).map((img) => (
+      <div
+        key={img.id}
+        className="relative aspect-[4/3] overflow-hidden rounded-sm"
+      >
+        <Image
+          src={img.src}
+          alt={img.label}
+          fill
+          className="object-cover transition-transform duration-700 hover:scale-105"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+
+        <span className="absolute bottom-3 left-3 font-mono text-[10px] uppercase tracking-wide text-white">
+          {img.label}
+        </span>
+      </div>
+    ))}
+  </div>
+</FadeUp>
         </div>
       </Container>
     </section>

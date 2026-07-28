@@ -69,13 +69,23 @@ export default function Navbar() {
         <Container className="flex h-[72px] items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             {/* Desktop */}
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center lg:flex">
+            {/* Icon logo */}
             <Image
-              src="/images/logo-desktop.png"
+              src="/images/logo-icon.png"
+              alt="Gujranwala Grammar School Logo"
+              width={45}
+              height={45}
+              className="h-15 w-15 object-contain"
+            />
+
+            {/* School name logo */}
+            <Image
+              src="/images/logo-name.png"
               alt="Gujranwala Grammar School"
               width={160}
               height={45}
-              className="h-10 w-auto"
+              className="h-10 w-auto object-contain"
             />
           </div>
 
@@ -85,7 +95,7 @@ export default function Navbar() {
             alt="Gujranwala Grammar School"
             width={40}
             height={40}
-            className="h-9 w-9 lg:hidden"
+            className="h-17 w-14 lg:hidden"
           />
           </Link>
 

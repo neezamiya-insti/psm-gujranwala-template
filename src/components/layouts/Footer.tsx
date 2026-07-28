@@ -16,14 +16,22 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1">
             <Image
-              src="/images/logo-desktop.png"
+              src="/images/logo-icon.png"
               alt="Gujranwala Grammar School"
               width={45}
               height={45}
-              className="h-11 w-11 shrink-0 rounded-full object-contain"
+              className="h-14 w-14 shrink-0 rounded-full object-contain"
             />
+
+          <Image
+            src="/images/logo-name.png"
+            alt="Gujranwala Grammar School"
+            width={160}
+            height={45}
+            className="h-10 w-auto object-contain"
+          />  
           </div>
             <p className="mt-4 text-sm leading-relaxed text-white/60">
               &middot; BISE Gujranwala affiliated <br></br> &middot; Punjab Curriculum aligned

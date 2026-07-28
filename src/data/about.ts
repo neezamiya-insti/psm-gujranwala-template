@@ -47,42 +47,42 @@ export const campusFacilities: FacilityItem[] = [
   {
     id: "labs",
     label: "Science Laboratories",
-    image: "/images/facilities/science-lab.jpg",
+    image: "/images/facilities/science-lab.jpeg",
   },
   {
     id: "sports",
     label: "Sports Ground",
-    image: "/images/facilities/sports-ground.jpg",
+    image: "/images/facilities/sports-ground.jpeg",
   },
   {
     id: "fleet",
     label: "Transport Fleet",
-    image: "/images/facilities/transport.jpg",
+    image: "/images/facilities/transport.jpeg",
   },
   {
     id: "security",
     label: "Campus Security",
-    image: "/images/facilities/security.jpg",
+    image: "/images/facilities/security.png",
   },
   {
     id: "computer-lab",
     label: "Computer Lab",
-    image: "/images/facilities/computer-lab.jpg",
+    image: "/images/facilities/computer-lab.jpeg",
   },
   {
     id: "library",
     label: "Library",
-    image: "/images/facilities/library.jpg",
+    image: "/images/facilities/library.jpeg",
   },
   {
     id: "auditorium",
     label: "Auditorium",
-    image: "/images/facilities/auditorium.jpg",
+    image: "/images/facilities/auditorium.jpeg",
   },
   {
     id: "cafeteria",
     label: "Cafeteria",
-    image: "/images/facilities/cafeteria.jpg",
+    image: "/images/facilities/cafeteria.jpeg",
   },
 ];
 export interface FacultyMember {
@@ -99,27 +99,27 @@ export const facultyMembers: FacultyMember[] = [
     name: "Saira Bashir",
     title: "Head of Science &middot; M.Phil",
     bio: "14 years teaching O/A-Level Biology & Chemistry.",
-    image: "/images/faculty/saira-bashir.jpg",
+    image: "/images/faculty/saira-bashir.jpeg",
   },
   {
     id: "imran-butt",
     name: "Imran Butt",
     title: "Head of Maths &middot; MSc",
     bio: "Leads Matric board-exam preparation cohort.",
-    image: "/images/faculty/imran-butt.jpg",
+    image: "/images/faculty/imranz-butt.jpeg",
   },
   {
     id: "farah-yousaf",
     name: "Farah Yousaf",
     title: "English Department &middot; MA TESOL",
     bio: "Runs the bilingual English-Urdu writing program.",
-    image: "/images/faculty/farah-yousaf.jpg",
+    image: "/images/faculty/farah-yousaf.jpeg",
   },
   {
     id: "ali-raza",
     name: "Ali Raza",
     title: "Vocational Lead",
     bio: "Manages industry tie-ups with local trade partners.",
-    image: "/images/faculty/ali-raza.jpg",
+    image: "/images/faculty/ali-raza.jpeg",
   },
 ];
