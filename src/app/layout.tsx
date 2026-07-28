@@ -28,7 +28,7 @@ const urdu = Noto_Nastaliq_Urdu({
 });
 
 export const metadata: Metadata = {
-  title: "Gujranwala Grammar & Science Academy",
+  title: "Gujranwala Grammar School",
   description:
     "BISE Gujranwala affiliated school serving Model Town, Wazirabad Road & Rahwali Cantt families since 1998.",
 };
