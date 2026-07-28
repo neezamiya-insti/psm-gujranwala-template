@@ -81,33 +81,62 @@ export default function IndustryTieUps() {
 
                 return (
                   <motion.div
-                    key={partner.id}
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{
-                      duration: 3 + index * 0.4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="
-                      absolute flex
-                      h-14 w-14 sm:h-20 sm:w-20
-                      -translate-x-1/2 -translate-y-1/2
-                      items-center justify-center
-                      rounded-full bg-white shadow-lg
-                    "
-                    style={{
-                        left: `calc(50% + ${radius * Math.cos(radians)}px)`,
-                        top: `calc(50% + ${radius * Math.sin(radians)}px)`,
-                    }}
-                  >
-                    <Image
-                      src={partner.logo}
-                      alt={partner.name}
-                      width={50}
-                      height={50}
-                      className="h-9 w-9 rounded-full object-contain sm:h-12 sm:w-12"
-                    />
-                  </motion.div>
+  key={partner.id}
+  animate={{ y: [0, -8, 0] }}
+  transition={{
+    duration: 3 + index * 0.4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  className="
+    group
+    absolute flex
+    h-12 w-12 sm:h-16 sm:w-16
+    -translate-x-1/2 -translate-y-1/2
+    items-center justify-center
+    rounded-full bg-white shadow-lg
+    p-1
+  "
+  style={{
+    left: `calc(50% + ${radius * Math.cos(radians)}px)`,
+    top: `calc(50% + ${radius * Math.sin(radians)}px)`,
+  }}
+>
+  <Image
+    src={partner.logo}
+    alt={partner.name}
+    width={50}
+    height={50}
+    className="h-full w-full rounded-full object-contain"
+  />
+
+  {/* Tooltip */}
+  <div
+    className="
+      pointer-events-none
+      absolute
+      bottom-full
+      left-1/2
+      mb-3
+      -translate-x-1/2
+      whitespace-nowrap
+      rounded-md
+      bg-[#0f2b2e]
+      px-3
+      py-1.5
+      text-xs
+      font-semibold
+      text-white
+      opacity-0
+      transition-all
+      duration-300
+      group-hover:translate-y-[-4px]
+      group-hover:opacity-100
+    "
+  >
+    {partner.name}
+  </div>
+</motion.div>
                 );
               })}
             </div>

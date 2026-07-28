@@ -47,7 +47,7 @@ export const industryPartners: IndustryPartner[] = [
     id: "wazirabad-fan",
     initials: "FM",
     name: "Wazirabad Fan Works",
-    logo: "/images/partners/wazirabad-fan.png",
+    logo: "/images/partners/w-fan.jpg",
     tags: ["Internship", "Placement"],
     description:
       "Manufacturing floor internships for vocational-track students.",
@@ -56,7 +56,7 @@ export const industryPartners: IndustryPartner[] = [
     id: "model-town-steel",
     initials: "SU",
     name: "Model Town Steel Utensils",
-    logo: "/images/partners/model-town-steel.png",
+    logo: "/images/partners/model-town-steel.jpg",
     tags: ["Placement"],
     description:
       "Annual recruitment drive for supervisory and QC roles.",
@@ -65,7 +65,7 @@ export const industryPartners: IndustryPartner[] = [
     id: "sialkot-sporting",
     initials: "SG",
     name: "Sialkot Bypass Sporting Goods Co.",
-    logo: "/images/partners/sialkot-sporting.png",
+    logo: "/images/partners/sialkot-sporting.jpg",
     tags: ["Internship"],
     description:
       "Summer internships in export documentation & QC.",
@@ -74,7 +74,7 @@ export const industryPartners: IndustryPartner[] = [
     id: "chamber-commerce",
     initials: "CC",
     name: "Gujranwala Chamber of Commerce",
-    logo: "/images/partners/chamber-commerce.png",
+    logo: "/images/partners/chamber-commerce.jpg",
     tags: ["Sponsorship", "Mentorship"],
     description:
       "Guest lectures and trade-body co-branded certification.",
