@@ -1,17 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export default function PortalLogin() {
+  const router = useRouter();
   const [studentId, setStudentId] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Wire to real auth endpoint later
+    // Wire to real auth endpoint later — redirecting on submit for now
     console.log("Login attempt:", { studentId, password });
+    router.push("/parent-portal/dashboard");
   };
 
   return (
