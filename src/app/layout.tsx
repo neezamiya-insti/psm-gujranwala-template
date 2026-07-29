@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
 import {
   Fraunces,
   IBM_Plex_Sans,
@@ -52,6 +53,7 @@ export default async function RootLayout({
       >
         <Navbar initialLang={lang} />
         <main>{children}</main>
+        <WhatsAppButton />
         <Footer lang={lang} />
       </body>
     </html>
