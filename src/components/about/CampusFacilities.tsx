@@ -14,7 +14,7 @@ export default function CampusFacilities({ lang }: { lang: SiteLanguage }) {
             {lang === "UR" ? "کیمپس سہولیات" : "Campus Facilities"}
           </p>
           <h2 className="mt-3 text-2xl font-extrabold leading-tight text-[#0f2b2e] sm:text-3xl">
-            {lang === "UR" ? "تعلیم اور غیر نصابی سرگرمیوں دونوں کے لیے تیار۔" : "Built for both academics and co-curriculars."}
+            {lang === "UR" ? "تعلیمی اور سرگرمیاں" : "Academics & Activities"}
           </h2>
         </FadeUp>
 

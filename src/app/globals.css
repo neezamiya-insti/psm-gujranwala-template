@@ -36,3 +36,13 @@ body {
     transform: translateY(-18px);
   }
 }
+
+@keyframes imagePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
