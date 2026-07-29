@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import Container from "@/components/common/Container";
 import { LogOut } from "lucide-react";
 import FadeUp from "@/components/common/FadeUp";
-import { dashboardChildren } from "@/data/portal";
+import { getDashboardChildren } from "@/data/portal";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function DashboardHeader() {
+export default function DashboardHeader({ lang }: { lang: SiteLanguage }) {
+  const dashboardChildren = getDashboardChildren(lang);
   const router = useRouter();
   const [activeChildId] = useState(dashboardChildren[0].id);
 
@@ -27,7 +29,7 @@ export default function DashboardHeader() {
             {/* Top Row */}
             <div className="flex items-center justify-between gap-4">
               <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#e15a2e]">
-                Parent Dashboard
+                {lang === "UR" ? "والدین ڈیش بورڈ" : "Parent Dashboard"}
               </p>
 
               <button
@@ -36,13 +38,13 @@ export default function DashboardHeader() {
                 className="flex items-center gap-2 rounded-full bg-[#0f2b2e] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e15a2e]"
               >
                 <LogOut className="h-3.5 w-3.5" />
-                Logout
+                {lang === "UR" ? "لاگ آؤٹ" : "Logout"}
               </button>
             </div>
 
             {/* Welcome Heading */}
             <h1 className="mt-3 text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
-              Welcome back, {activeChild.parent}!
+              {lang === "UR" ? "خوش آمدید" : "Welcome back"}, {activeChild.parent}!
             </h1>
           </div>
         </FadeUp>

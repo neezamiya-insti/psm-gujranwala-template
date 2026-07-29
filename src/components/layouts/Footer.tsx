@@ -1,14 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 import Container from "@/components/common/Container";
-import { footerCampuses } from "@/data/contact";
-import { navLinks, contactInfo } from "@/data/navigation";
+import { getFooterCampuses } from "@/data/contact";
+import { contactInfo, getNavLinks } from "@/data/navigation";
+import { type SiteLanguage } from "@/lib/language";
 import Image from "next/image";
 
-export default function Footer() {
-  const footerNavLinks = navLinks.filter((l) =>
+interface FooterProps {
+  lang: SiteLanguage;
+}
+
+export default function Footer({ lang }: FooterProps) {
+  const footerNavLinks = getNavLinks(lang).filter((l) =>
     ["/about", "/academics", "/admissions", "/gallery-events"].includes(l.href)
   );
+  const footerCampuses = getFooterCampuses(lang);
+  const campusesLabel = lang === "UR" ? "کیمپسز" : "Campuses";
+  const navigateLabel = lang === "UR" ? "نیویگیٹ" : "Navigate";
+  const contactLabel = lang === "UR" ? "رابطہ" : "Contact";
+  const whatsappLabel = lang === "UR" ? "واٹس ایپ" : "WhatsApp";
 
   return (
     <footer className="bg-[#0f2b2e] pt-14 text-white">
@@ -34,14 +46,15 @@ export default function Footer() {
           />  
           </div>
             <p className="mt-4 text-sm leading-relaxed text-white/60">
-              &middot; BISE Gujranwala affiliated <br></br> &middot; Punjab Curriculum aligned
+              &middot; {lang === "UR" ? "بی آئی ایس ای گوجرانوالہ سے وابستہ" : "BISE Gujranwala affiliated"} <br />
+              &middot; {lang === "UR" ? "پنجاب نصاب کے مطابق" : "Punjab Curriculum aligned"}
             </p>
           </div>
 
           {/* Campuses */}
           <div>
             <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#e15a2e]">
-              Campuses
+              {campusesLabel}
             </p>
             <ul className="mt-4 space-y-4">
               {footerCampuses.map((campus) => (
@@ -60,7 +73,7 @@ export default function Footer() {
           {/* Navigate */}
           <div>
             <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#e15a2e]">
-              Navigate
+              {navigateLabel}
             </p>
             <ul className="mt-4 space-y-3">
               {footerNavLinks.map((link) => (
@@ -79,7 +92,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#e15a2e]">
-              Contact
+              {contactLabel}
             </p>
             <ul className="mt-4 space-y-3">
               <li>
@@ -108,7 +121,7 @@ export default function Footer() {
                   className="flex items-center gap-2 text-sm text-white/80 transition-colors hover:text-white"
                 >
                   <MessageCircle className="h-3.5 w-3.5 shrink-0" />
-                  WhatsApp 
+                  {whatsappLabel}
                 </a>
               </li>
             </ul>
@@ -120,7 +133,7 @@ export default function Footer() {
           <p>
             &copy; 2026 Gujranwala Grammar School
           </p>
-          <p>BISE Gujranwala Reg. No. GSA-1998-0472</p>
+          <p>{lang === "UR" ? "بی آئی ایس ای گوجرانوالہ رجسٹریشن نمبر GSA-1998-0472" : "BISE Gujranwala Reg. No. GSA-1998-0472"}</p>
         </div>
       </Container>
     </footer>

@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { Download, MessageCircle, CreditCard, Calendar } from "lucide-react";
 import Container from "@/components/common/Container";
 import SectionHeading from "@/components/common/SectionHeading";
-import { quickActions, feeStatus } from "@/data/portal";
+import { getQuickActions, getFeeStatus } from "@/data/portal";
+import { type SiteLanguage } from "@/lib/language";
 
 const iconMap = {
   download: Download,
@@ -13,7 +14,9 @@ const iconMap = {
   calendar: Calendar,
 };
 
-export default function QuickActions() {
+export default function QuickActions({ lang }: { lang: SiteLanguage }) {
+  const quickActions = getQuickActions(lang);
+  const feeStatus = getFeeStatus(lang);
   return (
     <section className="border-t border-[#0f2b2e]/10 bg-[#f1efe9] py-16 sm:py-20">
       <Container>
@@ -24,8 +27,8 @@ export default function QuickActions() {
           transition={{ duration: 0.6 }}
         >
           <SectionHeading
-            title="Quick Actions"
-            description="Common tasks, without waiting for the campus office."
+            title={lang === "UR" ? "فوری کارروائیاں" : "Quick Actions"}
+            description={lang === "UR" ? "عام کام، کیمپس آفس کا انتظار کیے بغیر۔" : "Common tasks, without waiting for the campus office."}
           />
         </motion.div>
 

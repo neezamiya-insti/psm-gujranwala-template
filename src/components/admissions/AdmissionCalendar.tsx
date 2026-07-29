@@ -5,9 +5,15 @@ import { motion } from "framer-motion";
 
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import { admissionCalendar } from "@/data/admissions";
+import { getAdmissionCalendar } from "@/data/admissions";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function AdmissionCalendar() {
+interface AdmissionCalendarProps {
+  lang: SiteLanguage;
+}
+
+export default function AdmissionCalendar({ lang }: AdmissionCalendarProps) {
+  const admissionCalendar = getAdmissionCalendar(lang);
   return (
     <section className="border-t border-[#0f2b2e]/10 bg-[#f1efe9] py-16 sm:py-20">
       <Container>
@@ -18,7 +24,7 @@ export default function AdmissionCalendar() {
             </span>
 
             <h2 className="text-2xl font-extrabold leading-tight text-[#0f2b2e] sm:text-3xl">
-              Admission Calendar — Session 2026–27
+              {lang === "UR" ? "داخلہ کیلنڈر — سیشن 2026–27" : "Admission Calendar — Session 2026–27"}
             </h2>
           </div>
         </FadeUp>

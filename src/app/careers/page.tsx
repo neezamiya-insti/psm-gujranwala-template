@@ -3,15 +3,18 @@ import CareerStatsHighlight from "@/components/careers/CareerStatsHighlight";
 import IndustryTieUps from "@/components/careers/IndustryTieUps";
 import AlumniShowcase from "@/components/careers/AlumniShowcase";
 import PartnerCTA from "@/components/careers/PartnerCTA";
+import { getPreferredLanguage } from "@/lib/language.server";
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const lang = await getPreferredLanguage();
+
   return (
     <>
-      <CareersHero />
-      <CareerStatsHighlight />
-      <IndustryTieUps />
-      <AlumniShowcase />
-      <PartnerCTA />
+      <CareersHero lang={lang} />
+      <CareerStatsHighlight lang={lang} />
+      <IndustryTieUps lang={lang} />
+      <AlumniShowcase lang={lang} />
+      <PartnerCTA lang={lang} />
     </>
   );
 }

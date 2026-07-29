@@ -2,23 +2,31 @@
 
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import { curriculumStages } from "@/data/academics";
+import { getCurriculumStages } from "@/data/academics";
 import { motion } from "framer-motion";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function CurriculumPreview() {
+interface CurriculumPreviewProps {
+  lang: SiteLanguage;
+}
+
+export default function CurriculumPreview({ lang }: CurriculumPreviewProps) {
+  const curriculumStages = getCurriculumStages(lang);
+
   return (
     <section className="border-t border-[#0f2b2e]/8 bg-[#f1efe9] py-16 sm:py-20">
       <Container>
         <FadeUp>
           <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#0f2b2e]/70">
-            Academics
+            {lang === "UR" ? "تعلیم" : "Academics"}
           </p>
           <h2 className="max-w-3xl text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
-            Every stage, one board, one standard.
+            {lang === "UR" ? "ہر مرحلہ، ایک بورڈ، ایک معیار۔" : "Every stage, one board, one standard."}
           </h2>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-gray-600">
-            Curriculum mapped to BISE Gujranwala and the Punjab Curriculum
-            framework, from first admission to board result.
+            {lang === "UR"
+              ? "نصاب بی آئی ایس ای گوجرانوالہ اور پنجاب نصاب کے مطابق، پہلی داخلہ سے بورڈ نتیجے تک۔"
+              : "Curriculum mapped to BISE Gujranwala and the Punjab Curriculum framework, from first admission to board result."}
           </p>
         </FadeUp>
 
@@ -43,7 +51,7 @@ export default function CurriculumPreview() {
       >
         {/* Animated shine layer */}
         <div
-          className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-[100%]"
+          className="pointer-events-none absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"
         />
 
         {/* Content */}

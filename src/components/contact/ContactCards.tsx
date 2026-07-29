@@ -2,7 +2,8 @@
 
 import { MessageCircle, Mail, Clock } from "lucide-react";
 import FadeUp from "@/components/common/FadeUp";
-import { contactChannels } from "@/data/contact";
+import { getContactChannels } from "@/data/contact";
+import { type SiteLanguage } from "@/lib/language";
 
 const iconMap = {
   chat: MessageCircle,
@@ -10,7 +11,8 @@ const iconMap = {
   mail: Mail,
 };
 
-export default function QuickContact() {
+export default function QuickContact({ lang }: { lang: SiteLanguage }) {
+  const contactChannels = getContactChannels(lang);
   return (
     <FadeUp>
   <div className="relative mt-8 min-h-[524px] overflow-hidden rounded-md bg-[#0f2b2e] p-2 sm:p-10">
@@ -22,11 +24,11 @@ export default function QuickContact() {
 
     <div className="relative z-10 pt-6 sm:pt-0">
       <h2 className="text-2xl font-bold text-white">
-        Contact Information
+        {lang === "UR" ? "رابطہ کی معلومات" : "Contact Information"}
       </h2>
 
       <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/70">
-        Contact our team for assistance with your queries.
+        {lang === "UR" ? "اپنی پوچھ گچھ کے لیے ہماری ٹیم سے رابطہ کریں۔" : "Contact our team for assistance with your queries."}
       </p>
 
       <div className="mt-15 space-y-4 lg:mt-25">

@@ -5,18 +5,37 @@ import { useState } from "react";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import SectionHeading from "@/components/common/SectionHeading";
-import { curriculumStages } from "@/data/academics";
+import { getCurriculumStages } from "@/data/academics";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function CurriculumLevels() {
+interface CurriculumLevelsProps {
+  lang: SiteLanguage;
+}
+
+export default function CurriculumLevels({ lang }: CurriculumLevelsProps) {
   const [activeCard, setActiveCard] = useState<string | null>(null);
+  const curriculumStages = getCurriculumStages(lang);
+
+  const copy =
+    lang === "UR"
+      ? {
+          title: "جماعت اور سطح کا ڈھانچہ",
+          description: "ایک داخلہ دفتر، پانچ مراحل، اور ہر مرحلے کے لیے واضح بورڈ۔",
+          stage: "مرحلہ",
+        }
+      : {
+          title: "Grade & Level Structure",
+          description: "One admissions office, five stages, a clear board for every one of them.",
+          stage: "Stage",
+        };
 
   return (
     <section className="border-t border-[#0f2b2e]/10 bg-[#f1efe9] py-16 sm:py-20">
       <Container>
         <FadeUp>
           <SectionHeading
-            title="Grade & Level Structure"
-            description="One admissions office, five stages, a clear board for every one of them."
+            title={copy.title}
+            description={copy.description}
           />
         </FadeUp>
 
@@ -70,7 +89,7 @@ export default function CurriculumLevels() {
                     <motion.div layout>
                       {/* Stage */}
                       <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#e15a2e]">
-                        Stage {stage.id}
+                        {copy.stage} {stage.id}
                       </p>
 
                       {/* Age */}

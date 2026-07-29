@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import {
   Fraunces,
   IBM_Plex_Sans,
@@ -7,6 +8,7 @@ import {
 import "./globals.css";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
+import { isUrdu, normalizeLanguage, LANGUAGE_COOKIE } from "@/lib/language";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -33,19 +35,24 @@ export const metadata: Metadata = {
     "BISE Gujranwala affiliated school serving Model Town, Wazirabad Road & Rahwali Cantt families since 1998.",
 };
 
-export default function RootLayout({
+export const dynamic = "force-dynamic";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const lang = normalizeLanguage(cookieStore.get(LANGUAGE_COOKIE)?.value);
+
   return (
-    <html lang="en">
+    <html lang={isUrdu(lang) ? "ur" : "en"} dir={isUrdu(lang) ? "ltr" : "ltr"}>
       <body
         className={`${fraunces.variable} ${ibmPlexSans.variable} ${urdu.variable} antialiased`}
       >
-        <Navbar />
+        <Navbar initialLang={lang} />
         <main>{children}</main>
-        <Footer />
+        <Footer lang={lang} />
       </body>
     </html>
   );

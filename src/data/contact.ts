@@ -1,20 +1,45 @@
+import { type SiteLanguage } from "@/lib/language";
+
 export interface Campus {
   name: string;
   detail: string;
 }
 
-export const footerCampuses: Campus[] = [
-  { name: "Model Town (Main)", detail: "GT Road Corridor, Gujranwala" },
-  { name: "Wazirabad Road", detail: "Industrialist-linked campus" },
-  { name: "Rahwali Cantt", detail: "Girls' Wing" },
-];
+const footerCampusesByLanguage: Record<SiteLanguage, Campus[]> = {
+  EN: [
+    { name: "Model Town (Main)", detail: "GT Road Corridor, Gujranwala" },
+    { name: "Wazirabad Road", detail: "Industrialist-linked campus" },
+    { name: "Rahwali Cantt", detail: "Girls' Wing" },
+  ],
+  UR: [
+    { name: "ماڈل ٹاؤن (مین)", detail: "جی ٹی روڈ کوریڈور، گوجرانوالہ" },
+    { name: "وزیرآباد روڈ", detail: "صنعتی روابط والا کیمپس" },
+    { name: "راولی کینٹ", detail: "لڑکیوں کا شعبہ" },
+  ],
+};
 
-export const trustPoints: string[] = [
-  "BISE Gujranwala Affiliated",
-  "Punjab Curriculum Aligned",
-  "Established 1998",
-  "3 Campuses · Boys & Girls Wings",
-];
+const trustPointsByLanguage: Record<SiteLanguage, string[]> = {
+  EN: [
+    "BISE Gujranwala Affiliated",
+    "Punjab Curriculum Aligned",
+    "Established 1998",
+    "3 Campuses · Boys & Girls Wings",
+  ],
+  UR: [
+    "بی آئی ایس ای گوجرانوالہ سے وابستہ",
+    "پنجاب نصاب کے مطابق",
+    "قائم شدہ 1998",
+    "کیمپس · لڑکوں اور لڑکیوں کے",
+  ],
+};
+
+export function getFooterCampuses(language: SiteLanguage): Campus[] {
+  return footerCampusesByLanguage[language];
+}
+
+export function getTrustPoints(language: SiteLanguage): string[] {
+  return trustPointsByLanguage[language];
+}
 
 export interface CampusLocation {
   id: string;
@@ -156,3 +181,118 @@ export const vanRoutes: VanRoute[] = [
     campus: "Model Town",
   },
 ];
+
+export function getCampusLocations(language: SiteLanguage): CampusLocation[] {
+  if (language !== "UR") return campusLocations;
+
+  return [
+    {
+      id: "model-town",
+      name: "ماڈل ٹاؤن (مین کیمپس)",
+      shortLabel: "ماڈل ٹاؤن (مین)",
+      address: "بلاک سی، ماڈل ٹاؤن، جی ٹی روڈ کوریڈور، گوجرانوالہ",
+      hours: "پیر–ہفتہ، 7:30 AM – 2:30 PM",
+      wings: "مونٹیسوری · پرائمری · مڈل · میٹرک · انٹرمیڈیٹ",
+      phone: "+92 55 123 4567",
+      mapLabel: "ماڈل ٹاؤن، جی ٹی روڈ کوریڈور",
+      pinPosition: { top: "48%", left: "48%" },
+      directionsUrl: "https://maps.google.com/?q=Model+Town+Gujranwala",
+      embedUrl: "https://maps.google.com/maps?q=Model+Town+Gujranwala&z=15&output=embed",
+    },
+    {
+      id: "wazirabad-road",
+      name: "وزیرآباد روڈ کیمپس",
+      shortLabel: "وزیرآباد روڈ",
+      address: "صنعتی سیکٹر، وزیرآباد روڈ، گوجرانوالہ",
+      hours: "پیر–ہفتہ، 7:30 AM – 2:30 PM",
+      wings: "پرائمری · مڈل · میٹرک",
+      phone: "+92 55 123 4568",
+      mapLabel: "وزیرآباد روڈ کوریڈور",
+      pinPosition: { top: "37%", left: "72%" },
+      directionsUrl: "https://maps.google.com/?q=Wazirabad+Road+Gujranwala",
+      embedUrl: "https://maps.google.com/maps?q=Wazirabad+Road+Gujranwala&z=15&output=embed",
+    },
+    {
+      id: "rahwali-cantt",
+      name: "راولی کینٹ — لڑکیوں کا شعبہ",
+      shortLabel: "راولی کینٹ — لڑکیوں کا شعبہ",
+      address: "کینٹ روڈ، راولی، گوجرانوالہ",
+      hours: "پیر–ہفتہ، 7:30 AM – 2:00 PM",
+      wings: "پرائمری · مڈل · میٹرک (صرف لڑکیاں)",
+      phone: "+92 55 123 4569",
+      mapLabel: "راولی کینٹونمنٹ",
+      pinPosition: { top: "63%", left: "27%" },
+      directionsUrl: "https://maps.google.com/?q=Rahwali+Cantt+Gujranwala",
+      embedUrl: "https://maps.google.com/maps?q=Rahwali+Cantt+Gujranwala&z=15&output=embed",
+    },
+  ];
+}
+
+export function getContactChannels(language: SiteLanguage): ContactChannel[] {
+  if (language !== "UR") return contactChannels;
+
+  return [
+    {
+      id: "whatsapp",
+      icon: "chat",
+      title: "واٹس ایپ بزنس",
+      detail: "+92 55 123 456",
+      linkLabel: "چیٹ شروع کریں",
+      linkUrl: "https://wa.me/9255123456",
+      variant: "green",
+    },
+    {
+      id: "phone",
+      icon: "clock",
+      title: "آفس کو کال کریں",
+      detail: "پیر تا ہفتہ، صبح 8 بجے سے شام 3 بجے تک",
+      linkLabel: "اب کال کریں",
+      linkUrl: "tel:+925512345667",
+      variant: "peach",
+    },
+    {
+      id: "email",
+      icon: "mail",
+      title: "ای میل داخلہ",
+      detail: "admissions@gujranwalagsa.edu.pk",
+      linkLabel: "ای میل بھیجیں",
+      linkUrl: "mailto:admissions@gujranwalagsa.edu.pk",
+      variant: "peach",
+    },
+  ];
+}
+
+export function getVanRoutes(language: SiteLanguage): VanRoute[] {
+  if (language !== "UR") return vanRoutes;
+
+  return [
+    {
+      id: "route-1",
+      route: "روٹ 1 · جی ٹی روڈ کوریڈور",
+      covers: "ماڈل ٹاؤن، سیٹلائٹ ٹاؤن، پیپلز کالونی",
+      pickupTime: "6:45 AM",
+      campus: "ماڈل ٹاؤن",
+    },
+    {
+      id: "route-2",
+      route: "روٹ 2 · وزیرآباد روڈ",
+      covers: "وزیرآباد روڈ صنعتی پٹی",
+      pickupTime: "6:50 AM",
+      campus: "وزیرآباد روڈ",
+    },
+    {
+      id: "route-3",
+      route: "روٹ 3 · راولی کینٹ",
+      covers: "راولی کینٹ، پیپلز کالونی (صرف لڑکیاں)",
+      pickupTime: "7:00 AM",
+      campus: "راولی کینٹ",
+    },
+    {
+      id: "route-4",
+      route: "روٹ 4 · گھکھڑ / کامونکی",
+      covers: "گھکھڑ، کامونکی، نوشہرہ ورکاں",
+      pickupTime: "6:15 AM",
+      campus: "ماڈل ٹاؤن",
+    },
+  ];
+}

@@ -2,9 +2,14 @@
 
 import { useRef, useState } from "react";
 import { Upload, Check } from "lucide-react";
-import { requiredDocuments } from "@/data/admissions";
+import { getRequiredDocuments } from "@/data/admissions";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function DocumentUpload() {
+interface DocumentUploadProps {
+  lang: SiteLanguage;
+}
+
+export default function DocumentUpload({ lang }: DocumentUploadProps) {
   const [uploadedFiles, setUploadedFiles] = useState<
     Record<string, File | null>
   >({});
@@ -32,11 +37,11 @@ export default function DocumentUpload() {
   return (
     <div>
       <label className="text-sm font-medium text-[#0f2b2e]">
-        Required Documents
+        {lang === "UR" ? "درکار دستاویزات" : "Required Documents"}
       </label>
 
       <div className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        {requiredDocuments.map((doc) => {
+        {getRequiredDocuments(lang).map((doc) => {
           const file = uploadedFiles[doc.id];
 
           return (
@@ -66,7 +71,13 @@ export default function DocumentUpload() {
                 )}
 
                 <span className="font-mono text-[11px] font-semibold uppercase tracking-wide text-[#e15a2e]">
-                  {file ? "Uploaded" : "Upload"}
+                  {file
+                    ? lang === "UR"
+                      ? "اپ لوڈ ہو گیا"
+                      : "Uploaded"
+                    : lang === "UR"
+                      ? "اپ لوڈ کریں"
+                      : "Upload"}
                 </span>
 
                 <span className="text-xs text-[#0f2b2e]/70">

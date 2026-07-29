@@ -1,10 +1,12 @@
 import { ArrowRight } from "lucide-react";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import { partnerCTA } from "@/data/careers";
+import { getPartnerCTA } from "@/data/careers";
+import { type SiteLanguage } from "@/lib/language";
 import Link from "next/link";
 
-export default function PartnerCTA() {
+export default function PartnerCTA({ lang }: { lang: SiteLanguage }) {
+  const partnerCTA = getPartnerCTA(lang);
   return (
     <section className="bg-[#f1efe9] pb-16 sm:pb-20">
       <Container>

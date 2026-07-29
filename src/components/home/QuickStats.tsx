@@ -1,15 +1,21 @@
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import { quickStats } from "@/data/stats";
+import { getQuickStats } from "@/data/stats";
 import Counter from "@/components/common/Counter";
+import { getPreferredLanguage } from "@/lib/language.server";
 
-export default function QuickStats() {
+export default async function QuickStats() {
+  const lang = await getPreferredLanguage();
+  const quickStats = getQuickStats(lang);
+
   return (
     <section className="bg-[#f1efe9] pb-14 pt-16 sm:pt-20">
       <Container>
         <FadeUp>
           <h2 className="mt-3 text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
-           The numbers that define our commitment to excellence.
+            {lang === "UR"
+              ? "وہ اعداد و شمار جو ہمارے معیارِ کار کی عکاسی کرتے ہیں۔"
+              : "The numbers that define our commitment to excellence."}
           </h2>
         </FadeUp>
 

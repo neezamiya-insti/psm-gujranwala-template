@@ -1,9 +1,11 @@
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import { principalMessage } from "@/data/about";
+import { getPrincipalMessage } from "@/data/about";
+import { type SiteLanguage } from "@/lib/language";
 import Image from "next/image";
 
-export default function PrincipalMessage() {
+export default function PrincipalMessage({ lang }: { lang: SiteLanguage }) {
+  const principalMessage = getPrincipalMessage(lang);
   return (
     <section className="bg-[#f1efe9] py-16 sm:py-20">
       <Container>

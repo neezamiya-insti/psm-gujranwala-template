@@ -3,7 +3,12 @@
 import { motion } from "framer-motion";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import { applicationTracker } from "@/data/admissions";
+import { getApplicationTracker } from "@/data/admissions";
+import { type SiteLanguage } from "@/lib/language";
+
+interface StatusTrackerProps {
+  lang: SiteLanguage;
+}
 
 const statusLabel: Record<string, string> = {
   done: "Done",
@@ -34,9 +39,9 @@ const itemVariants = {
   },
 };
 
-export default function StatusTracker() {
+export default function StatusTracker({ lang }: StatusTrackerProps) {
   const { applicantName, grade, refNumber, percentComplete, steps } =
-    applicationTracker;
+    getApplicationTracker(lang);
 
   return (
     <section className="border-t border-[#0f2b2e]/10 bg-[#f1efe9] py-16 sm:py-20">
@@ -44,7 +49,7 @@ export default function StatusTracker() {
         <FadeUp>
           <div className="flex items-center gap-4">
             <h2 className="text-2xl font-extrabold leading-tight text-[#0f2b2e] sm:text-3xl">
-              Application Status Tracker
+              {lang === "UR" ? "درخواست اسٹیٹس ٹریکر" : "Application Status Tracker"}
             </h2>
           </div>
         </FadeUp>
@@ -61,10 +66,10 @@ export default function StatusTracker() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <p className="text-lg font-bold text-[#0f2b2e]">
-                  Applicant: {applicantName} — {grade}
+                  {lang === "UR" ? "درخواست دہندہ" : "Applicant"}: {applicantName} — {grade}
                 </p>
                 <p className="mt-1 font-mono text-[11px] uppercase tracking-wide text-[#0f2b2e]/55">
-                  Ref. No. {refNumber}
+                  {lang === "UR" ? "ریفرینس نمبر" : "Ref. No."} {refNumber}
                 </p>
               </div>
               <div className="sm:text-right">
@@ -78,7 +83,7 @@ export default function StatusTracker() {
                   {percentComplete}%
                 </motion.p>
                 <p className="font-mono text-[12px] uppercase tracking-wide text-[#0f2b2e]/75 mr-4">
-                  Complete
+                  {lang === "UR" ? "مکمل" : "Complete"}
                 </p>
               </div>
             </div>

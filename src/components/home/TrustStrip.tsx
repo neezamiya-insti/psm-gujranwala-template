@@ -1,7 +1,11 @@
 import Container from "@/components/common/Container";
-import { trustPoints } from "@/data/contact";
+import { getTrustPoints } from "@/data/contact";
+import { getPreferredLanguage } from "@/lib/language.server";
 
-export default function TrustStrip() {
+export default async function TrustStrip() {
+  const lang = await getPreferredLanguage();
+  const trustPoints = getTrustPoints(lang);
+
   return (
     <div className="relative -mt-8 border-t border-white/10 bg-[#0f2b2e] py-5 sm:py-3">
       <Container>

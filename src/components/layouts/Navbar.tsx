@@ -3,14 +3,32 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useRouter } from "next/navigation";
 import Container from "@/components/common/Container";
 import MobileMenu from "@/components/layouts/MobileMenu";
-import { navLinks, contactInfo } from "@/data/navigation";
+import { contactInfo, getNavLinks } from "@/data/navigation";
 import Image from "next/image";
+import { LANGUAGE_COOKIE, normalizeLanguage, type SiteLanguage } from "@/lib/language";
 
-export default function Navbar() {
+interface NavbarProps {
+  initialLang: SiteLanguage;
+}
+
+export default function Navbar({ initialLang }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lang, setLang] = useState<"EN" | "UR">("EN");
+  const [lang, setLang] = useState<SiteLanguage>(normalizeLanguage(initialLang));
+  const router = useRouter();
+
+  const updateLanguage = (nextLang: SiteLanguage) => {
+    setLang(nextLang);
+    document.cookie = `${LANGUAGE_COOKIE}=${nextLang}; path=/; max-age=31536000`;
+    document.documentElement.lang = nextLang === "UR" ? "ur" : "en";
+    document.documentElement.dir = nextLang === "UR" ? "ltr" : "ltr";
+    router.refresh();
+  };
+
+  const navLinks = getNavLinks(lang);
+  const languageLabel = lang === "UR" ? "اردو" : "اردو";
 
   return (
     <header className="top-0 z-50 w-full">
@@ -40,7 +58,7 @@ export default function Navbar() {
 
           <div className="flex items-center overflow-hidden rounded-full border border-[#0f2b2e]">
             <button
-              onClick={() => setLang("EN")}
+              onClick={() => updateLanguage("EN")}
               className={`px-3 py-1 font-semibold transition-colors ${
                 lang === "EN"
                   ? "bg-[#0f2b2e] text-white"
@@ -50,7 +68,7 @@ export default function Navbar() {
               EN
             </button>
             <button
-              onClick={() => setLang("UR")}
+              onClick={() => updateLanguage("UR")}
               className={`px-3 py-1 font-semibold transition-colors ${
                 lang === "UR"
                   ? "bg-[#0f2b2e] text-white"
@@ -58,7 +76,7 @@ export default function Navbar() {
               }`}
               style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}
             >
-              اردو
+              {languageLabel}
             </button>
           </div>
         </Container>
@@ -137,7 +155,7 @@ export default function Navbar() {
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
         lang={lang}
-        setLang={setLang}
+        setLang={updateLanguage}
       />
     </header>
   );

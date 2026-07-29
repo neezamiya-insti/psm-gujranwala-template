@@ -1,7 +1,8 @@
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function CareersHero() {
+export default function CareersHero({ lang }: { lang: SiteLanguage }) {
   return (
     <>
       {/* Scope notice bar */}
@@ -9,8 +10,9 @@ export default function CareersHero() {
         <Container>
           <p className="flex items-center gap-2 text-sm font-semibold text-[#0f2b2e]">
             <span className="hidden h-2 w-2 shrink-0 rounded-full bg-[#e15a2e] sm:block" />
-            This section applies to our Intermediate/O-A-Level College &amp;
-            Vocational Wing only — not the Primary or Middle school.
+            {lang === "UR"
+              ? "یہ سیکشن صرف ہمارے انٹرمیڈیٹ/او-اے-لیول کالج اور پیشہ وارانہ ونگ پر لاگو ہوتا ہے — پرائمری یا مڈل اسکول پر نہیں۔"
+              : "This section applies to our Intermediate/O-A-Level College &amp; Vocational Wing only — not the Primary or Middle school."}
           </p>
         </Container>
       </div>
@@ -19,15 +21,15 @@ export default function CareersHero() {
         <Container>
           <FadeUp>
             <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#e15a2e]">
-              Careers &amp; Placement
+              {lang === "UR" ? "کیریئر اور پلیسمنٹ" : "Careers &amp; Placement"}
             </p>
             <h1 className="mt-3 max-w-2xl text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
-              Where our graduates go next.
+              {lang === "UR" ? "ہمارے فارغ التحصیل آگے کہاں جاتے ہیں۔" : "Where our graduates go next."}
             </h1>
             <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-gray-600">
-              Industry tie-ups across Gujranwala&apos;s fan, utensil and
-              sporting-goods trade, and a placement record we publish rather
-              than just claim.
+              {lang === "UR"
+                ? "گوجرانوالہ کے پنکھا، برتن اور اسپورٹنگ گڈز کی تجارت میں صنعتی روابط، اور ایک پلیسمنٹ ریکارڈ جو ہم شائع کرتے ہیں نہ کہ صرف دعویٰ۔"
+                : "Industry tie-ups across Gujranwala&apos;s fan, utensil and sporting-goods trade, and a placement record we publish rather than just claim."}
             </p>
           </FadeUp>
         </Container>

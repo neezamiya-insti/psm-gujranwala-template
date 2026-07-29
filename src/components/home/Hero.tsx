@@ -5,8 +5,13 @@ import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function Hero() {
+interface HeroProps {
+  lang: SiteLanguage;
+}
+
+export default function Hero({ lang }: HeroProps) {
   const campusImages = [
     "/images/campus-1.jpeg",
     "/images/campus-2.jpeg",
@@ -24,8 +29,35 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  const copy =
+    lang === "UR"
+      ? {
+          desktopBadge: "کیمپس لائف",
+          subline: "ماڈل ٹاؤن مین بلاک — 1998 سے قائم",
+          kicker: "1998 سے وزیرآباد روڈ اور ماڈل ٹاؤن خاندانوں کی خدمت",
+          title: "گوجرانوالہ کی اگلی نسل کو ",
+          titleAccent: "بہترین",
+          titleTail: " طریقے سے تعلیم دیتے ہوئے۔",
+          description:
+            "تعلیمی معیار، کردار سازی اور کامیاب مستقبل کی تیاری پر توجہ دینے والا قابلِ اعتماد ادارہ۔",
+          primaryAction: "آن لائن درخواست",
+          secondaryAction: "کیمپس وزٹ بک کریں",
+        }
+      : {
+          desktopBadge: "Campus Life",
+          subline: "Model Town Main Block — Est. 1998",
+          kicker: "SERVING WAZIRABAD ROAD & MODEL TOWN FAMILIES SINCE 1998",
+          title: "Educating Gujranwala's next generation with ",
+          titleAccent: "excellence",
+          titleTail: ".",
+          description:
+            "A trusted institution focused on academic excellence, character building, and preparing students for a successful future.",
+          primaryAction: "Apply Online",
+          secondaryAction: "Book Campus Visit",
+        };
+
   return (
-    <section className="relative min-h-[720px] overflow-hidden bg-[#f1efe9]">
+    <section className="relative min-h-180 overflow-hidden bg-[#f1efe9]">
 
       {/* Right side image slider */}
 <div className="absolute inset-y-0 right-0 hidden w-[55%] lg:block">
@@ -77,11 +109,11 @@ export default function Hero() {
     {/* Campus text */}
     <div className="absolute bottom-12 left-72 z-20">
       <p className="text-3xl font-bold text-white">
-        Campus Life
+        {copy.desktopBadge}
       </p>
 
       <p className="mt-2 text-sm text-white/70">
-        Model Town Main Block — Est. 1998
+        {copy.subline}
       </p>
     </div>
 
@@ -100,7 +132,7 @@ export default function Hero() {
             <FadeUp>
               <div className="mb-6">
                 <p className="font-mono text-[11px] tracking-wide text-gray-500 sm:text-xs">
-                  SERVING WAZIRABAD ROAD &amp; MODEL TOWN FAMILIES SINCE 1998
+                  {copy.kicker}
                 </p>
               </div>
             </FadeUp>
@@ -108,19 +140,18 @@ export default function Hero() {
 
             <FadeUp delay={0.1}>
               <h1 className="text-4xl font-extrabold leading-[1.12] tracking-tight text-[#0f2b2e] sm:text-5xl lg:text-[3.4rem]">
-                Educating Gujranwala&apos;s next generation with{" "}
+                {copy.title}
                 <span className="font-serif italic text-[#e15a2e]">
-                  excellence
+                  {copy.titleAccent}
                 </span>.
+                {copy.titleTail}
               </h1>
             </FadeUp>
 
 
             <FadeUp delay={0.2}>
               <p className="mt-6 max-w-lg text-base leading-relaxed text-gray-600 sm:text-[15px]">
-                A trusted institution focused on academic excellence,
-                character building, and preparing students for a successful
-                future.
+                {copy.description}
               </p>
             </FadeUp>
 
@@ -132,7 +163,7 @@ export default function Hero() {
                   href="/admissions"
                   className="inline-flex items-center gap-1.5 rounded-full bg-[#e15a2e] px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-transform hover:scale-[1.02] hover:bg-orange-500 active:scale-[0.98] sm:px-6 sm:py-3 sm:text-sm"
                 >
-                  Apply Online
+                    {copy.primaryAction}
                   <ArrowRight className="h-4 w-4" />
                 </a>
 
@@ -141,7 +172,7 @@ export default function Hero() {
                   href="/contact"
                   className="inline-flex items-center gap-1.5 rounded-full bg-[#0f2b2e] px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-transform hover:scale-[1.02] hover:bg-[#163f42] active:scale-[0.98] sm:px-6 sm:py-3 sm:text-sm"
                 >
-                  Book Campus Visit
+                    {copy.secondaryAction}
                 </a>
 
               </div>
@@ -155,7 +186,7 @@ export default function Hero() {
 
 {/* Mobile slider */}
 <div className="mt-10 lg:hidden">
-  <div className="relative mx-auto aspect-[16/10] w-full max-w-md overflow-hidden rounded-2xl shadow-xl">
+  <div className="relative mx-auto aspect-16/10 w-full max-w-md overflow-hidden rounded-2xl shadow-xl">
     <AnimatePresence>
       <motion.img
         key={activeImage}
@@ -169,12 +200,12 @@ export default function Hero() {
       />
     </AnimatePresence>
 
-    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
 
     <div className="absolute bottom-4 left-4">
-      <p className="text-lg font-bold text-white">Campus Life</p>
+      <p className="text-lg font-bold text-white">{copy.desktopBadge}</p>
       <p className="text-xs text-white/75">
-        Model Town Main Block — Est. 1998
+        {copy.subline}
       </p>
     </div>
 

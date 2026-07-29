@@ -1,3 +1,5 @@
+import { type SiteLanguage } from "@/lib/language";
+
 export interface AlumniProfile {
   id: string;
   initials: string;
@@ -110,3 +112,112 @@ export const partnerCTA = {
     "Register as an industry partner to post internships, sponsor a short course, or join our campus recruitment day.",
   buttonLabel: "Become a Partner",
 };
+
+export function getAlumniProfiles(language: SiteLanguage): AlumniProfile[] {
+  if (language !== "UR") return alumniProfiles;
+
+  return [
+    {
+      id: "hassan",
+      initials: "HS",
+      name: "حسن ایس، کلاس 2011",
+      role: "ڈائریکٹر، اسٹیل برتن برآمدات",
+      quote: "وزیرآباد روڈ پر برآمدی کاروبار چلاتے ہیں، اور اپنے دونوں بچوں کو ہمارے ماڈل ٹاؤن کیمپس بھیجتے ہیں۔",
+      classOf: "",
+    },
+    {
+      id: "ayesha",
+      initials: "AR",
+      name: "عائشہ آر، کلاس 2014",
+      role: "پارٹنر، اسپورٹنگ گڈز ہاؤس",
+      quote: "اسکول کے انگریزی میڈیم پروگرام کو بیرون ملک کلائنٹ سے براہ راست بات چیت کھولنے کا کریڈٹ دیتی ہیں۔",
+      classOf: "",
+    },
+    {
+      id: "tariq",
+      initials: "MT",
+      name: "ایم طارق، کلاس 2009",
+      role: "پنکھا مینوفیکچرنگ، پلانٹ ہیڈ",
+      quote: "ہر سال فلور سپروائزر کے عہدوں کے لیے ہمارے پیشہ ورانہ ٹریک کے گریجویٹس بھرتی کرتے ہیں۔",
+      classOf: "",
+    },
+  ];
+}
+
+const industryPartnersByLanguage: Record<SiteLanguage, IndustryPartner[]> = {
+  EN: industryPartners,
+  UR: [
+    {
+      id: "wazirabad-fan",
+      initials: "FM",
+      name: "وزیرآباد فین ورکس",
+      logo: "/images/partners/w-fan.jpg",
+      tags: ["انٹرنشپ", "پلیسمنٹ"],
+      description: "پیشہ ورانہ ٹریک کے طلبہ کے لیے مینوفیکچرنگ فلور انٹرنشپ۔",
+    },
+    {
+      id: "model-town-steel",
+      initials: "SU",
+      name: "ماڈل ٹاؤن اسٹیل اتنسیلز",
+      logo: "/images/partners/model-town-steel.jpg",
+      tags: ["پلیسمنٹ"],
+      description: "سپروائزری اور کوالٹی کنٹرول کے عہدوں کے لیے سالانہ بھرتی مہم۔",
+    },
+    {
+      id: "sialkot-sporting",
+      initials: "SG",
+      name: "سیالکوٹ بائی پاس اسپورٹنگ گڈز کمپنی",
+      logo: "/images/partners/sialkot-sporting.jpg",
+      tags: ["انٹرنشپ"],
+      description: "برآمدی دستاویزات اور کوالٹی کنٹرول میں گرمیوں کی انٹرنشپ۔",
+    },
+    {
+      id: "chamber-commerce",
+      initials: "CC",
+      name: "گوجرانوالہ چیمبر آف کامرس",
+      logo: "/images/partners/chamber-commerce.jpg",
+      tags: ["اسپانسرشپ", "مینٹرشپ"],
+      description: "مہمان لیکچرز اور تجارتی ادارے کے مشترکہ برانڈڈ سرٹیفیکیشن۔",
+    },
+  ],
+};
+
+export function getIndustryPartners(language: SiteLanguage): IndustryPartner[] {
+  return industryPartnersByLanguage[language];
+}
+
+export function getCareerHighlight(language: SiteLanguage) {
+  if (language !== "UR") return careerHighlight;
+
+  return {
+    title: "پلیسمنٹ کا ثابت شدہ ریکارڈ",
+    description:
+      "28 سال سے زائد تجربے کے ساتھ، ہم نے 220+ انٹرنشپ پلیسمنٹ، 14 صنعتی شراکت داریاں، اور 87% پلیسمنٹ کی شرح کے ذریعے طلبہ کو کامیاب کیریئر بنانے میں مدد کی ہے۔",
+    ctaLabel: "داخلہ سے بات کریں",
+    ctaHref: "/admissions",
+    featuredValue: "87%",
+    featuredLabel: "6 ماہ کے اندر پلیس یا داخلہ",
+  };
+}
+
+export function getSecondaryStats(language: SiteLanguage): SecondaryStat[] {
+  if (language !== "UR") return secondaryStats;
+
+  return [
+    { id: "partners", value: "14+", label: "فعال صنعتی شراکت دار" },
+    { id: "internships", value: "220+", label: "2018 سے انٹرنشپ" },
+    { id: "tracks", value: "6+", label: "پیشہ ورانہ مختصر کورسز" },
+    { id: "years", value: "28yr", label: "1998 سے گوجرانوالہ کی خدمت" },
+  ];
+}
+
+export function getPartnerCTA(language: SiteLanguage) {
+  if (language !== "UR") return partnerCTA;
+
+  return {
+    title: "GGS اور پیشہ ورانہ ونگ سے بھرتی کر رہے ہیں؟",
+    description:
+      "انٹرنشپ پوسٹ کرنے، مختصر کورس سپانسر کرنے، یا ہمارے کیمپس بھرتی دن میں شامل ہونے کے لیے صنعتی پارٹنر کے طور پر رجسٹر ہوں۔",
+    buttonLabel: "پارٹنر بنیں",
+  };
+}

@@ -1,8 +1,10 @@
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import { missionVisionItems } from "@/data/about";
+import { getMissionVisionItems } from "@/data/about";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function MissionVision() {
+export default function MissionVision({ lang }: { lang: SiteLanguage }) {
+  const missionVisionItems = getMissionVisionItems(lang);
   return (
     <section className="border-t border-[#0f2b2e]/10 bg-[#f1efe9] py-16 sm:py-20">
       <Container>

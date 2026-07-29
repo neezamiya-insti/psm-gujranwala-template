@@ -1,8 +1,10 @@
 "use client";
 
-import { tickerAnnouncements } from "@/data/announcements";
+import { getTickerAnnouncements } from "@/data/announcements";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function MarqueeTicker() {
+export default function MarqueeTicker({ lang }: { lang: SiteLanguage }) {
+  const tickerAnnouncements = getTickerAnnouncements(lang);
   // Duplicate the list so the CSS translateX(-50%) loop is seamless
   const loopItems = [...tickerAnnouncements, ...tickerAnnouncements];
 

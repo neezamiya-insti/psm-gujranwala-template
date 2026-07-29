@@ -1,3 +1,5 @@
+import { type SiteLanguage } from "@/lib/language";
+
 export interface CurriculumStage {
   id: string;
   ageRange: string;
@@ -129,3 +131,107 @@ export const districtRanking = {
   rank: "Rank #3",
   scope: "BISE Gujranwala",
 };
+
+const curriculumStagesByLanguage: Record<SiteLanguage, CurriculumStage[]> = {
+  EN: curriculumStages,
+  UR: [
+    {
+      id: "montessori",
+      ageRange: "عمر 3–5",
+      name: "مونٹیسوری اور پری پرائمری",
+      board: "پنجاب نصاب",
+      description: "صرف ماڈل ٹاؤن کیمپس میں کھیل پر مبنی ابتدائی تعلیم۔",
+    },
+    {
+      id: "primary",
+      ageRange: "جماعت 1–5",
+      name: "ابتدائی اسکول",
+      board: "پنجاب نصاب",
+      description: "خواندگی اور حساب میں دو لسانی انگریزی-اردو بنیاد۔",
+    },
+    {
+      id: "middle",
+      ageRange: "جماعت 6–8",
+      name: "مڈل اسکول",
+      board: "پنجاب نصاب",
+      description: "سائنس اور زبانوں میں مضمون وار مہارت شروع ہوتی ہے۔",
+    },
+    {
+      id: "matric",
+      ageRange: "جماعت 9–10",
+      name: "میٹرک / سیکنڈری",
+      board: "بی آئی ایس ای گوجرانوالہ",
+      description: "ہمارا نمایاں حصہ — نتائج کی درجہ بندی مقامی ساکھ بناتی ہے۔",
+    },
+    {
+      id: "intermediate",
+      ageRange: "عمر 16–18",
+      name: "انٹرمیڈیٹ / او-اے لیول",
+      board: "کیمبرج · بی آئی ایس ای",
+      description: "یونیورسٹی پلیسمنٹ پر مرکوز؛ نتائج کی معلومات یہاں سب سے اہم ہیں۔",
+    },
+  ],
+};
+
+export function getCurriculumStages(language: SiteLanguage): CurriculumStage[] {
+  return curriculumStagesByLanguage[language];
+}
+
+const boardAffiliationsByLanguage: Record<SiteLanguage, BoardAffiliation[]> = {
+  EN: boardAffiliations,
+  UR: [
+    {
+      id: "bise",
+      initials: "BG",
+      name: "بی آئی ایس ای گوجرانوالہ",
+      tag: "میٹرک اور سیکنڈری",
+      description:
+        "ہمارا مرکزی امتحانی ادارہ، جو گوجرانوالہ ڈویژن کے بڑے حصے کو کور کرتا ہے۔ رجسٹریشن نمبر اور سالانہ وابستگی تجدید درخواست پر فراہم کی جاتی ہے۔",
+      featured: true,
+    },
+    {
+      id: "federal",
+      initials: "FB",
+      name: "فیڈرل بورڈ",
+      tag: "منتخب سیکنڈری سلسلے",
+      description:
+        "ان خاندانوں کے لیے دستیاب ہے جو فیڈرل بورڈ اداروں سے منتقل ہو رہے ہوں، یا پنجاب سے باہر مستقبل کی منتقلی کا ارادہ رکھتے ہوں۔",
+    },
+    {
+      id: "cambridge",
+      initials: "CB",
+      name: "کیمبرج (او/اے لیول)",
+      tag: "انٹرمیڈیٹ / کالج ٹریک",
+      description:
+        "ماڈل ٹاؤن کیمپس میں انٹرمیڈیٹ حصے کے لیے دستیاب، یونیورسٹی پلیسمنٹ رہنمائی کے ساتھ۔",
+    },
+  ],
+};
+
+export function getBoardAffiliations(language: SiteLanguage): BoardAffiliation[] {
+  return boardAffiliationsByLanguage[language];
+}
+
+const resultsArchiveByLanguage: Record<SiteLanguage, ResultRecord[]> = {
+  EN: resultsArchive,
+  UR: resultsArchive.map((record) => ({
+    ...record,
+    board: "بی آئی ایس ای گوجرانوالہ · کیمبرج",
+  })),
+};
+
+export function getResultsArchive(language: SiteLanguage): ResultRecord[] {
+  return resultsArchiveByLanguage[language];
+}
+
+export function getDistrictRanking(language: SiteLanguage) {
+  return language === "UR"
+    ? {
+        label: "بورڈ نتیجہ کامیابی",
+        description:
+          "طلبہ کی کامیابیوں کا جشن ایک مضبوط بنیاد کے ساتھ جو شاندار تعلیمی نتائج لاتی ہے۔",
+        rank: "رینک #3",
+        scope: "بی آئی ایس ای گوجرانوالہ",
+      }
+    : districtRanking;
+}

@@ -2,14 +2,15 @@
 
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Phone, Mail } from "lucide-react";
-import { navLinks, contactInfo } from "@/data/navigation";
+import { X } from "lucide-react";
+import { getNavLinks } from "@/data/navigation";
+import { type SiteLanguage } from "@/lib/language";
 
 interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
-  lang: "EN" | "UR";
-  setLang: (lang: "EN" | "UR") => void;
+  lang: SiteLanguage;
+  setLang: (lang: SiteLanguage) => void;
 }
 
 export default function MobileMenu({
@@ -18,6 +19,11 @@ export default function MobileMenu({
   lang,
   setLang,
 }: MobileMenuProps) {
+  const navLinks = getNavLinks(lang);
+  const menuLabel = lang === "UR" ? "مینو" : "Menu";
+  const languageLabel = lang === "UR" ? "زبان" : "Language";
+  const applyLabel = lang === "UR" ? "آن لائن درخواست" : "Apply Online";
+
   return (
     <AnimatePresence>
       {open && (
@@ -41,7 +47,7 @@ export default function MobileMenu({
           >
             <div className="flex items-center justify-between border-b border-white/10 px-6 py-5">
               <span className="text-sm font-bold uppercase tracking-wide">
-                Menu
+                {menuLabel}
               </span>
 
               <button onClick={onClose} aria-label="Close menu">
@@ -67,7 +73,7 @@ export default function MobileMenu({
               {/* Language Switcher */}
               <div>
                 <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-white/60">
-                  Language
+                  {languageLabel}
                 </p>
 
                 <div className="flex w-fit overflow-hidden rounded-full border border-white/30">
@@ -95,30 +101,6 @@ export default function MobileMenu({
                   </button>
                 </div>
               </div>
-
-              <a
-                href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-2 text-sm text-white/80"
-              >
-                <Phone className="h-4 w-4" />
-                {contactInfo.phone}
-              </a>
-
-              <a
-                href={`mailto:${contactInfo.email}`}
-                className="flex items-center gap-2 text-sm text-white/80"
-              >
-                <Mail className="h-4 w-4" />
-                {contactInfo.email}
-              </a>
-
-              <a
-                href="/admissions"
-                onClick={onClose}
-                className="mt-2 block rounded-full bg-[#e15a2e] px-5 py-3 text-center text-sm font-semibold text-white"
-              >
-                Apply Online
-              </a>
             </div>
           </motion.div>
         </>

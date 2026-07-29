@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import SectionHeading from "@/components/common/SectionHeading";
-import { portalNotices } from "@/data/portal";
+import { getPortalNotices } from "@/data/portal";
+import { type SiteLanguage } from "@/lib/language";
 
 const noticeVariants = {
   hidden: {
@@ -21,14 +22,15 @@ const noticeVariants = {
   },
 };
 
-export default function RecentNotices() {
+export default function RecentNotices({ lang }: { lang: SiteLanguage }) {
+  const portalNotices = getPortalNotices(lang);
   return (
     <section className="border-t border-[#0f2b2e]/10 bg-[#f1efe9] py-16 sm:py-20">
       <Container>
         <FadeUp>
           <SectionHeading
-            title="Recent Notices"
-            description="Everything sent to your WhatsApp, kept here too."
+            title={lang === "UR" ? "حالیہ نوٹسز" : "Recent Notices"}
+            description={lang === "UR" ? "آپ کے واٹس ایپ پر بھیجی گئی ہر چیز، یہاں بھی محفوظ۔" : "Everything sent to your WhatsApp, kept here too."}
           />
         </FadeUp>
 

@@ -1,16 +1,20 @@
 "use client";
 
-import { galleryCategories } from "@/data/gallery";
+import { getGalleryCategories } from "@/data/gallery";
+import { type SiteLanguage } from "@/lib/language";
 
 interface GalleryFilterProps {
   activeCategory: string;
   onChange: (categoryId: string) => void;
+  lang: SiteLanguage;
 }
 
 export default function GalleryFilter({
   activeCategory,
   onChange,
+  lang,
 }: GalleryFilterProps) {
+  const galleryCategories = getGalleryCategories(lang);
   return (
     <div className="flex flex-wrap gap-2.5">
       {galleryCategories.map((category) => {

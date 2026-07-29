@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import { industryPartners } from "@/data/careers";
+import { getIndustryPartners } from "@/data/careers";
+import { type SiteLanguage } from "@/lib/language";
 import Image from "next/image";
 
-export default function IndustryTieUps() {
-  const partners = industryPartners.slice(0, 6);
+export default function IndustryTieUps({ lang }: { lang: SiteLanguage }) {
+  const partners = getIndustryPartners(lang).slice(0, 6);
 
    const [isMobile, setIsMobile] = useState(false);
 
@@ -32,14 +33,13 @@ export default function IndustryTieUps() {
           {/* Left — copy */}
           <FadeUp>
             <h2 className="text-4xl font-extrabold leading-tight text-[#0f2b2e] sm:text-5xl">
-              Trusted by Industry Partners
+              {lang === "UR" ? "صنعتی شراکت داروں کا اعتماد" : "Trusted by Industry Partners"}
             </h2>
 
             <p className="mt-4 max-w-md text-[15px] leading-relaxed text-gray-600">
-              Our industry partnerships connect students with real-world opportunities,
-  professional mentorship, and practical experiences. Through collaboration
-  with organizations across different sectors, we help students develop the
-  skills, confidence, and exposure needed for successful careers.
+              {lang === "UR"
+                ? "ہماری صنعتی شراکت داریاں طلبہ کو حقیقی دنیا کے مواقعوں، پیشہ ورانہ رہنمائی اور عملی تجربات سے جوڑتی ہیں۔ مختلف شعبوں کی تنظیموں کے ساتھ تعاون کے ذریعے، ہم طلبہ کو کامیاب کیریئر کے لیے درکار مہارتیں، اعتماد اور موقع فراہم کرنے میں مدد کرتے ہیں۔"
+                : "Our industry partnerships connect students with real-world opportunities, professional mentorship, and practical experiences. Through collaboration with organizations across different sectors, we help students develop the skills, confidence, and exposure needed for successful careers."}
             </p>
           </FadeUp>
 
@@ -67,7 +67,7 @@ export default function IndustryTieUps() {
                 "
               >
                 <span className="px-2 text-[8px] font-bold leading-tight text-white sm:px-3 sm:text-xs">
-                  Our Industry Network
+                  {lang === "UR" ? "ہمارا صنعتی نیٹ ورک" : "Our Industry Network"}
                 </span>
               </motion.div>
 

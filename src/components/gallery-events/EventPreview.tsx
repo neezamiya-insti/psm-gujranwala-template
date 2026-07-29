@@ -2,9 +2,11 @@
 import { ArrowRight } from "lucide-react";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import { upcomingEvent } from "@/data/events";
+import { getUpcomingEvent } from "@/data/events";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function EventPreview() {
+export default function EventPreview({ lang }: { lang: SiteLanguage }) {
+  const upcomingEvent = getUpcomingEvent(lang);
   const addToGoogleCalendar = () => {
     const startDate = "20260815T090000"; // YYYYMMDDTHHMMSS
     const endDate = "20260815T110000";
@@ -52,7 +54,7 @@ export default function EventPreview() {
               onClick={addToGoogleCalendar}
               className="inline-flex shrink-0 items-center gap-2 self-start rounded-md bg-[#e15a2e] px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] active:scale-[0.98]"
             >
-              Add to Calendar
+              {lang === "UR" ? "کیلنڈر میں شامل کریں" : "Add to Calendar"}
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>

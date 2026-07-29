@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import Container from "@/components/common/Container";
 import SectionHeading from "@/components/common/SectionHeading";
-import { monthlyAttendance, subjectGrades } from "@/data/portal";
+import { monthlyAttendance, getSubjectGrades } from "@/data/portal";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function AttendanceProgress() {
+export default function AttendanceProgress({ lang }: { lang: SiteLanguage }) {
+  const subjectGrades = getSubjectGrades(lang);
   return (
     <section className="border-t border-[#0f2b2e]/10 bg-[#f1efe9] py-16 sm:py-20">
       <Container>
@@ -16,8 +18,8 @@ export default function AttendanceProgress() {
           transition={{ duration: 0.7 }}
         >
           <SectionHeading
-            title="Attendance & Academic Progress"
-            description="Last six months of attendance, and current term grades by subject."
+            title={lang === "UR" ? "حاضری اور تعلیمی پیش رفت" : "Attendance & Academic Progress"}
+            description={lang === "UR" ? "پچھلے چھ ماہ کی حاضری، اور موجودہ مدت کے مضامین کے نمبر۔" : "Last six months of attendance, and current term grades by subject."}
           />
         </motion.div>
 
@@ -47,7 +49,7 @@ export default function AttendanceProgress() {
 
             <div className="relative flex items-center justify-between">
               <h3 className="text-xl font-bold text-[#0f2b2e]">
-                Monthly Attendance
+                {lang === "UR" ? "ماہانہ حاضری" : "Monthly Attendance"}
               </h3>
             </div>
 
@@ -119,7 +121,7 @@ export default function AttendanceProgress() {
 
             <div className="relative flex items-center justify-between">
               <h3 className="text-xl font-bold text-[#0f2b2e]">
-                Current Term Grades
+                {lang === "UR" ? "موجودہ مدت کے نمبر" : "Current Term Grades"}
               </h3>
             </div>
 
@@ -150,7 +152,7 @@ export default function AttendanceProgress() {
                       </p>
 
                       <p className="mt-1 text-xs text-[#0f2b2e]/55">
-                        Score • {subject.score}
+                        {lang === "UR" ? "اسکور" : "Score"} • {subject.score}
                       </p>
                     </div>
 

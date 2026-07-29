@@ -3,18 +3,25 @@ import CurriculumLevels from "@/components/academics/CurriculumLevels";
 import BoardAffiliations from "@/components/academics/BoardAffiliations";
 import ResultsArchive from "@/components/academics/ResultsArchive";
 import ResultWidget from "@/components/academics/ResultWidget";
+import { getPreferredLanguage } from "@/lib/language.server";
 
-export default function AcademicsPage() {
+export default async function AcademicsPage() {
+  const lang = await getPreferredLanguage();
+
   return (
     <>
       <PageBanner
-        eyebrow="Academics"
-        title="Curriculum, boards & published results."
-        description="Every grade level mapped to a recognised board, and every year's board result kept on record — downloadable, not just claimed."
+        eyebrow={lang === "UR" ? "تعلیم" : "Academics"}
+        title={lang === "UR" ? "نصاب، بورڈز اور شائع شدہ نتائج۔" : "Curriculum, boards & published results."}
+        description={
+          lang === "UR"
+            ? "ہر جماعت ایک تسلیم شدہ بورڈ سے منسلک ہے، اور ہر سال کے نتائج محفوظ ہیں — صرف دعویٰ نہیں۔"
+            : "Every grade level mapped to a recognised board, and every year's board result kept on record — downloadable, not just claimed."
+        }
       />
-      <CurriculumLevels />
+      <CurriculumLevels lang={lang} />
       <BoardAffiliations />
-      <ResultsArchive />
+      <ResultsArchive lang={lang} />
       <ResultWidget />
     </>
   );

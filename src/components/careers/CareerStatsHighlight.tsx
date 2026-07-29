@@ -5,9 +5,12 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import Container from "@/components/common/Container";
-import { careerHighlight, secondaryStats } from "@/data/careers";
+import { getCareerHighlight, getSecondaryStats } from "@/data/careers";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function CareerStatsHighlight() {
+export default function CareerStatsHighlight({ lang }: { lang: SiteLanguage }) {
+  const careerHighlight = getCareerHighlight(lang);
+  const secondaryStats = getSecondaryStats(lang);
   return (
     <section className="bg-[#f1efe9] py-16 sm:py-20">
       <Container>
@@ -23,7 +26,7 @@ export default function CareerStatsHighlight() {
             }}
           >
             <h2 className="text-4xl font-extrabold leading-[1.1] text-[#0f2b2e] sm:text-5xl">
-              Proven Track Record of Placement
+              {careerHighlight.title}
             </h2>
 
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-gray-600">

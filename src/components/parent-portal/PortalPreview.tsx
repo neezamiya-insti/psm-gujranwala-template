@@ -1,6 +1,10 @@
-import { previewStudent, portalStats, portalNotices } from "@/data/portal";
+import { getPreviewStudent, getPortalStats, getPortalNotices } from "@/data/portal";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function PortalPreview() {
+export default function PortalPreview({ lang }: { lang: SiteLanguage }) {
+  const previewStudent = getPreviewStudent(lang);
+  const portalStats = getPortalStats(lang);
+  const portalNotices = getPortalNotices(lang);
   return (
     <div className="relative overflow-hidden rounded-sm bg-[#0f2b2e] p-6 sm:p-8">
       <div
@@ -16,7 +20,7 @@ export default function PortalPreview() {
           {previewStudent.name} — {previewStudent.grade}
         </h3>
         <span className="shrink-0 rounded-full bg-[#e15a2e] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-wide text-white">
-          Live Preview
+          {lang === "UR" ? "لائیو پیش نظارہ" : "Live Preview"}
         </span>
       </div>
 

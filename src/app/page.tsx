@@ -7,19 +7,22 @@ import CurriculumPreview from "@/components/home/CurriculumPreview";
 import AdmissionProcess from "@/components/home/AdmissionProcess";
 import AlumniShowcase from "@/components/careers/AlumniShowcase";
 import CTASection from "@/components/home/CTASection";
+import { getPreferredLanguage } from "@/lib/language.server";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const lang = await getPreferredLanguage();
+
   return (
     <>
-      <Hero />
+      <Hero lang={lang} />
       <TrustStrip />
-      <MarqueeTicker />
+      <MarqueeTicker lang={lang} />
       <QuickStats />
       <CampusProfile />
-      <CurriculumPreview />
+      <CurriculumPreview lang={lang} />
       <AdmissionProcess />
-      <AlumniShowcase />
-      <CTASection />
+      <AlumniShowcase lang={lang} />
+      <CTASection lang={lang} />
     </>
   );
 }

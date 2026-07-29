@@ -1,8 +1,12 @@
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
-import { districtRanking } from "@/data/academics";
+import { getDistrictRanking } from "@/data/academics";
+import { getPreferredLanguage } from "@/lib/language.server";
 
-export default function ResultWidget() {
+export default async function ResultWidget() {
+  const lang = await getPreferredLanguage();
+  const districtRanking = getDistrictRanking(lang);
+
   return (
     <section className="bg-[#f1efe9] pb-16 sm:pb-20">
       <Container>

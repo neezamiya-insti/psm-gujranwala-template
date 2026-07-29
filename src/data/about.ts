@@ -1,3 +1,5 @@
+import { type SiteLanguage } from "@/lib/language";
+
 export interface MissionVisionItem {
   id: string;
   label: string;
@@ -29,6 +31,37 @@ export const missionVisionItems: MissionVisionItem[] = [
   },
 ];
 
+const missionVisionItemsByLanguage: Record<SiteLanguage, MissionVisionItem[]> = {
+  EN: missionVisionItems,
+  UR: [
+    {
+      id: "mission",
+      label: "مشن",
+      title: "اس معیار تک پڑھائیں جس کا شہر پہلے ہی احترام کرتا ہے۔",
+      description:
+        "پنجاب نصاب اور بی آئی ایس ای گوجرانوالہ سے ہم آہنگ تعلیم فراہم کریں، اسی نظم و ضبط کے ساتھ جسے گوجرانوالہ کے برآمد کنندگان اپنی کھیپ میں لاتے ہیں — ناپا ہوا، تصدیق شدہ اور دہرایا جانے والا۔",
+    },
+    {
+      id: "vision",
+      label: "خواب",
+      title: "ہر فارغ التحصیل برآمدی معیار پر پورا اترے، چاہے کلاس روم میں ہو یا تجارت میں۔",
+      description:
+        "وہ کیمپس بننا جو وزیرآباد روڈ کا خاندان پہلے منتخب کرے — جہاں تعلیمی نتائج اور صنعتی روابط ساتھ ساتھ پروان چڑھیں۔",
+    },
+    {
+      id: "values",
+      label: "اقدار",
+      title: "شفافیت، نتائج، اور ہر کیمپس پر ایک معیار۔",
+      description:
+        "کوئی کیمپس خاموشی سے دوسرے سے کم کارکردگی نہیں دکھاتا۔ جو ماڈل ٹاؤن کے لیے شائع کیا جاتا ہے وہ راولی کینٹ کے لیے بھی شائع کیا جاتا ہے۔",
+    },
+  ],
+};
+
+export function getMissionVisionItems(language: SiteLanguage): MissionVisionItem[] {
+  return missionVisionItemsByLanguage[language];
+}
+
 export const principalMessage = {
   name: "Dr. Nasreen Iqbal",
   role: "Principal & Founder, Est. 1998",
@@ -36,6 +69,18 @@ export const principalMessage = {
     "Gujranwala's parents already know what a quality certificate looks like — on a fan, on a shipment, on a utensil set. We built this school to hold itself to the same standard, examined and re-examined every year.",
   bio: "Founded in 1998 by a family with roots in the city's steel and utensil trade, the Academy grew from a single Model Town classroom block to three campuses across the city — without ever changing the standard it opened with: every teacher qualified, every result published, every parent kept informed.",
 };
+
+export function getPrincipalMessage(language: SiteLanguage) {
+  if (language !== "UR") return principalMessage;
+
+  return {
+    name: "ڈاکٹر نسرین اقبال",
+    role: "پرنسپل اور بانی، قائم 1998",
+    quote:
+      "گوجرانوالہ کے والدین پہلے ہی جانتے ہیں کہ معیاری سرٹیفکیٹ کیسا لگتا ہے — پنکھے پر، کھیپ پر، برتنوں کے سیٹ پر۔ ہم نے یہ اسکول اسی معیار پر قائم رہنے کے لیے بنایا، جس کا ہر سال جائزہ لیا جاتا ہے۔",
+    bio: "1998 میں شہر کے اسٹیل اور برتنوں کی تجارت میں جڑوں والے ایک خاندان کے ذریعے قائم کیا گیا، یہ اکیڈمی ماڈل ٹاؤن کے ایک کلاس روم بلاک سے شہر بھر میں تین کیمپسز تک پھیل گئی — بغیر اس معیار کو تبدیل کیے جس کے ساتھ یہ کھلی تھی: ہر استاد اہل، ہر نتیجہ شائع، ہر والدین باخبر۔",
+  };
+}
 
 export interface FacilityItem {
   id: string;
@@ -85,6 +130,21 @@ export const campusFacilities: FacilityItem[] = [
     image: "/images/facilities/cafeteria.jpeg",
   },
 ];
+
+export function getCampusFacilities(language: SiteLanguage): FacilityItem[] {
+  if (language !== "UR") return campusFacilities;
+
+  return [
+    { id: "labs", label: "سائنس لیبارٹریز", image: "/images/facilities/science-lab.jpeg" },
+    { id: "sports", label: "کھیل کا میدان", image: "/images/facilities/sports-ground.jpeg" },
+    { id: "fleet", label: "ٹرانسپورٹ فلیٹ", image: "/images/facilities/transport.jpeg" },
+    { id: "security", label: "کیمپس سیکیورٹی", image: "/images/facilities/security.png" },
+    { id: "computer-lab", label: "کمپیوٹر لیب", image: "/images/facilities/computer-lab.jpeg" },
+    { id: "library", label: "لائبریری", image: "/images/facilities/library.jpeg" },
+    { id: "auditorium", label: "آڈیٹوریم", image: "/images/facilities/auditorium.jpeg" },
+    { id: "cafeteria", label: "کیفےٹیریا", image: "/images/facilities/cafeteria.jpeg" },
+  ];
+}
 export interface FacultyMember {
   id: string;
   name: string;
@@ -123,3 +183,38 @@ export const facultyMembers: FacultyMember[] = [
     image: "/images/faculty/ali-raza.jpeg",
   },
 ];
+
+export function getFacultyMembers(language: SiteLanguage): FacultyMember[] {
+  if (language !== "UR") return facultyMembers;
+
+  return [
+    {
+      id: "saira-bashir",
+      name: "سائرہ بشیر",
+      title: "سربراہ سائنس · M.Phil",
+      bio: "O/A-Level بائیولوجی اور کیمسٹری پڑھانے کا 14 سالہ تجربہ۔",
+      image: "/images/faculty/saira-bashir.jpeg",
+    },
+    {
+      id: "imran-butt",
+      name: "عمران بٹ",
+      title: "سربراہ ریاضی · MSc",
+      bio: "میٹرک بورڈ امتحان کی تیاری کرنے والے گروپ کی قیادت کرتے ہیں۔",
+      image: "/images/faculty/imranz-butt.jpeg",
+    },
+    {
+      id: "farah-yousaf",
+      name: "فارہ یوسف",
+      title: "شعبہ انگریزی · MA TESOL",
+      bio: "دو لسانی انگریزی-اردو تحریری پروگرام چلاتی ہیں۔",
+      image: "/images/faculty/farah-yousaf.jpeg",
+    },
+    {
+      id: "ali-raza",
+      name: "علی رضا",
+      title: "پیشہ وارانہ سربراہ",
+      bio: "مقامی تجارتی شراکت داروں کے ساتھ صنعتی روابط کا انتظام کرتے ہیں۔",
+      image: "/images/faculty/ali-raza.jpeg",
+    },
+  ];
+}

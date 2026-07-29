@@ -5,9 +5,11 @@ import { ArrowRight } from "lucide-react";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import SectionHeading from "@/components/common/SectionHeading";
-import { campusLocations } from "@/data/contact";
+import { getCampusLocations } from "@/data/contact";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function CampusMap() {
+export default function CampusMap({ lang }: { lang: SiteLanguage }) {
+  const campusLocations = getCampusLocations(lang);
   const [activeCampusId, setActiveCampusId] = useState(campusLocations[0].id);
   const activeCampus =
     campusLocations.find((c) => c.id === activeCampusId) ?? campusLocations[0];
@@ -17,8 +19,8 @@ export default function CampusMap() {
       <Container>
         <FadeUp>
           <SectionHeading
-            title="Campus Map & Directions"
-            description="Select a campus to see its address, hours and directions."
+            title={lang === "UR" ? "کیمپس کا نقشہ اور ہدایات" : "Campus Map & Directions"}
+            description={lang === "UR" ? "کیمپس منتخب کریں تاکہ اس کا پتہ، اوقات اور ہدایات دیکھ سکیں۔" : "Select a campus to see its address, hours and directions."}
           />
         </FadeUp>
 
@@ -76,28 +78,28 @@ export default function CampusMap() {
       <dl className="mt-5 space-y-3">
         <div className="flex gap-3 text-sm">
           <dt className="w-20 shrink-0 font-semibold text-[#0f2b2e]">
-            Address
+            {lang === "UR" ? "پتہ" : "Address"}
           </dt>
           <dd className="text-gray-600">{activeCampus.address}</dd>
         </div>
 
         <div className="flex gap-3 text-sm">
           <dt className="w-20 shrink-0 font-semibold text-[#0f2b2e]">
-            Hours
+            {lang === "UR" ? "اوقات" : "Hours"}
           </dt>
           <dd className="text-gray-600">{activeCampus.hours}</dd>
         </div>
 
         <div className="flex gap-3 text-sm">
           <dt className="w-20 shrink-0 font-semibold text-[#0f2b2e]">
-            Wings
+            {lang === "UR" ? "شعبے" : "Wings"}
           </dt>
           <dd className="text-gray-600">{activeCampus.wings}</dd>
         </div>
 
         <div className="flex gap-3 text-sm">
           <dt className="w-20 shrink-0 font-semibold text-[#0f2b2e]">
-            Phone
+            {lang === "UR" ? "فون" : "Phone"}
           </dt>
           <dd className="text-gray-600">{activeCampus.phone}</dd>
         </div>
@@ -109,7 +111,7 @@ export default function CampusMap() {
         rel="noopener noreferrer"
         className="mt-6 inline-flex items-center gap-2 rounded-md bg-[#0f2b2e] px-5 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.02] active:scale-[0.98]"
       >
-        Get Directions
+        {lang === "UR" ? "ہدایات حاصل کریں" : "Get Directions"}
         <ArrowRight className="h-4 w-4" />
       </a>
     </div>

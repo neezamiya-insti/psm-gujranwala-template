@@ -1,16 +1,18 @@
+import { type SiteLanguage } from "@/lib/language";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import SectionHeading from "@/components/common/SectionHeading";
-import { vanRoutes } from "@/data/contact";
+import { getVanRoutes } from "@/data/contact";
 
-export default function TransportRoutes() {
+export default function TransportRoutes({ lang }: { lang: SiteLanguage }) {
+  const vanRoutes = getVanRoutes(lang);
   return (
     <section className="border-t border-[#0f2b2e]/10 bg-[#f1efe9] py-16 sm:py-20">
       <Container>
         <FadeUp>
           <SectionHeading
-            title="Transport & Van Routes"
-            description="Feeder routes for families spread across the city's industrial neighbourhoods."
+            title={lang === "UR" ? "ٹرانسپورٹ اور وین روٹس" : "Transport & Van Routes"}
+            description={lang === "UR" ? "شہر کے صنعتی محلوں میں پھیلے خاندانوں کے لیے فیڈر روٹس۔" : "Feeder routes for families spread across the city's industrial neighbourhoods."}
           />
         </FadeUp>
 
@@ -21,16 +23,16 @@ export default function TransportRoutes() {
               <thead>
                 <tr className="bg-[#0f2b2e]">
                   <th className="px-6 py-3 text-left font-mono text-[11px] font-semibold uppercase tracking-wide text-white/80">
-                    Route
+                    {lang === "UR" ? "روٹ" : "Route"}
                   </th>
                   <th className="px-6 py-3 text-left font-mono text-[11px] font-semibold uppercase tracking-wide text-white/80">
-                    Covers
+                    {lang === "UR" ? "علاقہ" : "Covers"}
                   </th>
                   <th className="px-6 py-3 text-left font-mono text-[11px] font-semibold uppercase tracking-wide text-white/80">
-                    Pickup Starts
+                    {lang === "UR" ? "پک اپ کا وقت" : "Pickup Starts"}
                   </th>
                   <th className="px-6 py-3 text-left font-mono text-[11px] font-semibold uppercase tracking-wide text-white/80">
-                    Campus
+                    {lang === "UR" ? "کیمپس" : "Campus"}
                   </th>
                 </tr>
               </thead>
@@ -76,7 +78,7 @@ export default function TransportRoutes() {
                 </div>
                 <p className="mt-2 text-sm text-gray-600">{route.covers}</p>
                 <p className="mt-2 text-xs uppercase tracking-wide text-gray-400">
-                  {route.campus} Campus
+                  {route.campus} {lang === "UR" ? "کیمپس" : "Campus"}
                 </p>
               </div>
             ))}

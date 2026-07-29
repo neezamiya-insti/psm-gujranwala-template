@@ -5,10 +5,16 @@ import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import DocumentUpload from "@/components/admissions/DocumentUpload";
 import FeePayment from "@/components/admissions/FeePayment";
-import { applicationFormFields } from "@/data/admissions";
+import { getApplicationFormFields } from "@/data/admissions";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function ApplicationSteps() {
+interface ApplicationStepsProps {
+  lang: SiteLanguage;
+}
+
+export default function ApplicationSteps({ lang }: ApplicationStepsProps) {
   const [formData, setFormData] = useState<Record<string, string>>({});
+  const applicationFormFields = getApplicationFormFields(lang);
 
   const handleChange = (id: string, value: string) => {
     setFormData((prev) => ({ ...prev, [id]: value }));
@@ -26,7 +32,7 @@ export default function ApplicationSteps() {
         <FadeUp>
           <div className="flex items-center gap-4">
             <h2 className="text-2xl font-extrabold leading-tight text-[#0f2b2e] sm:text-3xl">
-              Online Application Form
+              {lang === "UR" ? "آن لائن درخواست فارم" : "Online Application Form"}
             </h2>
           </div>
         </FadeUp>
@@ -55,7 +61,7 @@ export default function ApplicationSteps() {
                     className="mt-2 w-full rounded-sm border border-[#0f2b2e]/10 bg-[#f3cdbe] px-4 py-3 text-sm text-[#0f2b2e] focus:outline-none focus:ring-2 focus:ring-[#e15a2e]"
                   >
                     <option value="" disabled>
-                      Select {field.label}
+                      {lang === "UR" ? `${field.label} منتخب کریں` : `Select ${field.label}`}
                     </option>
 
                     {field.options?.map((option) => (
@@ -78,13 +84,13 @@ export default function ApplicationSteps() {
               ))}
 
               <div className="sm:col-span-2">
-                <DocumentUpload />
+                <DocumentUpload lang={lang} />
               </div>
             </div>
 
             {/* Fee sidebar */}
             <div>
-              <FeePayment />
+              <FeePayment lang={lang} />
             </div>
           </form>
         </FadeUp>

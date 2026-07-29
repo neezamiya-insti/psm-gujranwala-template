@@ -5,9 +5,10 @@ import { ArrowRight } from "lucide-react";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import { channelOptions, NotificationChannel } from "@/data/portal";
+import { type SiteLanguage } from "@/lib/language";
 import Link from "next/link";
 
-export default function NotificationOptIn() {
+export default function NotificationOptIn({ lang }: { lang: SiteLanguage }) {
   const [channel, setChannel] = useState<NotificationChannel>("whatsapp");
   const [phone, setPhone] = useState("");
   const [relationship, setRelationship] = useState("");
@@ -26,12 +27,12 @@ export default function NotificationOptIn() {
           {/* Left — copy + channel toggle */}
           <FadeUp>
             <h2 className="mt-3 text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
-              WhatsApp &amp; SMS opt-in.
+              {lang === "UR" ? "واٹس ایپ اور ایس ایم ایس آپٹ ان۔" : "WhatsApp &amp; SMS opt-in."}
             </h2>
             <p className="mt-4 max-w-md text-[15px] leading-relaxed text-gray-600">
-              Busy trading families check WhatsApp all day for business — so
-              it&apos;s the default channel for attendance alerts, results
-              and admission updates. SMS stays available as a fallback.
+              {lang === "UR"
+                ? "مصروف تاجر خاندان سارا دن کاروبار کے لیے واٹس ایپ چیک کرتے ہیں — لہٰذا یہ حاضری الرٹس، نتائج اور داخلہ اپ ڈیٹس کے لیے ڈیفالٹ چینل ہے۔ ایس ایم ایس فال بیک کے طور پر دستیاب ہے۔"
+                : "Busy trading families check WhatsApp all day for business — so it&apos;s the default channel for attendance alerts, results and admission updates. SMS stays available as a fallback."}
             </p>
 
             <p
@@ -72,9 +73,9 @@ export default function NotificationOptIn() {
               className="rounded-sm bg-[#f3cdbe] p-6 sm:p-8"
             >
               <div>
-                <input
-                  type="tel"
-                  placeholder="Parent WhatsApp / mobile number"
+                  <input
+                    type="tel"
+                    placeholder={lang === "UR" ? "والدین کا واٹس ایپ / موبائل نمبر" : "Parent WhatsApp / mobile number"}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="w-full rounded-sm border border-[#0f2b2e]/10 bg-gray-100 px-4 py-3.5 text-sm text-[#0f2b2e] placeholder:text-[#0f2b2e]/45 focus:outline-none focus:ring-2 focus:ring-[#e15a2e]"
@@ -82,9 +83,9 @@ export default function NotificationOptIn() {
               </div>
 
               <div className="mt-4">
-                <input
-                  type="text"
-                  placeholder="Relationship to student (e.g. Father)"
+                  <input
+                    type="text"
+                    placeholder={lang === "UR" ? "طالب علم سے رشتہ (مثلاً والد)" : "Relationship to student (e.g. Father)"}
                   value={relationship}
                   onChange={(e) => setRelationship(e.target.value)}
                   className="w-full rounded-sm border border-[#0f2b2e]/10 bg-gray-100 px-4 py-3.5 text-sm text-[#0f2b2e] placeholder:text-[#0f2b2e]/45 focus:outline-none focus:ring-2 focus:ring-[#e15a2e]"
@@ -99,8 +100,9 @@ export default function NotificationOptIn() {
                   className="mt-1 h-4 w-4 shrink-0 accent-[#0f2b2e]"
                 />
                 <span className="text-sm leading-relaxed text-[#0f2b2e]/80">
-                  I agree to receive attendance, result and admission notices
-                  on WhatsApp/SMS from Gujranwala Grammar School.
+                  {lang === "UR"
+                    ? "میں گوجرانوالہ گرامر اسکول سے واٹس ایپ/ایس ایم ایس پر حاضری، نتیجہ اور داخلہ کی اطلاعات وصول کرنے سے اتفاق کرتا/کرتی ہوں۔"
+                    : "I agree to receive attendance, result and admission notices on WhatsApp/SMS from Gujranwala Grammar School."}
                 </span>
               </label>
 
@@ -108,7 +110,7 @@ export default function NotificationOptIn() {
                 href="https://wa.me/9255123456"
                 className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#0f2b2e]/90 px-5 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Opt In on WhatsApp
+                {lang === "UR" ? "واٹس ایپ پر آپٹ ان کریں" : "Opt In on WhatsApp"}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </form>

@@ -6,9 +6,11 @@ import FadeUp from "@/components/common/FadeUp";
 import SectionHeading from "@/components/common/SectionHeading";
 import GalleryFilter from "@/components/gallery-events/GalleryFilter";
 import GalleryCard from "@/components/cards/GalleryCard";
-import { galleryItems } from "@/data/gallery";
+import { getGalleryItems } from "@/data/gallery";
+import { type SiteLanguage } from "@/lib/language";
 
-export default function GalleryGrid() {
+export default function GalleryGrid({ lang }: { lang: SiteLanguage }) {
+  const galleryItems = getGalleryItems(lang);
   const [activeCategory, setActiveCategory] = useState("all");
 
   const filteredItems = useMemo(() => {
@@ -21,8 +23,8 @@ export default function GalleryGrid() {
       <Container>
         <FadeUp>
           <SectionHeading
-            title="Photo & Video Gallery"
-            description="Filtered by event type, updated after every campus activity."
+            title={lang === "UR" ? "فوٹو اور ویڈیو گیلری" : "Photo & Video Gallery"}
+            description={lang === "UR" ? "ایونٹ کی قسم کے مطابق فلٹر شدہ، ہر کیمپس سرگرمی کے بعد اپ ڈیٹ۔" : "Filtered by event type, updated after every campus activity."}
           />
         </FadeUp>
 
@@ -31,6 +33,7 @@ export default function GalleryGrid() {
             <GalleryFilter
               activeCategory={activeCategory}
               onChange={setActiveCategory}
+              lang={lang}
             />
           </div>
         </FadeUp>

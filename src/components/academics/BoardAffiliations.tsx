@@ -1,16 +1,24 @@
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import SectionHeading from "@/components/common/SectionHeading";
-import { boardAffiliations } from "@/data/academics";
+import { getBoardAffiliations } from "@/data/academics";
+import { getPreferredLanguage } from "@/lib/language.server";
 
-export default function BoardAffiliations() {
+export default async function BoardAffiliations() {
+  const lang = await getPreferredLanguage();
+  const boardAffiliations = getBoardAffiliations(lang);
+
   return (
     <section className="border-t border-[#0f2b2e]/10 bg-[#f1efe9] py-16 sm:py-20">
       <Container>
         <FadeUp>
           <SectionHeading
-            title="Curriculum & Board Affiliation"
-            description="The credibility signal Gujranwala parents check for before anything else."
+            title={lang === "UR" ? "نصاب اور بورڈ وابستگی" : "Curriculum & Board Affiliation"}
+            description={
+              lang === "UR"
+                ? "اعتماد کی وہ علامت جسے گوجرانوالہ کے والدین سب سے پہلے دیکھتے ہیں۔"
+                : "The credibility signal Gujranwala parents check for before anything else."
+            }
           />
         </FadeUp>
 
@@ -23,7 +31,7 @@ export default function BoardAffiliations() {
             >
               {board.featured && (
                 <span className="absolute right-6 top-6 rounded-full bg-[#e15a2e] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-wide text-white">
-                  Primary Board
+                  {lang === "UR" ? "مرکزی بورڈ" : "Primary Board"}
                 </span>
               )}
 
