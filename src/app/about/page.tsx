@@ -4,6 +4,7 @@ import MissionVision from "@/components/about/MissionVision";
 import CampusFacilities from "@/components/about/CampusFacilities";
 import Faculty from "@/components/about/Faculty";
 import { getPreferredLanguage } from "@/lib/language.server";
+import CTASection from "@/components/home/CTASection";
 
 export default async function AboutPage() {
   const lang = await getPreferredLanguage();
@@ -18,6 +19,7 @@ export default async function AboutPage() {
       <MissionVision lang={lang} />
       <CampusFacilities lang={lang} />
       <Faculty lang={lang} />
+      <CTASection lang={lang} />
     </>
   );
 }

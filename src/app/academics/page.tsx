@@ -4,6 +4,7 @@ import BoardAffiliations from "@/components/academics/BoardAffiliations";
 import ResultsArchive from "@/components/academics/ResultsArchive";
 import ResultWidget from "@/components/academics/ResultWidget";
 import { getPreferredLanguage } from "@/lib/language.server";
+import CTASection from "@/components/home/CTASection";
 
 export default async function AcademicsPage() {
   const lang = await getPreferredLanguage();
@@ -23,6 +24,7 @@ export default async function AcademicsPage() {
       <BoardAffiliations />
       <ResultsArchive lang={lang} />
       <ResultWidget />
+      <CTASection lang={lang} />
     </>
   );
 }

@@ -4,8 +4,7 @@ import PortalLogin from "@/components/parent-portal/PortalLogin";
 import PortalPreview from "@/components/parent-portal/PortalPreview";
 import NotificationOptIn from "@/components/parent-portal/NotificationOptIn";
 import { getPreferredLanguage } from "@/lib/language.server";
-
-// Pending: AttendanceProgress
+import CTASection from "@/components/home/CTASection";
 
 export default async function ParentPortalPage() {
   const lang = await getPreferredLanguage();
@@ -31,6 +30,7 @@ export default async function ParentPortalPage() {
         </Container>
       </section>
       <NotificationOptIn lang={lang} />
+      <CTASection lang={lang} />
     </>
   );
 }

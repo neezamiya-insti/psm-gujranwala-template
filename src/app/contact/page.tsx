@@ -3,6 +3,7 @@ import CampusMap from "@/components/contact/CampusMap";
 import ContactSection from "@/components/contact/ContactSection";
 import TransportRoutes from "@/components/contact/TransportRoutes";
 import { getPreferredLanguage } from "@/lib/language.server";
+import CTASection from "@/components/home/CTASection";
 
 export default async function ContactPage() {
   const lang = await getPreferredLanguage();
@@ -21,6 +22,7 @@ export default async function ContactPage() {
       <ContactSection lang={lang} />
       <CampusMap lang={lang} />
       <TransportRoutes lang={lang} />
+      <CTASection lang={lang} />
     </>
   );
 }
