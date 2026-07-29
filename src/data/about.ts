@@ -151,49 +151,84 @@ export interface FacultyMember {
   title: string;
   bio: string;
   image: string;
+  reportsTo?: string;
 }
 
 export const facultyMembers: FacultyMember[] = [
   {
+    id: "vice-principal",
+    name: "Nadia Ahmed",
+    title: "Vice Principal · M.Ed",
+    bio: "Supports academic planning, teacher coordination, and student development.",
+    image: "/images/faculty/nadia-ahmed.jpeg",
+  },
+  {
     id: "saira-bashir",
     name: "Saira Bashir",
-    title: "Head of Science &middot; M.Phil",
+    title: "Head of Science · M.Phil",
     bio: "14 years teaching O/A-Level Biology & Chemistry.",
     image: "/images/faculty/saira-bashir.jpeg",
+    reportsTo: "vice-principal",
   },
   {
     id: "imran-butt",
     name: "Imran Butt",
-    title: "Head of Maths &middot; MSc",
+    title: "Head of Maths · MSc",
     bio: "Leads Matric board-exam preparation cohort.",
     image: "/images/faculty/imranz-butt.jpeg",
+    reportsTo: "vice-principal",
   },
   {
     id: "farah-yousaf",
     name: "Farah Yousaf",
-    title: "English Department &middot; MA TESOL",
-    bio: "Runs the bilingual English-Urdu writing program.",
+    title: "English Department · MA TESOL",
+    bio: "Develops communication skills and bilingual learning programs.",
     image: "/images/faculty/farah-yousaf.jpeg",
+    reportsTo: "saira-bashir",
+  },
+  {
+    id: "new-under-saira",
+    name: "Ayesha Khalid",
+    title: "Computer Department · BS CS",
+    bio: "Introduces students to programming, technology, and digital skills.",
+    image: "/images/faculty/ayesha-khalid.jpeg",
+    reportsTo: "saira-bashir",
   },
   {
     id: "ali-raza",
     name: "Ali Raza",
-    title: "Vocational Lead",
-    bio: "Manages industry tie-ups with local trade partners.",
+    title: "Activity Coordinator · MSc",
+    bio: "Manages student activities, events, and skill development programs.",
     image: "/images/faculty/ali-raza.jpeg",
+    reportsTo: "imran-butt",
+  },
+  {
+    id: "new-under-imran",
+    name: "Hina Malik",
+    title: "Urdu Department · MA Urdu",
+    bio: "Promotes language skills, creativity, and cultural awareness among students.",
+    image: "/images/faculty/hina-malik.jpeg",
+    reportsTo: "imran-butt",
   },
 ];
 
 export function getFacultyMembers(language: SiteLanguage): FacultyMember[] {
   if (language !== "UR") return facultyMembers;
-
   return [
+   {
+  id: "vice-principal",
+  name: "نادیہ احمد",
+  title: "نائب پرنسپل · M.Ed",
+  bio: "تعلیمی منصوبہ بندی، اساتذہ کی رہنمائی اور طلبہ کی ترقی میں معاونت کرتی ہیں۔",
+  image: "/images/faculty/nadia-ahmed.jpeg",
+},
     {
       id: "saira-bashir",
       name: "سائرہ بشیر",
       title: "سربراہ سائنس · M.Phil",
       bio: "O/A-Level بائیولوجی اور کیمسٹری پڑھانے کا 14 سالہ تجربہ۔",
       image: "/images/faculty/saira-bashir.jpeg",
+      reportsTo: "vice-principal",
     },
     {
       id: "imran-butt",
@@ -201,6 +236,7 @@ export function getFacultyMembers(language: SiteLanguage): FacultyMember[] {
       title: "سربراہ ریاضی · MSc",
       bio: "میٹرک بورڈ امتحان کی تیاری کرنے والے گروپ کی قیادت کرتے ہیں۔",
       image: "/images/faculty/imranz-butt.jpeg",
+      reportsTo: "vice-principal",
     },
     {
       id: "farah-yousaf",
@@ -208,13 +244,31 @@ export function getFacultyMembers(language: SiteLanguage): FacultyMember[] {
       title: "شعبہ انگریزی · MA TESOL",
       bio: "دو لسانی انگریزی-اردو تحریری پروگرام چلاتی ہیں۔",
       image: "/images/faculty/farah-yousaf.jpeg",
+      reportsTo: "saira-bashir",
     },
+   {
+  id: "new-under-saira",
+  name: "عائشہ خالد",
+  title: "کمپیوٹر سائنس ٹیچر · BS CS",
+  bio: "طلبہ کو پروگرامنگ، ٹیکنالوجی اور ڈیجیٹل مہارتیں سکھاتی ہیں۔",
+  image: "/images/faculty/ayesha-khalid.jpeg",
+  reportsTo: "saira-bashir",
+},
     {
       id: "ali-raza",
       name: "علی رضا",
       title: "پیشہ وارانہ سربراہ",
       bio: "مقامی تجارتی شراکت داروں کے ساتھ صنعتی روابط کا انتظام کرتے ہیں۔",
       image: "/images/faculty/ali-raza.jpeg",
+      reportsTo: "imran-butt",
     },
+    {
+  id: "new-under-imran",
+  name: "حنا ملک",
+  title: "شعبہ اردو · MA اردو",
+  bio: "طلبہ میں زبان، تخلیقی صلاحیتوں اور ثقافتی شعور کو فروغ دیتی ہیں۔",
+  image: "/images/faculty/hina-malik.jpeg",
+  reportsTo: "imran-butt",
+},
   ];
 }
