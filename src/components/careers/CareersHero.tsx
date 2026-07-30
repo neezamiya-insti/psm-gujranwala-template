@@ -21,7 +21,7 @@ export default function CareersHero({ lang }: { lang: SiteLanguage }) {
         <Container>
           <FadeUp>
             <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#e15a2e]">
-              {lang === "UR" ? "کیریئر اور پلیسمنٹ" : "Careers &amp; Placement"}
+              {lang === "UR" ? "کیریئر اور پلیسمنٹ" : "Careers & Placement"}
             </p>
             <h1 className="mt-3 max-w-2xl text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
               {lang === "UR" ? "ہمارے فارغ التحصیل آگے کہاں جاتے ہیں۔" : "Where our graduates go next."}
