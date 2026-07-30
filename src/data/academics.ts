@@ -6,48 +6,8 @@ export interface CurriculumStage {
   name: string;
   board: string;
   description: string;
+  courses: string[];
 }
-
-export const curriculumStages: CurriculumStage[] = [
-  {
-    id: "montessori",
-    ageRange: "Ages 3–5",
-    name: "Montessori & Pre-Primary",
-    board: "Punjab Curriculum",
-    description: "Play-based early years at the Model Town campus only.",
-  },
-  {
-    id: "primary",
-    ageRange: "Grades 1–5",
-    name: "Primary School",
-    board: "Punjab Curriculum",
-    description:
-      "Bilingual English–Urdu foundation in literacy & numeracy.",
-  },
-  {
-    id: "middle",
-    ageRange: "Grades 6–8",
-    name: "Middle School",
-    board: "Punjab Curriculum",
-    description: "Subject specialisation begins across sciences & languages.",
-  },
-  {
-    id: "matric",
-    ageRange: "Grades 9–10",
-    name: "Matric / Secondary",
-    board: "BISE Gujranwala",
-    description:
-      "Our most-marketed segment — board result rankings drive local reputation.",
-  },
-  {
-    id: "intermediate",
-    ageRange: "Ages 16–18",
-    name: "Intermediate / O-A Level",
-    board: "Cambridge · BISE",
-    description:
-      "University-placement focused; results content matters most here.",
-  },
-];
 
 export interface BoardAffiliation {
   id: string;
@@ -133,42 +93,195 @@ export const districtRanking = {
 };
 
 const curriculumStagesByLanguage: Record<SiteLanguage, CurriculumStage[]> = {
-  EN: curriculumStages,
+  EN: [
+    {
+      id: "1",
+      ageRange: "Age 3-5",
+      name: "Early Years",
+      board: "Primary",
+      description:
+        "A foundation-focused stage where children develop confidence, creativity, communication skills, and early learning habits through engaging activities.",
+      courses: [
+        "English",
+        "Mathematics",
+        "Science",
+        "Art & Creativity",
+        "Computer Basics",
+        "Social Skills",
+        "Islamic Studies",
+        "General Knowledge",
+      ],
+    },
+    {
+      id: "2",
+      ageRange: "Grade 1-5",
+      name: "Primary School",
+      board: "Primary",
+      description:
+        "Students build strong academic foundations with emphasis on conceptual understanding, problem-solving, and character development.",
+      courses: [
+        "English",
+        "Mathematics",
+        "General Science",
+        "Urdu",
+        "Islamic Studies",
+        "Computer Science",
+        "Social Studies",
+        "Art & Craft",
+      ],
+    },
+    {
+      id: "3",
+      ageRange: "Grade 6-8",
+      name: "Middle School",
+      board: "Middle",
+      description:
+        "A structured learning phase that strengthens analytical thinking, subject knowledge, and independent learning skills.",
+      courses: [
+        "English",
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Urdu",
+        "Computer Science",
+        "Pakistan Studies",
+        "Islamic Studies",
+      ],
+    },
+    {
+      id: "4",
+      ageRange: "Grade 9-10",
+      name: "Secondary School",
+      board: "BISE Gujranwala",
+      description:
+        "Students prepare for board examinations with focused subject learning, practical understanding, and career guidance.",
+      courses: [
+        "English",
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Computer Science",
+        "Urdu",
+        "Pakistan Studies",
+        "Islamic Studies",
+      ],
+    },
+    {
+      id: "5",
+      ageRange: "Grade 11-12",
+      name: "Higher Secondary",
+      board: "BISE / Cambridge",
+      description:
+        "Advanced academic preparation designed to help students excel in higher education and future professional pathways.",
+      courses: [
+        "English",
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Computer Science",
+        "Statistics",
+        "Pakistan Studies",
+        "Islamic Studies",
+      ],
+    },
+  ],
+
   UR: [
     {
-      id: "montessori",
+      id: "1",
       ageRange: "عمر 3–5",
-      name: "مونٹیسوری اور پری پرائمری",
-      board: "پنجاب نصاب",
-      description: "صرف ماڈل ٹاؤن کیمپس میں کھیل پر مبنی ابتدائی تعلیم۔",
+      name: "ابتدائی تعلیم",
+      board: "پرائمری",
+      description:
+        "بچوں کی تخلیقی صلاحیتوں، اعتماد، گفتگو اور ابتدائی سیکھنے کی مہارتوں کو سرگرمیوں کے ذریعے بہتر بنایا جاتا ہے۔",
+      courses: [
+        "انگریزی",
+        "ریاضی",
+        "سائنس",
+        "آرٹ اور تخلیقی سرگرمیاں",
+        "کمپیوٹر کی بنیادی معلومات",
+        "سماجی مہارتیں",
+        "اسلامیات",
+        "عمومی معلومات",
+      ],
     },
     {
-      id: "primary",
+      id: "2",
       ageRange: "جماعت 1–5",
       name: "ابتدائی اسکول",
-      board: "پنجاب نصاب",
-      description: "خواندگی اور حساب میں دو لسانی انگریزی-اردو بنیاد۔",
+      board: "پرائمری",
+      description:
+        "طلبہ کو مضبوط تعلیمی بنیاد فراہم کی جاتی ہے جس میں فہم، مسئلہ حل کرنے اور کردار سازی پر توجہ دی جاتی ہے۔",
+      courses: [
+        "انگریزی",
+        "ریاضی",
+        "جنرل سائنس",
+        "اردو",
+        "اسلامیات",
+        "کمپیوٹر سائنس",
+        "مطالعہ پاکستان",
+        "آرٹ اینڈ کرافٹ",
+      ],
     },
     {
-      id: "middle",
+      id: "3",
       ageRange: "جماعت 6–8",
       name: "مڈل اسکول",
-      board: "پنجاب نصاب",
-      description: "سائنس اور زبانوں میں مضمون وار مہارت شروع ہوتی ہے۔",
+      board: "مڈل",
+      description:
+        "یہ مرحلہ طلبہ کی تجزیاتی سوچ، مضمون کی سمجھ اور خود سیکھنے کی صلاحیت کو مضبوط بناتا ہے۔",
+      courses: [
+        "انگریزی",
+        "ریاضی",
+        "طبیعیات",
+        "کیمسٹری",
+        "حیاتیات",
+        "اردو",
+        "کمپیوٹر سائنس",
+        "مطالعہ پاکستان",
+        "اسلامیات",
+      ],
     },
     {
-      id: "matric",
+      id: "4",
       ageRange: "جماعت 9–10",
       name: "میٹرک / سیکنڈری",
-      board: "بی آئی ایس ای گوجرانوالہ",
-      description: "ہمارا نمایاں حصہ — نتائج کی درجہ بندی مقامی ساکھ بناتی ہے۔",
+      board: "BISE گوجرانوالہ",
+      description:
+        "بورڈ امتحانات کی تیاری کے لیے جامع تعلیمی رہنمائی اور مضامین کی گہری سمجھ فراہم کی جاتی ہے۔",
+      courses: [
+        "انگریزی",
+        "ریاضی",
+        "طبیعیات",
+        "کیمسٹری",
+        "حیاتیات",
+        "کمپیوٹر سائنس",
+        "اردو",
+        "مطالعہ پاکستان",
+        "اسلامیات",
+      ],
     },
     {
-      id: "intermediate",
-      ageRange: "عمر 16–18",
-      name: "انٹرمیڈیٹ / او-اے لیول",
-      board: "کیمبرج · بی آئی ایس ای",
-      description: "یونیورسٹی پلیسمنٹ پر مرکوز؛ نتائج کی معلومات یہاں سب سے اہم ہیں۔",
+      id: "5",
+      ageRange: "جماعت 11–12",
+      name: "ہائر سیکنڈری",
+      board: "BISE / کیمبرج",
+      description:
+        "اعلیٰ تعلیم اور مستقبل کے پیشہ ورانہ راستوں کے لیے جدید تعلیمی تیاری فراہم کی جاتی ہے۔",
+      courses: [
+        "انگریزی",
+        "ریاضی",
+        "طبیعیات",
+        "کیمسٹری",
+        "حیاتیات",
+        "کمپیوٹر سائنس",
+        "شماریات",
+        "مطالعہ پاکستان",
+        "اسلامیات",
+      ],
     },
   ],
 };

@@ -1,7 +1,9 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { BookOpen, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
+
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
 import SectionHeading from "@/components/common/SectionHeading";
@@ -14,19 +16,26 @@ interface CurriculumLevelsProps {
 
 export default function CurriculumLevels({ lang }: CurriculumLevelsProps) {
   const [activeCard, setActiveCard] = useState<string | null>(null);
+
   const curriculumStages = getCurriculumStages(lang);
+
+  const activeStage = curriculumStages.find(
+    (stage) => stage.id === activeCard
+  );
 
   const copy =
     lang === "UR"
       ? {
-          title: "جماعت اور سطح کا ڈھانچہ",
-          description: "ایک داخلہ دفتر، پانچ مراحل، اور ہر مرحلے کے لیے واضح بورڈ۔",
+          title: "تعلیمی مراحل",
+          description: "ایک منظم تعلیمی سفر جو طلبہ کی ہر مرحلے پر نشوونما، سیکھنے اور کامیابی میں معاون ثابت ہوتا ہے۔",
           stage: "مرحلہ",
+          courses: "پڑھائے جانے والے مضامین",
         }
       : {
-          title: "Grade & Level Structure",
-          description: "One admissions office, five stages, a clear board for every one of them.",
+          title: "Learning Stages",
+          description: "A structured pathway designed to support students at every stage of development.",
           stage: "Stage",
+          courses: "Courses Taught",
         };
 
   return (
@@ -39,114 +48,234 @@ export default function CurriculumLevels({ lang }: CurriculumLevelsProps) {
           />
         </FadeUp>
 
+
+        {/* Stage Cards */}
         <FadeUp delay={0.1}>
-          <div className="mt-8 grid items-start grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {curriculumStages.map((stage) => {
               const isActive = activeCard === stage.id;
 
               return (
                 <motion.div
                   key={stage.id}
-                  layout
-                  onHoverStart={() => {
-                    // Desktop hover only
-                    if (window.innerWidth >= 640) {
-                      setActiveCard(stage.id);
-                    }
-                  }}
-                  onHoverEnd={() => {
-                    // Desktop hover only
-                    if (window.innerWidth >= 640) {
-                      setActiveCard(null);
-                    }
-                  }}
-                  onClick={() => {
-                    // Mobile click toggle
-                    if (window.innerWidth < 640) {
-                      setActiveCard(isActive ? null : stage.id);
-                    }
-                  }}
-                  transition={{
-                    layout: {
-                      duration: 0.45,
-                      ease: [0.22, 1, 0.36, 1],
-                    },
-                  }}
-                  className="h-full"
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.25 }}
+                  onClick={() =>
+                    setActiveCard(
+                      isActive ? null : stage.id
+                    )
+                  }
+                  className="cursor-pointer"
                 >
-                  <div className="relative min-h-[190px] cursor-pointer overflow-hidden rounded-md bg-[#f3cdbe] p-6 shadow-sm transition-shadow duration-300 hover:shadow-lg">
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: "100%" }}
-                          exit={{ width: 0 }}
-                          transition={{ duration: 0.35, ease: "easeOut" }}
-                          className="absolute left-0 top-0 h-1 bg-[#e15a2e]"
-                        />
-                      )}
-                    </AnimatePresence>
-                    <motion.div layout>
-                      {/* Stage */}
-                      <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#e15a2e]">
-                        {copy.stage} {stage.id}
-                      </p>
+                  <div
+                    className={`
+                    relative min-h-[190px]
+                    overflow-hidden
+                    rounded-xl
+                    p-6
+                    shadow-sm
+                    transition-all
+                    duration-300
+                    ${
+                      isActive
+                        ? "bg-[#0f2b2e] text-white shadow-xl"
+                        : "bg-[#f3cdbe]"
+                    }
+                    `}
+                  >
 
-                      {/* Age */}
-                      <p className="mt-3 font-mono text-[11px] font-semibold uppercase tracking-wide text-[#0f2b2e]/60">
-                        {stage.ageRange}
-                      </p>
+                    {/* Active indicator */}
+                    <motion.div
+                      initial={false}
+                      animate={{
+                        width: isActive ? "100%" : "0%",
+                      }}
+                      className="
+                      absolute
+                      left-0
+                      top-0
+                      h-1
+                      bg-[#e15a2e]
+                      "
+                    />
 
-                      {/* Name */}
-                      <p className="mt-2 text-xl font-bold leading-snug text-[#0f2b2e]">
-                        {stage.name}
-                      </p>
 
-                      <AnimatePresence initial={false}>
-                        {isActive && (
-                          <motion.div
-                            initial={{
-                              opacity: 0,
-                              height: 0,
-                              y: 10,
-                            }}
-                            animate={{
-                              opacity: 1,
-                              height: "auto",
-                              y: 0,
-                            }}
-                            exit={{
-                              opacity: 0,
-                              height: 0,
-                              y: 10,
-                            }}
-                            transition={{
-                              duration: 0.35,
-                              ease: [0.22, 1, 0.36, 1],
-                            }}
-                            className="overflow-hidden"
-                          >
-                            <div className="mt-5 border-t border-[#0f2b2e]/10 pt-4">
-                              {/* Board */}
-                              <span className="inline-block rounded-full bg-[#0f2b2e]/10 px-3 py-1 font-mono text-[10px] font-medium text-[#0f2b2e]/80">
-                                {stage.board}
-                              </span>
+                    <p
+                      className={`
+                      font-mono text-[10px]
+                      uppercase tracking-[0.2em]
+                      ${
+                        isActive
+                          ? "text-[#f5921e]"
+                          : "text-[#e15a2e]"
+                      }
+                      `}
+                    >
+                      {copy.stage} {stage.id}
+                    </p>
 
-                              {/* Description */}
-                              <p className="mt-4 text-sm leading-relaxed text-[#0f2b2e]/65">
-                                {stage.description}
-                              </p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
+
+                    <p
+                      className={`
+                      mt-3 font-mono text-[11px]
+                      uppercase
+                      ${
+                        isActive
+                          ? "text-white/60"
+                          : "text-[#0f2b2e]/60"
+                      }
+                      `}
+                    >
+                      {stage.ageRange}
+                    </p>
+
+
+                    <p
+                      className={`
+                      mt-3 text-xl font-extrabold
+                      ${
+                        isActive
+                          ? "text-white"
+                          : "text-[#0f2b2e]"
+                      }
+                      `}
+                    >
+                      {stage.name}
+                    </p>
+
+                    <p
+                      className={`
+                        mt-5 text-xs
+                        ${
+                          isActive
+                            ? "text-white/60"
+                            : "text-[#0f2b2e]/50"
+                        }
+                      `}
+                    >
+                      {lang === "UR"
+                        ? "مضامین دیکھنے کے لیے کلک کریں"
+                        : "Click to view subjects"}
+                    </p>
+
                   </div>
                 </motion.div>
               );
             })}
           </div>
         </FadeUp>
+
+
+        {/* Courses Panel */}
+        <AnimatePresence mode="wait">
+          {activeStage && (
+            <motion.div
+              key={activeStage.id}
+              initial={{
+                opacity: 0,
+                y: 30,
+                scale: 0.97,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                y: 20,
+              }}
+              transition={{
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+              mt-10
+              rounded-2xl
+              border
+              border-[#0f2b2e]/10
+              bg-white
+              p-6
+              shadow-sm
+              sm:p-8
+              "
+            >
+
+              <div className="flex items-center gap-3">
+                <span
+                  className="
+                  flex h-10 w-10
+                  items-center justify-center
+                  rounded-full
+                  bg-[#0f2b2e]
+                  "
+                >
+                  <BookOpen className="h-5 w-5 text-white" />
+                </span>
+
+                <div>
+                  <h3 className="text-xl font-extrabold text-[#0f2b2e]">
+                    {activeStage.name}
+                  </h3>
+
+                  <p className="text-sm text-[#0f2b2e]/60">
+                    {copy.courses}
+                  </p>
+                </div>
+              </div>
+
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+
+                {activeStage.courses?.map(
+                  (course:string, index:number)=>(
+                  <motion.div
+                    key={course}
+                    initial={{
+                      opacity:0,
+                      y:15,
+                    }}
+                    animate={{
+                      opacity:1,
+                      y:0,
+                    }}
+                    transition={{
+                      delay:index * 0.08,
+                    }}
+                    className="
+                    flex
+                    items-center
+                    gap-3
+                    rounded-lg
+                    bg-[#f1efe9]
+                    p-4
+                    "
+                  >
+
+                    <CheckCircle2
+                      className="
+                      h-5 w-5
+                      text-[#e15a2e]
+                      "
+                    />
+
+                    <span className="
+                    text-sm
+                    font-semibold
+                    text-[#0f2b2e]
+                    ">
+                      {course}
+                    </span>
+
+                  </motion.div>
+                ))}
+
+              </div>
+
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </Container>
     </section>
   );
