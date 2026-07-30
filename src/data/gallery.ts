@@ -45,8 +45,7 @@ export const galleryItems: GalleryItem[] = [
 
     image: "/images/gallery/prize-distribution.jpeg",
 
-    video: "/images/gallery/prize-distribution.mp4",
-    mediaType: "video",
+    mediaType: "image",
 
     size: "featured",
     variant: "navy",
@@ -156,8 +155,7 @@ export function getGalleryItems(language: SiteLanguage): GalleryItem[] {
       subtitle: "میٹرک ٹاپرز 2026",
       category: "annual-function",
       image: "/images/gallery/prize-distribution.jpeg",
-      video: "/images/gallery/prize-distribution.mp4",
-      mediaType: "video",
+      mediaType: "image",
       size: "featured",
       variant: "navy",
       alt: "طلبہ تعلیمی ایوارڈ وصول کر رہے ہیں",

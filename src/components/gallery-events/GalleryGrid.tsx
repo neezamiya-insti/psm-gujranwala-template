@@ -31,7 +31,7 @@ export default function GalleryGrid({
       <Container>
         <FadeUp>
           <SectionHeading
-            title={lang === "UR" ? "فوٹو اور ویڈیو گیلری" : "Photo & Video Gallery"}
+            title={lang === "UR" ? "فوٹو گیلری" : "Photo Gallery"}
             description={lang === "UR" ? "ایونٹ کی قسم کے مطابق فلٹر شدہ، ہر کیمپس سرگرمی کے بعد اپ ڈیٹ۔" : "Filtered by event type, updated after every campus activity."}
           />
         </FadeUp>

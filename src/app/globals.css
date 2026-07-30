@@ -46,3 +46,7 @@ body {
     transform: scale(1.025);
   }
 }
+
+.image-pulse {
+  animation: imagePulse 4s ease-in-out infinite;
+}
