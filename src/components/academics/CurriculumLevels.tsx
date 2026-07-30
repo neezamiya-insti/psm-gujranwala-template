@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, CheckCircle2 } from "lucide-react";
+import { BookOpen, CheckCircle2, GraduationCap, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 import Container from "@/components/common/Container";
@@ -16,12 +16,29 @@ interface CurriculumLevelsProps {
 
 export default function CurriculumLevels({ lang }: CurriculumLevelsProps) {
   const [activeCard, setActiveCard] = useState<string | null>(null);
+const [selectedGrade, setSelectedGrade] = useState<string>("");
+const [highlightedStage, setHighlightedStage] = useState<string | null>(null);
 
   const curriculumStages = getCurriculumStages(lang);
 
   const activeStage = curriculumStages.find(
     (stage) => stage.id === activeCard
   );
+
+  const gradeStageMap: Record<string, string> = {
+  "1": "2",
+  "2": "2",
+  "3": "2",
+  "4": "2",
+  "5": "2",
+  "6": "3",
+  "7": "3",
+  "8": "3",
+  "9": "4",
+  "10": "4",
+  "11": "5",
+  "12": "5",
+};
 
   const copy =
     lang === "UR"
@@ -42,18 +59,110 @@ export default function CurriculumLevels({ lang }: CurriculumLevelsProps) {
     <section className="border-t border-[#0f2b2e]/10 bg-[#f1efe9] py-16 sm:py-20">
       <Container>
         <FadeUp>
-          <SectionHeading
-            title={copy.title}
-            description={copy.description}
-          />
-        </FadeUp>
+  <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+    <div className="max-w-2xl">
+      <SectionHeading
+        title={copy.title}
+        description={copy.description}
+      />
+    </div>
 
+    <div className="flex items-center gap-3 self-start lg:mt-2">
+    <div className="relative">
+  <GraduationCap
+    className="
+      pointer-events-none
+      absolute
+      left-4
+      top-1/2
+      h-4
+      w-4
+      -translate-y-1/2
+      text-[#e15a2e]
+    "
+  />
+
+  <ChevronDown
+    className="
+      pointer-events-none
+      absolute
+      right-4
+      top-1/2
+      h-4
+      w-4
+      -translate-y-1/2
+      text-[#0f2b2e]/50
+    "
+  />
+      <select
+        value={selectedGrade}
+        onChange={(e) => {
+  const grade = e.target.value;
+
+  setSelectedGrade(grade);
+
+  if (!grade) {
+    setHighlightedStage(null);
+    setActiveCard(null);
+    return;
+  }
+
+  const stageId = gradeStageMap[grade];
+
+  setHighlightedStage(stageId);
+
+  // This opens the courses panel.
+  setActiveCard(stageId);
+}}
+        className="
+      h-12
+      appearance-none
+      rounded-full
+      border
+      border-[#0f2b2e]/10
+      bg-white
+      pl-11
+      pr-11
+      text-sm
+      font-semibold
+      text-[#0f2b2e]
+      shadow-sm
+      transition-all
+      duration-300
+      hover:border-[#e15a2e]/40
+      hover:shadow-md
+      focus:border-[#e15a2e]
+      focus:ring-4
+      focus:ring-[#e15a2e]/10
+      outline-none
+    "
+      >
+        <option value="">
+          {lang === "UR"
+            ? "منتخب کریں جماعت "
+            : "Choose Grade"}
+        </option>
+
+        {Array.from({ length: 12 }, (_, i) => (
+          <option key={i + 1} value={i + 1}>
+            {lang === "UR"
+              ? `جماعت ${i + 1}`
+              : `Class ${i + 1}`}
+          </option>
+        ))}
+      </select>
+      </div>
+    </div>
+  </div>
+</FadeUp>
 
         {/* Stage Cards */}
         <FadeUp delay={0.1}>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {curriculumStages.map((stage) => {
-              const isActive = activeCard === stage.id;
+              const isActive =
+              activeCard === stage.id ||
+              highlightedStage === stage.id;
 
               return (
                 <motion.div
@@ -158,13 +267,56 @@ export default function CurriculumLevels({ lang }: CurriculumLevelsProps) {
                         : "Click to view subjects"}
                     </p>
 
+                    {isActive && (
+  <AnimatePresence>
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.35 }}
+      className="mt-4 sm:hidden overflow-hidden"
+    >
+      <div className="rounded-xl bg-white p-5 shadow-md border border-[#0f2b2e]/10">
+
+        <div className="flex items-center gap-3">
+          <BookOpen className="h-5 w-5 text-[#e15a2e]" />
+
+          <div>
+            <h3 className="font-bold text-[#0f2b2e]">
+              {stage.name}
+            </h3>
+
+            <p className="text-xs text-[#0f2b2e]/60">
+              {copy.courses}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-4 space-y-2">
+          {stage.courses.map((course) => (
+            <div
+              key={course}
+              className="flex items-center gap-2 rounded-lg bg-[#f1efe9] px-3 py-2"
+            >
+              <CheckCircle2 className="h-4 w-4 text-[#e15a2e]" />
+
+              <span className="text-sm text-[#0f2b2e]">
+                {course}
+              </span>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </motion.div>
+  </AnimatePresence>
+)}
                   </div>
                 </motion.div>
               );
             })}
           </div>
         </FadeUp>
-
 
         {/* Courses Panel */}
         <AnimatePresence mode="wait">
