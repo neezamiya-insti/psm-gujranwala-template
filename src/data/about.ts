@@ -22,13 +22,6 @@ export const missionVisionItems: MissionVisionItem[] = [
     description:
       "To be the campus a Wazirabad Road family chooses first — where academic results and industry linkage grow side by side.",
   },
-  {
-    id: "values",
-    label: "Values",
-    title: "Transparency, results, and one standard across every campus.",
-    description:
-      "No campus quietly performs below another. What's published for Model Town is published for Rahwali Cantt.",
-  },
 ];
 
 const missionVisionItemsByLanguage: Record<SiteLanguage, MissionVisionItem[]> = {
@@ -47,13 +40,6 @@ const missionVisionItemsByLanguage: Record<SiteLanguage, MissionVisionItem[]> = 
       title: "ہر فارغ التحصیل برآمدی معیار پر پورا اترے، چاہے کلاس روم میں ہو یا تجارت میں۔",
       description:
         "وہ کیمپس بننا جو وزیرآباد روڈ کا خاندان پہلے منتخب کرے — جہاں تعلیمی نتائج اور صنعتی روابط ساتھ ساتھ پروان چڑھیں۔",
-    },
-    {
-      id: "values",
-      label: "اقدار",
-      title: "شفافیت، نتائج، اور ہر کیمپس پر ایک معیار۔",
-      description:
-        "کوئی کیمپس خاموشی سے دوسرے سے کم کارکردگی نہیں دکھاتا۔ جو ماڈل ٹاؤن کے لیے شائع کیا جاتا ہے وہ راولی کینٹ کے لیے بھی شائع کیا جاتا ہے۔",
     },
   ],
 };
