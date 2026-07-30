@@ -1,5 +1,4 @@
 import PageBanner from "@/components/layouts/PageBanner";
-import StatusTracker from "@/components/admissions/StatusTracker";
 import ApplicationSteps from "@/components/admissions/ApplicationSteps";
 import AdmissionCalendar from "@/components/admissions/AdmissionCalendar";
 import { getPreferredLanguage } from "@/lib/language.server";
@@ -19,7 +18,6 @@ export default async function AdmissionsPage() {
         }
       />
       <ApplicationSteps lang={lang} />
-      <StatusTracker lang={lang} />
       <AdmissionCalendar lang={lang} />
     </>
   );

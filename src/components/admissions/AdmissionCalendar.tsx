@@ -53,19 +53,13 @@ export default function AdmissionCalendar({ lang }: AdmissionCalendarProps) {
               return (
                 <motion.div
                   key={event.id}
-                  initial={{
-                    opacity: 0,
-                    y: 30,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.1,
-                  }}
+                  initial={{ opacity: 0 }}
+whileInView={{ opacity: 1 }}
+viewport={{ once: true }}
+transition={{
+  duration: 0.25,
+  delay: index * 0.08,
+}}
                   className="relative"
                 >
 
@@ -101,11 +95,11 @@ export default function AdmissionCalendar({ lang }: AdmissionCalendarProps) {
                   <div className="hidden sm:flex">
 
                     <div className="flex w-1/2 justify-end pr-10">
-                        {isLeft && <TimelineCard event={event} />}
+                        {isLeft && <TimelineCard event={event} isLeft={true} />}
                         </div>
 
                         <div className="flex w-1/2 justify-start pl-10">
-                        {!isLeft && <TimelineCard event={event} />}
+                        {!isLeft && <TimelineCard event={event} isLeft={false} />}
                         </div>
 
                   </div>
@@ -113,7 +107,7 @@ export default function AdmissionCalendar({ lang }: AdmissionCalendarProps) {
 
                   {/* Mobile layout */}
                   <div className="pl-14 sm:hidden">
-                    <TimelineCard event={event} />
+                    <TimelineCard event={event} isLeft={true} />
                   </div>
 
 
@@ -131,21 +125,70 @@ export default function AdmissionCalendar({ lang }: AdmissionCalendarProps) {
 
 function TimelineCard({
   event,
+  isLeft,
 }: {
   event: {
     date: string;
     title: string;
     description: string;
   };
+  isLeft: boolean;
 }) {
   return (
     <motion.div
+      initial={{
+        opacity: 0,
+        x: isLeft ? -140 : 140,
+        y: 20,
+        rotate: isLeft ? -4 : 4,
+        scale: 0.94,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+        y: 0,
+        rotate: 0,
+        scale: 1,
+      }}
+      animate={{
+        y: [0, -4, 0],
+      }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{
+        x: {
+          type: "spring",
+          stiffness: 55,
+          damping: 16,
+          mass: 1.2,
+        },
+        opacity: {
+          duration: 0.5,
+        },
+        rotate: {
+          type: "spring",
+          stiffness: 55,
+          damping: 16,
+        },
+        scale: {
+          type: "spring",
+          stiffness: 55,
+          damping: 16,
+        },
+        y: {
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        },
+      }}
       whileHover={{
-        y: -5,
+        scale: 1.02,
+        transition: {
+          duration: 0.3,
+        },
       }}
       className="
-         w-full
-         max-w-lg
+        w-full
+        max-w-lg
         rounded-xl
         border
         border-[#0f2b2e]/10
