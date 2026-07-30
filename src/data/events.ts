@@ -49,9 +49,9 @@ export const eventTimeline: TimelineEvent[] = [
     title: "Annual Function & Prize Distribution",
     description:
       "Matric & O-Level toppers recognised on stage, followed by student performances.",
-    tag: "See Video",
-    tagType: "video-photos",
-    link: "/images/gallery/prize-distribution.mp4",
+    tag: "See Pictures",
+    tagType: "photos",
+    link: "/images/gallery/prize-distribution.jpeg",
   },
 ];
 
