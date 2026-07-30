@@ -9,7 +9,15 @@ import GalleryCard from "@/components/cards/GalleryCard";
 import { getGalleryItems } from "@/data/gallery";
 import { type SiteLanguage } from "@/lib/language";
 
-export default function GalleryGrid({ lang }: { lang: SiteLanguage }) {
+interface GalleryGridProps {
+  lang: SiteLanguage;
+  searchQuery?: string;
+}
+
+export default function GalleryGrid({
+  lang,
+  searchQuery = "",
+}: GalleryGridProps) {
   const galleryItems = getGalleryItems(lang);
   const [activeCategory, setActiveCategory] = useState("all");
 
@@ -39,10 +47,36 @@ export default function GalleryGrid({ lang }: { lang: SiteLanguage }) {
         </FadeUp>
 
         <FadeUp delay={0.15}>
-          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3 sm:auto-rows-[200px]">
-            {filteredItems.map((item) => (
-              <GalleryCard key={item.id} item={item} />
-            ))}
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3">
+           {filteredItems.map((item) => {
+  const isHighlighted =
+    searchQuery &&
+    (
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.subtitle.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+  return (
+    <div
+      key={item.id}
+      className={`
+  h-full rounded-2xl transition-all duration-300
+  ${
+    searchQuery && !isHighlighted
+      ? "opacity-50"
+      : ""
+  }
+  ${
+    isHighlighted
+      ? "ring-4 ring-[#F5921E] shadow-[0_10px_30px_rgba(245,146,30,0.25)]"
+      : ""
+  }
+`}
+    >
+      <GalleryCard item={item} />
+    </div>
+  );
+})}
           </div>
         </FadeUp>
       </Container>
