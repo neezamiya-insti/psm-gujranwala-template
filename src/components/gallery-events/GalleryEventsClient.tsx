@@ -18,6 +18,7 @@ export default function GalleryEventsClient({
   return (
     <>
       <PageBanner
+        centered={true}
         eyebrow={lang === "UR" ? "گیلری اور تقریبات" : "Gallery & Events"}
         title={
           lang === "UR"

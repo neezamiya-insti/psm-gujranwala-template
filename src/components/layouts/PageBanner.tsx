@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Container from "@/components/common/Container";
 import FadeUp from "@/components/common/FadeUp";
+import Image from "next/image";
 
 interface PageBannerProps {
   eyebrow: string;
@@ -8,6 +9,8 @@ interface PageBannerProps {
   description?: string;
   urduLine?: string;
   children?: ReactNode;
+  centered?: boolean;
+  backgroundImage?: string;
 }
 
 export default function PageBanner({
@@ -16,9 +19,27 @@ export default function PageBanner({
   description,
   urduLine,
   children,
+  centered = false,
+  backgroundImage,
 }: PageBannerProps) {
   return (
-    <section className="border-b border-[#0f2b2e]/10 bg-[#f1efe9] py-10 sm:py-12">
+    <section className="-mt-1 relative overflow-hidden border-b border-[#0f2b2e]/10 py-16 sm:py-20">
+      {backgroundImage ? (
+  <>
+    <Image
+      src={backgroundImage}
+      alt=""
+      fill
+      priority
+      className="object-cover"
+    />
+
+    {/* Dark overlay for readability */}
+    <div className="absolute inset-0 bg-[#0f2b2e]/55" />
+  </>
+) : (
+  <div className="absolute inset-0 bg-[#f1efe9]" />
+)}
       <style>{`
         @keyframes pb-slide-in-right {
           from { opacity: 0; transform: translateX(90px); }
@@ -39,36 +60,64 @@ export default function PageBanner({
         }
       `}</style>
 
-      <Container>
-        <FadeUp>
-          <p className="pb-eyebrow font-mono text-xs font-semibold uppercase tracking-wider text-[#e15a2e]">
-            {eyebrow}
+      <div className="relative z-10">
+  <Container>
+    <FadeUp>
+      <div
+        className={
+          centered
+            ? "mx-auto max-w-4xl text-center"
+            : "max-w-3xl"
+        }
+      >
+        <p
+          className={`pb-eyebrow font-mono text-xs font-semibold uppercase tracking-wider ${
+            backgroundImage ? "text-orange-400" : "text-[#e15a2e]"
+          }`}
+        >
+          {eyebrow}
+        </p>
+
+        <h1
+          className={`pb-heading mt-3 text-3xl font-extrabold leading-tight sm:text-4xl ${
+            backgroundImage ? "text-white" : "text-[#0f2b2e]"
+          }`}
+        >
+          {title}
+        </h1>
+
+        {description && (
+          <p
+            className={`pb-description mt-4 max-w-3xl text-[15px] leading-relaxed ${
+              centered ? "mx-auto" : ""
+            } ${
+              backgroundImage ? "text-white/90" : "text-gray-600"
+            }`}
+          >
+            {description}
           </p>
+        )}
 
-          <h1 className="pb-heading mt-3 text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
-            {title}
-          </h1>
+        {urduLine && (
+          <p
+            dir="rtl"
+            lang="ur"
+            className={`mt-5 text-lg leading-relaxed ${
+              centered ? "mx-auto max-w-2xl" : "max-w-2xl"
+            } ${
+              backgroundImage ? "text-white" : "text-[#0f2b2e]"
+            }`}
+            style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}
+          >
+            {urduLine}
+          </p>
+        )}
 
-          {description && (
-            <p className="pb-description mt-4 max-w-3xl text-[15px] leading-relaxed text-gray-600">
-              {description}
-            </p>
-          )}
-
-          {urduLine && (
-            <p
-              dir="rtl"
-              lang="ur"
-              className="mt-5 max-w-2xl text-lg leading-relaxed text-[#0f2b2e]"
-              style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}
-            >
-              {urduLine}
-            </p>
-          )}
-
-          {children && <div className="mt-8">{children}</div>}
-        </FadeUp>
-      </Container>
+        {children && <div className="mt-8">{children}</div>}
+      </div>
+    </FadeUp>
+  </Container>
+</div>
     </section>
   );
 }

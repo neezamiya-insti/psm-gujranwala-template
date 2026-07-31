@@ -13,7 +13,7 @@ export default function EventSearch({
   const [value, setValue] = useState("");
 
   return (
-    <div className="mt-8 w-full max-w-2xl">
+    <div className="mx-auto mt-8 w-full max-w-2xl">
       <div
         className="
           group flex w-full flex-col gap-3
