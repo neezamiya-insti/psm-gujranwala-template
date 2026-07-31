@@ -56,31 +56,66 @@ export default function ImageCard({
 
 
       {/* Popup */}
-      {open && (
-        <div
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-5 backdrop-blur-sm"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative h-[70vh] w-full max-w-4xl overflow-hidden rounded-xl bg-white shadow-2xl animate-in zoom-in duration-300"
-          >
-            <Image
-              src={image}
-              alt={label}
-              fill
-              className="object-contain"
-            />
+{open && (
+  <div
+    onClick={() => setOpen(false)}
+    className="
+      fixed
+      inset-0
+      z-50
+      flex
+      items-center
+      justify-center
+      bg-black/80
+      backdrop-blur-sm
+      p-6
+    "
+  >
+    {/* Image */}
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="
+        relative
+        h-[45vh]
+        w-full
+        max-w-6xl
+        md:h-[80vh]
+        md:w-[85vw]
+      "
+    >
+      <Image
+        src={image}
+        alt={label}
+        fill
+        className="object-contain"
+      />
+    </div>
 
-            <button
-              onClick={() => setOpen(false)}
-              className="absolute right-4 top-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-black/50 text-white transition hover:bg-black/70"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      )}
+    {/* Close Button */}
+    <button
+      onClick={() => setOpen(false)}
+      className="
+        absolute
+        right-4
+        top-4
+        flex
+        h-10
+        w-10
+        items-center
+        justify-center
+        rounded-full
+        bg-white/10
+        text-white
+        transition
+        hover:bg-white/20
+        md:right-6
+        md:top-6
+      "
+    >
+      <X className="h-5 w-5" />
+    </button>
+  </div>
+)}
     </>
   );
 }
