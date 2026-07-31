@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Calendar, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -134,6 +135,9 @@ function TimelineCard({
   };
   isLeft: boolean;
 }) {
+  // Bumps every time a hover starts, so the typing animation replays each hover
+  const [typeKey, setTypeKey] = useState(0);
+
   return (
     <motion.div
       initial={{
@@ -186,6 +190,7 @@ function TimelineCard({
           duration: 0.3,
         },
       }}
+      onHoverStart={() => setTypeKey((k) => k + 1)}
       className="
         w-full
         max-w-lg
@@ -207,9 +212,41 @@ function TimelineCard({
         {event.title}
       </h3>
 
-      <p className="mt-2 text-sm leading-relaxed text-[#0f2b2e]/65">
-        {event.description}
-      </p>
+      <TypewriterDescription
+        key={typeKey}
+        text={event.description}
+        playTyping={typeKey > 0}
+      />
     </motion.div>
+  );
+}
+
+function TypewriterDescription({
+  text,
+  playTyping,
+}: {
+  text: string;
+  playTyping: boolean;
+}) {
+  const characters = text.split("");
+
+  return (
+    <p className="mt-2 text-sm leading-relaxed text-[#0f2b2e]/65">
+      {characters.map((char, i) => (
+        <motion.span
+          key={i}
+          // On first render (before any hover) skip animation entirely — text is just static.
+          // Once a hover has happened, replay a fresh "type in" from blank to full.
+          initial={playTyping ? { opacity: 0 } : false}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.01,
+            delay: playTyping ? i * 0.018 : 0,
+          }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </p>
   );
 }
