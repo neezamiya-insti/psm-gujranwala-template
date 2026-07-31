@@ -83,19 +83,10 @@ export default function CareerStatsHighlight({ lang }: { lang: SiteLanguage }) {
 
             {/* Mobile / tablet fallback */}
             <div className="lg:hidden">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, rotate: -12 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-                className="mx-auto flex h-56 w-56 flex-col items-center justify-center rounded-full border border-[#0f2b2e]/10 text-center sm:h-64 sm:w-64"
-              >
-                <p className="text-5xl font-extrabold leading-none text-[#0f2b2e] sm:text-6xl">
-                  <AnimatedNumber value={careerHighlight.featuredValue} delay={0.4} />
-                </p>
-                <span className="mt-3 h-[3px] w-10 rounded-full" style={{ backgroundColor: ACCENT }} />
-                <p className="mt-3 max-w-[10rem] text-sm text-gray-600">{careerHighlight.featuredLabel}</p>
-              </motion.div>
+              <CenterCircle
+                value={careerHighlight.featuredValue}
+                label={careerHighlight.featuredLabel}
+              />
 
               <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10">
                 {secondaryStats.map((stat, index) => {
@@ -138,7 +129,7 @@ function CenterCircle({ value, label }: { value: string; label: string }) {
       whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, type: "spring", stiffness: 90, damping: 14 }}
-      className="relative flex h-64 w-64 shrink-0 items-center justify-center xl:h-72 xl:w-72"
+      className="relative mx-auto flex h-56 w-56 shrink-0 items-center justify-center sm:h-64 sm:w-64 xl:h-72 xl:w-72"
     >
       {/* main partial ring: accent with a short dark segment — draws itself */}
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100">

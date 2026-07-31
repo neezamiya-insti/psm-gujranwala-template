@@ -28,7 +28,7 @@ export default function IndustryTieUps({ lang }: { lang: SiteLanguage }) {
   return (
     <section className="border border-[#0f2b2e]/20 overflow-hidden bg-[#f1efe9] py-16 sm:py-20">
       <Container>
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
 
           {/* Left — copy */}
           <FadeUp>
@@ -36,7 +36,7 @@ export default function IndustryTieUps({ lang }: { lang: SiteLanguage }) {
               {lang === "UR" ? "صنعتی شراکت داروں کا اعتماد" : "Trusted by Industry Partners"}
             </h2>
 
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-gray-600">
+            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-gray-600">
               {lang === "UR"
                 ? "ہماری صنعتی شراکت داریاں طلبہ کو حقیقی دنیا کے مواقعوں، پیشہ ورانہ رہنمائی اور عملی تجربات سے جوڑتی ہیں۔ مختلف شعبوں کی تنظیموں کے ساتھ تعاون کے ذریعے، ہم طلبہ کو کامیاب کیریئر کے لیے درکار مہارتیں، اعتماد اور موقع فراہم کرنے میں مدد کرتے ہیں۔"
                 : "Our industry partnerships connect students with real-world opportunities, professional mentorship, and practical experiences. Through collaboration with organizations across different sectors, we help students develop the skills, confidence, and exposure needed for successful careers."}
@@ -45,7 +45,7 @@ export default function IndustryTieUps({ lang }: { lang: SiteLanguage }) {
 
           {/* Right — orbit diagram */}
           <FadeUp delay={0.15}>
-            <div className="relative mx-auto aspect-square h-[300px] w-[300px] sm:h-[380px] sm:w-[380px]">
+            <div className="relative ml-auto aspect-square h-[300px] w-[300px] sm:h-[380px] sm:w-[380px]">
 
               {/* Dotted orbit rings */}
               <div className="absolute inset-0 rounded-full border border-dashed border-[#0f2b2e]/30" />
