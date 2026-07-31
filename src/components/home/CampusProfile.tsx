@@ -76,13 +76,18 @@ export default async function CampusProfile() {
 <FadeUp delay={0.15}>
   <div className="grid grid-cols-2 grid-rows-2 gap-4">
     {/* Tall image, spans both rows */}
-    <div className="relative row-span-2 h-full overflow-hidden rounded-sm">
+    <div className="group relative row-span-2 h-full cursor-pointer overflow-hidden rounded-sm">
       <Image
-        src={collageImages[0].src}
-        alt={copy.collageLabels[0]}
-        fill
-        className="object-cover transition-transform duration-700 hover:scale-105"
-      />
+  src={collageImages[0].src}
+  alt={copy.collageLabels[0]}
+  fill
+  className="
+    object-cover
+    transition-transform
+    duration-700
+    group-hover:scale-110
+  "
+/>
 
       <div className="absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
 
@@ -93,16 +98,21 @@ export default async function CampusProfile() {
 
     {/* Two stacked images */}
     {collageImages.slice(1).map((img, index) => (
-      <div
-        key={img.id}
-        className="relative aspect-4/3 overflow-hidden rounded-sm"
-      >
+     <div
+  key={img.id}
+  className="group relative aspect-4/3 cursor-pointer overflow-hidden rounded-sm"
+>
         <Image
-          src={img.src}
-          alt={copy.collageLabels[index + 1]}
-          fill
-          className="object-cover transition-transform duration-700 hover:scale-105"
-        />
+  src={img.src}
+  alt={copy.collageLabels[index + 1]}
+  fill
+  className="
+    object-cover
+    transition-transform
+    duration-700
+    group-hover:scale-110
+  "
+/>
 
         <div className="absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
 
