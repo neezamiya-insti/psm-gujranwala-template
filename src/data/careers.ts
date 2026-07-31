@@ -103,7 +103,7 @@ export const secondaryStats: SecondaryStat[] = [
   { id: "partners", value: "14+", label: "Active Industry Partners" },
   { id: "internships", value: "220+", label: "Internships Since 2018" },
   { id: "tracks", value: "6+", label: "Vocational Short-Course Tracks" },
-  { id: "years", value: "28yr", label: "Serving Gujranwala Since 1998" },
+  { id: "years", value: "28yr", label: "Serving Since 1998" },
 ];
 
 export const partnerCTA = {
