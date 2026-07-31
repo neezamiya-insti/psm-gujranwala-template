@@ -95,72 +95,65 @@ export default function EventTimelineCard({ event }: Props) {
       </motion.div>
 
 
-      {/* Popup */}
-      {open && event.tagType !== "recap" && (
-        <div
-          onClick={() => setOpen(false)}
-          className="
-            fixed
-            inset-0
-            z-50
-            flex
-            items-center
-            justify-center
-            bg-black/70
-            p-5
-            backdrop-blur-sm
-          "
-        >
+     {/* Popup */}
+{open && event.tagType !== "recap" && (
+  <div
+    onClick={() => setOpen(false)}
+    className="
+      fixed
+      inset-0
+      z-50
+      flex
+      items-center
+      justify-center
+      bg-black/80
+      backdrop-blur-sm
+    "
+  >
 
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="
-              relative
-              h-[75vh]
-              w-full
-              max-w-5xl
-              overflow-hidden
-              rounded-xl
-              bg-white
-              shadow-2xl
-              animate-in
-              zoom-in
-              duration-300
-            "
-          >
-
-            <Image
-              src={event.link}
-              alt={event.title}
-              fill
-              className="object-contain"
-            />
+    {/* Centered Image */}
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="
+        relative
+        h-[80vh]
+        w-[85vw]
+        max-w-6xl
+      "
+    >
+      <Image
+        src={event.link}
+        alt={event.title}
+        fill
+        className="object-contain"
+      />
+    </div>
 
 
-            <button
-              onClick={() => setOpen(false)}
-              className="
-                absolute
-                right-4
-                top-4
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-full
-                bg-black/50
-                text-white
-                hover:bg-black/70
-              "
-            >
-              <X className="h-5 w-5" />
-            </button>
+    {/* Close Button */}
+    <button
+      onClick={() => setOpen(false)}
+      className="
+        absolute
+        right-6
+        top-6
+        flex
+        h-10
+        w-10
+        items-center
+        justify-center
+        rounded-full
+        bg-white/10
+        text-white
+        transition
+        hover:bg-white/20
+      "
+    >
+      <X className="h-5 w-5" />
+    </button>
 
-          </div>
-
-        </div>
-      )}
+  </div>
+)}
 
     </>
   );

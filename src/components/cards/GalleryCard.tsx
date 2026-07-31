@@ -167,67 +167,115 @@ export default function GalleryCard({ item }: GalleryCardProps) {
 
 
       {/* Popup */}
-      {open && (
-        <div
-          onClick={() => setOpen(false)}
+{open && (
+  <div
+    onClick={() => setOpen(false)}
+    className="
+      fixed
+      inset-0
+      z-50
+      flex
+      items-center
+      justify-center
+      bg-black/80
+      backdrop-blur-sm
+      p-6
+    "
+  >
+    {/* Centered Content */}
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="
+        flex
+        h-auto
+        w-full
+        max-w-6xl
+        flex-col
+        items-center
+        justify-center
+        gap-8
+        md:h-[80vh]
+        md:w-[85vw]
+        md:flex-row
+      "
+    >
+      {/* Image */}
+      <div
+  className="
+    relative
+    h-[40vh]
+    w-full
+    md:h-[70vh]
+    md:w-1/2
+  "
+>
+  <Image
+    src={item.image}
+    alt={item.alt}
+    fill
+    className="object-contain"
+  />
+</div>
+
+      {/* Text */}
+      <div
+        className="
+          flex
+          w-full
+          flex-col
+          items-center
+          justify-center
+          text-center
+          text-white
+          md:w-1/2
+          md:items-start
+          md:px-10
+          md:text-left
+        "
+      >
+        <h2 className="text-2xl font-bold md:text-4xl">
+          {item.title}
+        </h2>
+
+        <p
           className="
-            fixed
-            inset-0
-            z-50
-            flex
-            items-center
-            justify-center
-            bg-black/60
-            p-5
-            backdrop-blur-sm
+            mt-4
+            max-w-lg
+            text-sm
+            leading-relaxed
+            text-white/80
+            md:text-base
           "
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="
-              relative
-              h-[70vh]
-              w-full
-              max-w-5xl
-              overflow-hidden
-              rounded-xl
-              bg-white
-              shadow-2xl
-              animate-in
-              zoom-in
-              duration-300
-            "
-          >
-            <Image
-              src={item.image}
-              alt={item.alt}
-              fill
-              className="object-contain"
-            />
+          {item.subtitle}
+        </p>
+      </div>
+    </div>
 
-            <button
-              onClick={() => setOpen(false)}
-              className="
-                absolute
-                right-4
-                top-4
-                flex
-                h-9
-                w-9
-                items-center
-                justify-center
-                rounded-full
-                bg-black/50
-                text-white
-                transition
-                hover:bg-black/70
-              "
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      )}
+    {/* Close Button */}
+    <button
+      onClick={() => setOpen(false)}
+      className="
+        absolute
+        right-4
+        top-4
+        flex
+        h-10
+        w-10
+        items-center
+        justify-center
+        rounded-full
+        bg-white/10
+        text-white
+        hover:bg-white/20
+        md:right-6
+        md:top-6
+      "
+    >
+      <X className="h-5 w-5" />
+    </button>
+  </div>
+)}
     </>
   );
 }

@@ -73,6 +73,7 @@ export default function EventSearch({
             hover:bg-[#e68113]
             hover:shadow-lg
             sm:w-auto
+            cursor-pointer
           "
         >
           {lang === "UR" ? "تلاش" : "Search"}
