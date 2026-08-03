@@ -50,3 +50,42 @@ body {
 .image-pulse {
   animation: imagePulse 4s ease-in-out infinite;
 }
+
+@keyframes timelineDraw {
+  from {
+    stroke-dashoffset: 1800;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.timeline-path {
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
+}
+
+.is-visible .timeline-path {
+  animation: timelineDraw 6s ease-in-out forwards;
+}
+
+
+@keyframes revealStep {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admission-step {
+  opacity: 0;
+}
+
+.is-visible .admission-step {
+  animation: revealStep .6s ease forwards;
+}

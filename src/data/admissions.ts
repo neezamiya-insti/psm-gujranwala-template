@@ -35,7 +35,7 @@ const admissionStepsByLanguage: Record<SiteLanguage, AdmissionStep[]> = {
       number: "04",
       title: "Track Status",
       description:
-        'Live tracker — "68% complete" — instead of wondering if the form arrived.',
+        'Live tracker — instead of wondering if the form arrived.',
     },
     {
       id: "confirm",
@@ -49,7 +49,7 @@ const admissionStepsByLanguage: Record<SiteLanguage, AdmissionStep[]> = {
       number: "06",
       title: "WhatsApp Updates",
       description:
-        "Attendance & progress alerts move to WhatsApp/SMS from day one.",
+        "Attendance & progress alerts move to WhatsApp from day one.",
     },
   ],
   UR: [
@@ -79,7 +79,7 @@ const admissionStepsByLanguage: Record<SiteLanguage, AdmissionStep[]> = {
       number: "04",
       title: "درخواست ٹریک کریں",
       description:
-        'لائیو ٹریکر — "68% مکمل" — تاکہ فارم پہنچا یا نہیں، یہ سوچنا نہ پڑے۔',
+        'لائیو ٹریکر — تاکہ فارم پہنچا یا نہیں، یہ سوچنا نہ پڑے۔',
     },
     {
       id: "confirm",
@@ -93,7 +93,7 @@ const admissionStepsByLanguage: Record<SiteLanguage, AdmissionStep[]> = {
       number: "06",
       title: "واٹس ایپ اپ ڈیٹس",
       description:
-        "حاضری اور پیش رفت کی اطلاعات پہلے دن سے واٹس ایپ/ایس ایم ایس پر ملیں گی۔",
+        "حاضری اور پیش رفت کی اطلاعات پہلے دن سے واٹس ایپ پر ملیں گی۔",
     },
   ],
 };
