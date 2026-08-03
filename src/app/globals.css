@@ -89,3 +89,22 @@ body {
 .is-visible .admission-step {
   animation: revealStep .6s ease forwards;
 }
+
+@keyframes drawArc {
+  from {
+    stroke-dashoffset: 150;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.stat-arc {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+}
+
+.is-visible .stat-arc {
+  animation: drawArc 1.4s ease-out forwards;
+}

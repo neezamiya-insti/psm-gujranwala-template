@@ -13,7 +13,6 @@ const navLinkLabels: Record<SiteLanguage, NavLink[]> = {
     { label: "Admissions", href: "/admissions" },
     { label: "Gallery", href: "/gallery-events" },
     { label: "Careers", href: "/careers" },
-    { label: "Portal", href: "/parent-portal" },
     { label: "Contact", href: "/contact" },
   ],
   UR: [
@@ -23,7 +22,6 @@ const navLinkLabels: Record<SiteLanguage, NavLink[]> = {
     { label: "داخلہ", href: "/admissions" },
     { label: "گیلری", href: "/gallery-events" },
     { label: "کیریئرز", href: "/careers" },
-    { label: "پورٹل", href: "/parent-portal" },
     { label: "رابطہ", href: "/contact" },
   ],
 };

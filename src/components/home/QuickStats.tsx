@@ -5,6 +5,7 @@ import { getQuickStats } from "@/data/stats";
 import Counter from "@/components/common/Counter";
 import { getPreferredLanguage } from "@/lib/language.server";
 import { ShieldHalf, Users, GraduationCap, Building2, BookTextIcon } from "lucide-react";
+import ScrollReveal from "@/components/common/ScrollReveal";
 
 const DARK = "#0f2b2e";
 const ACCENT = "#e15a2e";
@@ -57,8 +58,9 @@ export default async function QuickStats() {
         </FadeUp>
 
         {/* Stats row */}
-        <FadeUp delay={0.1}>
-          <div className="mt-16 flex flex-wrap items-start justify-center gap-x-6 gap-y-12 sm:flex-nowrap sm:justify-center sm:gap-x-10">
+       <FadeUp delay={0.1}>
+  <ScrollReveal>
+    <div className="mt-16 flex flex-wrap items-start justify-center gap-x-6 gap-y-12 sm:flex-nowrap sm:justify-center sm:gap-x-10">
             {quickStats.map((stat, i) => {
               const Icon = icons[i % icons.length];
               const isTopHalf = i % 2 === 0; // 1st & 3rd = dark top half, 2nd & 4th = accent bottom half
@@ -75,6 +77,10 @@ export default async function QuickStats() {
                     <div className="relative flex h-24 w-24 items-center justify-center">
                       <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
                         <path
+                          className="stat-arc"
+                          style={{
+                            animationDelay: `${i * 0.25}s`,
+                          }}
                           d={arcPath}
                           fill="none"
                           stroke={arcColor}
@@ -126,6 +132,7 @@ export default async function QuickStats() {
               );
             })}
           </div>
+          </ScrollReveal>
         </FadeUp>
       </Container>
     </section>
