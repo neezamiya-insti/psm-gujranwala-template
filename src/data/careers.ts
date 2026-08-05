@@ -102,7 +102,7 @@ export const careerHighlight = {
 export const secondaryStats: SecondaryStat[] = [
   { id: "partners", value: "14+", label: "Active Industry Partners" },
   { id: "internships", value: "220+", label: "Internships Since 2018" },
-  { id: "tracks", value: "6+", label: "Vocational Short-Course Tracks" },
+  { id: "tracks", value: "6+", label: "Vocational Courses" },
   { id: "years", value: "28yr", label: "Serving Since 1998" },
 ];
 
@@ -206,7 +206,7 @@ export function getSecondaryStats(language: SiteLanguage): SecondaryStat[] {
   return [
     { id: "partners", value: "14+", label: "فعال صنعتی شراکت دار" },
     { id: "internships", value: "220+", label: "2018 سے انٹرنشپ" },
-    { id: "tracks", value: "6+", label: "پیشہ ورانہ مختصر کورسز" },
+    { id: "tracks", value: "6+", label: "پیشہ ورانہ کورسز" },
     { id: "years", value: "28yr", label: "1998 سے گوجرانوالہ کی خدمت" },
   ];
 }
