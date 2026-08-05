@@ -12,13 +12,13 @@ export default function AlumniShowcase({ lang }: { lang: SiteLanguage }) {
       <Container>
         <FadeUp>
           <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#0f2b2e]/70">
-            {lang === "UR" ? "صنعت اور سابق طلبہ" : "Industry &amp; Alumni in Trade"}
+            {lang === "UR" ? "صنعت اور سابق طلبہ" : "Industry & Alumni in Trade"}
           </p>
           <h2 className="mt-3 max-w-4xl text-3xl font-extrabold leading-tight text-[#0f2b2e] sm:text-4xl">
-            {lang === "UR" ? "ہمارے فارغ التحصیل اگلے دروازے کے ایکسپورٹ ہاؤس چلاتے ہیں۔" : "Our graduates run the export houses next door."}
+            {lang === "UR" ? "ہمارے فارغ التحصیل ایکسپورٹ ہاؤس چلاتے ہیں۔" : "Our graduates run the export houses."}
           </h2>
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-gray-600">
-            {lang === "UR" ? "ایک سیکشن جو تاجر خاندان کے خریدار کے لیے بنایا گیا ہے — ثبوت کہ گوجرانوالہ گرامر کی تعلیم شہر کی اپنی صنعت میں واپس لے جاتی ہے۔" : "A spotlight section built for the trading-family buyer — proof that a Gujranwala Grammar education leads back into the city&apos;s own industry."}
+            {lang === "UR" ? "ایک سیکشن جو تاجر خاندان کے خریدار کے لیے بنایا گیا ہے — ثبوت کہ گوجرانوالہ گرامر کی تعلیم شہر کی اپنی صنعت میں واپس لے جاتی ہے۔" : "A spotlight section built for the trading-family buyer — proof that a Gujranwala Grammar education leads back into the city's own industry."}
           </p>
         </FadeUp>
 
