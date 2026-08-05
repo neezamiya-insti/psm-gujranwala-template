@@ -100,7 +100,7 @@ const curriculumStagesByLanguage: Record<SiteLanguage, CurriculumStage[]> = {
       name: "Early Years",
       board: "Primary",
       description:
-        "A foundation-focused stage where children develop confidence, creativity, communication skills, and early learning habits through engaging activities.",
+        "A foundation-focused stage where children develop confidence, creativity, and early learning habits through engaging activities.",
       courses: [
         "English",
         "Mathematics",
